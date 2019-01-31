@@ -23,3 +23,5 @@ let VEGETABLE_IMAGE="https://rakusale.me/v2/vegetables/image"
 let VEGETABLE_MINE="https://rakusale.me/v3/vegetables/mine"
 let SHOP_REST="https://rakusale.me/v2/shops"
 
+let RAKUSALE_API = "35.229.191.56:15001"
+

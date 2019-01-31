@@ -63,6 +63,15 @@
 		D1AC3759CB9764552FC712DB /* Pods_Rakusale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B486C1EFC22C2520EE1476 /* Pods_Rakusale.framework */; };
 		D4313947219F00C200757192 /* ResponseVegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313946219F00C200757192 /* ResponseVegetable.swift */; };
 		D431394A219F015B00757192 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313949219F015B00757192 /* Endpoints.swift */; };
+		D48D52F6220334AB00027ED4 /* vegetable.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52F2220334AB00027ED4 /* vegetable.grpc.swift */; };
+		D48D52F7220334AB00027ED4 /* entry.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52F3220334AB00027ED4 /* entry.grpc.swift */; };
+		D48D52F8220334AB00027ED4 /* shop.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52F4220334AB00027ED4 /* shop.grpc.swift */; };
+		D48D52F9220334AB00027ED4 /* user.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52F5220334AB00027ED4 /* user.grpc.swift */; };
+		D48D52FE220334BD00027ED4 /* user.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52FA220334BD00027ED4 /* user.pb.swift */; };
+		D48D52FF220334BD00027ED4 /* shop.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52FB220334BD00027ED4 /* shop.pb.swift */; };
+		D48D5300220334BD00027ED4 /* vegetable.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52FC220334BD00027ED4 /* vegetable.pb.swift */; };
+		D48D5301220334BD00027ED4 /* entry.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52FD220334BD00027ED4 /* entry.pb.swift */; };
+		D48D53032203357400027ED4 /* EntryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D53022203357400027ED4 /* EntryClient.swift */; };
 		D492582E21A6A4DD00C29A61 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582D21A6A4DD00C29A61 /* AuthenticationService.swift */; };
 		D492583021A6AAC400C29A61 /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582F21A6AAC400C29A61 /* RequestLogin.swift */; };
 		D492583221A6AD6500C29A61 /* ResponseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492583121A6AD6500C29A61 /* ResponseAuth.swift */; };
@@ -142,6 +151,15 @@
 		D2883272BC05D315F0035F38 /* Pods-Rakusale-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rakusale-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rakusale-iOS/Pods-Rakusale-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D4313946219F00C200757192 /* ResponseVegetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseVegetable.swift; sourceTree = "<group>"; };
 		D4313949219F015B00757192 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		D48D52F2220334AB00027ED4 /* vegetable.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vegetable.grpc.swift; path = "../../../../Rakusale-Proto/iOS/vegetable.grpc.swift"; sourceTree = "<group>"; };
+		D48D52F3220334AB00027ED4 /* entry.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = entry.grpc.swift; path = "../../../../Rakusale-Proto/iOS/entry.grpc.swift"; sourceTree = "<group>"; };
+		D48D52F4220334AB00027ED4 /* shop.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = shop.grpc.swift; path = "../../../../Rakusale-Proto/iOS/shop.grpc.swift"; sourceTree = "<group>"; };
+		D48D52F5220334AB00027ED4 /* user.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = user.grpc.swift; path = "../../../../Rakusale-Proto/iOS/user.grpc.swift"; sourceTree = "<group>"; };
+		D48D52FA220334BD00027ED4 /* user.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = user.pb.swift; path = "../../../../Rakusale-Proto/iOS/user.pb.swift"; sourceTree = "<group>"; };
+		D48D52FB220334BD00027ED4 /* shop.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = shop.pb.swift; path = "../../../../Rakusale-Proto/iOS/shop.pb.swift"; sourceTree = "<group>"; };
+		D48D52FC220334BD00027ED4 /* vegetable.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vegetable.pb.swift; path = "../../../../Rakusale-Proto/iOS/vegetable.pb.swift"; sourceTree = "<group>"; };
+		D48D52FD220334BD00027ED4 /* entry.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = entry.pb.swift; path = "../../../../Rakusale-Proto/iOS/entry.pb.swift"; sourceTree = "<group>"; };
+		D48D53022203357400027ED4 /* EntryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryClient.swift; sourceTree = "<group>"; };
 		D492582D21A6A4DD00C29A61 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		D492582F21A6AAC400C29A61 /* RequestLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLogin.swift; sourceTree = "<group>"; };
 		D492583121A6AD6500C29A61 /* ResponseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseAuth.swift; sourceTree = "<group>"; };
@@ -159,7 +177,6 @@
 		D49AD7B0217EA666002507F1 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49AD7B2217EA666002507F1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49AD7B4217EA7B6002507F1 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4B1D97521AD0F63001A25EB /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		D4B1D98021B22093001A25EB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D4B1D98421B2E05A001A25EB /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		D4B1D98621B2E6B6001A25EB /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -329,6 +346,7 @@
 		A27392662177627E0063DFE4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A2739265217762770063DFE4 /* Buy */,
 				A2BCEDF221A57AA70041B8B1 /* SignIn */,
 				A2739261217762380063DFE4 /* SignUp */,
 				A2739262217762440063DFE4 /* UserSelect */,
@@ -427,7 +445,6 @@
 		C17BB54B20EDCDD8002ACD56 = {
 			isa = PBXGroup;
 			children = (
-				D4B1D97521AD0F63001A25EB /* Bridging-Header.h */,
 				C17BB55620EDCDD8002ACD56 /* Rakusale */,
 				C17BB55520EDCDD8002ACD56 /* Products */,
 				376931BD60A7F5A1D51D0D39 /* Pods */,
@@ -446,17 +463,10 @@
 		C17BB55620EDCDD8002ACD56 /* Rakusale */ = {
 			isa = PBXGroup;
 			children = (
-				D4B1D98B21B4B8D8001A25EB /* Notification */,
-				D4B1D98321B2E046001A25EB /* API */,
-				D4B1D98221B2DDA8001A25EB /* Realm */,
-				D4B1D97F21B22072001A25EB /* Geolocation */,
+				D48D52F02203318F00027ED4 /* Domain */,
+				D48D52ED22032FE800027ED4 /* Interfaces */,
 				D4B1D97621AD26FD001A25EB /* Animation */,
-				D492582A21A68C0B00C29A61 /* Authentication */,
-				A27392662177627E0063DFE4 /* Login */,
-				A2739265217762770063DFE4 /* Buy */,
-				A27392642177626F0063DFE4 /* Sell */,
-				A2BCEDF721A57AB80041B8B1 /* Settings */,
-				D49AD799217CB851002507F1 /* Models */,
+				D49AD799217CB851002507F1 /* Data */,
 				D4313948219F014D00757192 /* Constants */,
 				A273924D217724FF0063DFE4 /* Extensions */,
 				C17BB55720EDCDD8002ACD56 /* AppDelegate.swift */,
@@ -496,6 +506,51 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		D48D52ED22032FE800027ED4 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				D4B1D97F21B22072001A25EB /* Geolocation */,
+				D4B1D98B21B4B8D8001A25EB /* Notification */,
+				D492582A21A68C0B00C29A61 /* Authentication */,
+				D4B1D98221B2DDA8001A25EB /* Realm */,
+				D4B1D98321B2E046001A25EB /* API */,
+				D48D52EE2203300700027ED4 /* gRPC */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		D48D52EE2203300700027ED4 /* gRPC */ = {
+			isa = PBXGroup;
+			children = (
+				D48D52F3220334AB00027ED4 /* entry.grpc.swift */,
+				D48D52F4220334AB00027ED4 /* shop.grpc.swift */,
+				D48D52F5220334AB00027ED4 /* user.grpc.swift */,
+				D48D52F2220334AB00027ED4 /* vegetable.grpc.swift */,
+			);
+			path = gRPC;
+			sourceTree = "<group>";
+		};
+		D48D52F02203318F00027ED4 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A2BCEDF721A57AB80041B8B1 /* Settings */,
+				A27392642177626F0063DFE4 /* Sell */,
+				A27392662177627E0063DFE4 /* Login */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D48D52F1220331E100027ED4 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D48D52FD220334BD00027ED4 /* entry.pb.swift */,
+				D48D52FB220334BD00027ED4 /* shop.pb.swift */,
+				D48D52FA220334BD00027ED4 /* user.pb.swift */,
+				D48D52FC220334BD00027ED4 /* vegetable.pb.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		D492582A21A68C0B00C29A61 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,14 +559,15 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		D49AD799217CB851002507F1 /* Models */ = {
+		D49AD799217CB851002507F1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D48D52F1220331E100027ED4 /* Protocol */,
 				D4B1D98821B2ED29001A25EB /* Realm */,
 				D4313945219F007A00757192 /* Response */,
 				D4313944219F007100757192 /* Request */,
 			);
-			path = Models;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		D4B1D97621AD26FD001A25EB /* Animation */ = {
@@ -544,6 +600,7 @@
 			isa = PBXGroup;
 			children = (
 				D4B1D98421B2E05A001A25EB /* APIService.swift */,
+				D48D53022203357400027ED4 /* EntryClient.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -698,27 +755,37 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Rakusale/Pods-Rakusale-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/VegaScrollFlowLayout/VegaScrollFlowLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VegaScrollFlowLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -776,25 +843,33 @@
 				A21BF990219F06D6009A7D3C /* RequestUser.swift in Sources */,
 				D492582E21A6A4DD00C29A61 /* AuthenticationService.swift in Sources */,
 				A201C0D721B3B6A800493919 /* AdressMapViewController.swift in Sources */,
+				D48D53032203357400027ED4 /* EntryClient.swift in Sources */,
 				A273926E21797F590063DFE4 /* ProfileRegistrationViewController.swift in Sources */,
 				A273926A21797F2C0063DFE4 /* SellPaymentViewController.swift in Sources */,
 				A21BF992219F07C3009A7D3C /* ResponseShop.swift in Sources */,
+				D48D52F6220334AB00027ED4 /* vegetable.grpc.swift in Sources */,
 				D431394A219F015B00757192 /* Endpoints.swift in Sources */,
 				A2BCEE1021A57AB90041B8B1 /* BuySettingsViewController.swift in Sources */,
+				D48D52F7220334AB00027ED4 /* entry.grpc.swift in Sources */,
+				D48D5300220334BD00027ED4 /* vegetable.pb.swift in Sources */,
 				D492583021A6AAC400C29A61 /* RequestLogin.swift in Sources */,
 				A272241021B932C600636FB7 /* ResponseUser.swift in Sources */,
 				D4B1D98D21B4B8FE001A25EB /* LocalNotificationService.swift in Sources */,
+				D48D52FF220334BD00027ED4 /* shop.pb.swift in Sources */,
 				A273928421798B490063DFE4 /* BuyPaymentViewController.swift in Sources */,
 				A2739251217728BE0063DFE4 /* UserSelectViewController.swift in Sources */,
 				D4B1D98A21B2ED41001A25EB /* RealmShop.swift in Sources */,
+				D48D52F9220334AB00027ED4 /* user.grpc.swift in Sources */,
 				A2BCEDF621A57AA70041B8B1 /* SignInViewController.swift in Sources */,
 				D492583221A6AD6500C29A61 /* ResponseAuth.swift in Sources */,
 				A273928221798B310063DFE4 /* CommodityListViewController.swift in Sources */,
+				D48D5301220334BD00027ED4 /* entry.pb.swift in Sources */,
 				A293A36F21B27AB3001396EA /* MapViewController.swift in Sources */,
 				A2BCEE0D21A57AB90041B8B1 /* SettingsAcountViewController.swift in Sources */,
 				A273927C21798B000063DFE4 /* HomeFavViewController.swift in Sources */,
 				A2BCEE1321A57AB90041B8B1 /* SettingsSalesViewController.swift in Sources */,
 				A2BCEE0E21A57AB90041B8B1 /* SettingsAdressViewController.swift in Sources */,
+				D48D52F8220334AB00027ED4 /* shop.grpc.swift in Sources */,
 				A273928021798B200063DFE4 /* HomeSearchViewController.swift in Sources */,
 				A273926C21797F3E0063DFE4 /* ProfileViewController.swift in Sources */,
 				D4B1D98121B22093001A25EB /* LocationService.swift in Sources */,
@@ -802,6 +877,7 @@
 				A2BCEE1E21A791CB0041B8B1 /* IntroductionViewController.swift in Sources */,
 				A2BCEE1421A57AB90041B8B1 /* SettingsProfileViewController.swift in Sources */,
 				A273924F217725270063DFE4 /* UIViewController.swift in Sources */,
+				D48D52FE220334BD00027ED4 /* user.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
