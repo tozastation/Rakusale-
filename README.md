@@ -1,2 +1,0 @@
-# Rakusale-iOS
-
