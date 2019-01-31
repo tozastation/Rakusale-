@@ -60,6 +60,7 @@
 		A2CC30C72164AAE6004F487A /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC30C62164AAE6004F487A /* ProfileViewController.storyboard */; };
 		C17BB55820EDCDD8002ACD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17BB55720EDCDD8002ACD56 /* AppDelegate.swift */; };
 		C17BB55F20EDCDD9002ACD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C17BB55E20EDCDD9002ACD56 /* Assets.xcassets */; };
+		D1AC3759CB9764552FC712DB /* Pods_Rakusale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B486C1EFC22C2520EE1476 /* Pods_Rakusale.framework */; };
 		D4313947219F00C200757192 /* ResponseVegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313946219F00C200757192 /* ResponseVegetable.swift */; };
 		D431394A219F015B00757192 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313949219F015B00757192 /* Endpoints.swift */; };
 		D492582E21A6A4DD00C29A61 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582D21A6A4DD00C29A61 /* AuthenticationService.swift */; };
@@ -75,6 +76,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11B486C1EFC22C2520EE1476 /* Pods_Rakusale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rakusale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E186008EF3C2642555324F /* Pods_Rakusale_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rakusale_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90AAA1F1C0E563A59D358E6B /* Pods-Rakusale-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rakusale-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rakusale-iOS/Pods-Rakusale-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A201C0D621B3B6A800493919 /* AdressMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressMapViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +129,7 @@
 		A2CC30C021649ED0004F487A /* SellPaymentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SellPaymentViewController.storyboard; sourceTree = "<group>"; };
 		A2CC30C22164A1F2004F487A /* ProfileRegistrationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileRegistrationViewController.storyboard; sourceTree = "<group>"; };
 		A2CC30C62164AAE6004F487A /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
-		C17BB55420EDCDD8002ACD56 /* Rakusale-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rakusale-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C17BB55420EDCDD8002ACD56 /* Rakusale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rakusale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C17BB55720EDCDD8002ACD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C17BB55E20EDCDD9002ACD56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C17BB56320EDCDD9002ACD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +165,8 @@
 		D4B1D98621B2E6B6001A25EB /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		D4B1D98921B2ED41001A25EB /* RealmShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmShop.swift; sourceTree = "<group>"; };
 		D4B1D98C21B4B8FE001A25EB /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
+		F02CB5CB90839533F2C48AC1 /* Pods-Rakusale.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rakusale.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rakusale/Pods-Rakusale.release.xcconfig"; sourceTree = "<group>"; };
+		F10734EB50F3FE1344C049EE /* Pods-Rakusale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rakusale.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rakusale/Pods-Rakusale.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,7 @@
 				D492583621A98ECD00C29A61 /* AlamofireImage.framework in Frameworks */,
 				D492583421A98EC900C29A61 /* Alamofire.framework in Frameworks */,
 				8528336EA28CC99EE4033A75 /* Pods_Rakusale_iOS.framework in Frameworks */,
+				D1AC3759CB9764552FC712DB /* Pods_Rakusale.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +189,8 @@
 			children = (
 				90AAA1F1C0E563A59D358E6B /* Pods-Rakusale-iOS.debug.xcconfig */,
 				D2883272BC05D315F0035F38 /* Pods-Rakusale-iOS.release.xcconfig */,
+				F10734EB50F3FE1344C049EE /* Pods-Rakusale.debug.xcconfig */,
+				F02CB5CB90839533F2C48AC1 /* Pods-Rakusale.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -421,7 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				D4B1D97521AD0F63001A25EB /* Bridging-Header.h */,
-				C17BB55620EDCDD8002ACD56 /* Rakusale-iOS */,
+				C17BB55620EDCDD8002ACD56 /* Rakusale */,
 				C17BB55520EDCDD8002ACD56 /* Products */,
 				376931BD60A7F5A1D51D0D39 /* Pods */,
 				F93750914CEFE2FACB62568D /* Frameworks */,
@@ -431,12 +438,12 @@
 		C17BB55520EDCDD8002ACD56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C17BB55420EDCDD8002ACD56 /* Rakusale-iOS.app */,
+				C17BB55420EDCDD8002ACD56 /* Rakusale.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C17BB55620EDCDD8002ACD56 /* Rakusale-iOS */ = {
+		C17BB55620EDCDD8002ACD56 /* Rakusale */ = {
 			isa = PBXGroup;
 			children = (
 				D4B1D98B21B4B8D8001A25EB /* Notification */,
@@ -456,7 +463,7 @@
 				C17BB55E20EDCDD9002ACD56 /* Assets.xcassets */,
 				C17BB56320EDCDD9002ACD56 /* Info.plist */,
 			);
-			path = "Rakusale-iOS";
+			path = Rakusale;
 			sourceTree = "<group>";
 		};
 		D4313944219F007100757192 /* Request */ = {
@@ -581,6 +588,7 @@
 				C18590A720F43A0000A9A88F /* MotionTransitioning.framework */,
 				C185909D20F439F600A9A88F /* MaterialComponents.framework */,
 				37E186008EF3C2642555324F /* Pods_Rakusale_iOS.framework */,
+				11B486C1EFC22C2520EE1476 /* Pods_Rakusale.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -588,9 +596,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C17BB55320EDCDD8002ACD56 /* Rakusale-iOS */ = {
+		C17BB55320EDCDD8002ACD56 /* Rakusale */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C17BB56620EDCDD9002ACD56 /* Build configuration list for PBXNativeTarget "Rakusale-iOS" */;
+			buildConfigurationList = C17BB56620EDCDD9002ACD56 /* Build configuration list for PBXNativeTarget "Rakusale" */;
 			buildPhases = (
 				58DAD336330B52240B0D67EC /* [CP] Check Pods Manifest.lock */,
 				C17BB55020EDCDD8002ACD56 /* Sources */,
@@ -603,9 +611,9 @@
 			);
 			dependencies = (
 			);
-			name = "Rakusale-iOS";
+			name = Rakusale;
 			productName = "Rakusale-iOS";
-			productReference = C17BB55420EDCDD8002ACD56 /* Rakusale-iOS.app */;
+			productReference = C17BB55420EDCDD8002ACD56 /* Rakusale.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -629,7 +637,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C17BB54F20EDCDD8002ACD56 /* Build configuration list for PBXProject "Rakusale-iOS" */;
+			buildConfigurationList = C17BB54F20EDCDD8002ACD56 /* Build configuration list for PBXProject "Rakusale" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -642,7 +650,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C17BB55320EDCDD8002ACD56 /* Rakusale-iOS */,
+				C17BB55320EDCDD8002ACD56 /* Rakusale */,
 			);
 		};
 /* End PBXProject section */
@@ -687,7 +695,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Rakusale-iOS/Pods-Rakusale-iOS-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Rakusale/Pods-Rakusale-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
@@ -714,7 +722,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rakusale-iOS/Pods-Rakusale-iOS-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rakusale/Pods-Rakusale-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		58DAD336330B52240B0D67EC /* [CP] Check Pods Manifest.lock */ = {
@@ -728,7 +736,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Rakusale-iOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Rakusale-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -746,8 +754,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -917,7 +924,7 @@
 		};
 		C17BB56720EDCDD9002ACD56 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90AAA1F1C0E563A59D358E6B /* Pods-Rakusale-iOS.debug.xcconfig */;
+			baseConfigurationReference = F10734EB50F3FE1344C049EE /* Pods-Rakusale.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -928,7 +935,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FUN.Rakusale-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Rakusale-iOS/Rakusale-iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -939,7 +946,7 @@
 		};
 		C17BB56820EDCDD9002ACD56 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2883272BC05D315F0035F38 /* Pods-Rakusale-iOS.release.xcconfig */;
+			baseConfigurationReference = F02CB5CB90839533F2C48AC1 /* Pods-Rakusale.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -950,7 +957,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FUN.Rakusale-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Rakusale-iOS/Rakusale-iOS-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
@@ -961,7 +968,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C17BB54F20EDCDD8002ACD56 /* Build configuration list for PBXProject "Rakusale-iOS" */ = {
+		C17BB54F20EDCDD8002ACD56 /* Build configuration list for PBXProject "Rakusale" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C17BB56420EDCDD9002ACD56 /* Debug */,
@@ -970,7 +977,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C17BB56620EDCDD9002ACD56 /* Build configuration list for PBXNativeTarget "Rakusale-iOS" */ = {
+		C17BB56620EDCDD9002ACD56 /* Build configuration list for PBXNativeTarget "Rakusale" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C17BB56720EDCDD9002ACD56 /* Debug */,
