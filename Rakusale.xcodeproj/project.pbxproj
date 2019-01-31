@@ -63,15 +63,15 @@
 		D1AC3759CB9764552FC712DB /* Pods_Rakusale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B486C1EFC22C2520EE1476 /* Pods_Rakusale.framework */; };
 		D4313947219F00C200757192 /* ResponseVegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313946219F00C200757192 /* ResponseVegetable.swift */; };
 		D431394A219F015B00757192 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313949219F015B00757192 /* Endpoints.swift */; };
-		D48D52F6220334AB00027ED4 /* vegetable.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52F2220334AB00027ED4 /* vegetable.grpc.swift */; };
-		D48D52F7220334AB00027ED4 /* entry.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52F3220334AB00027ED4 /* entry.grpc.swift */; };
-		D48D52F8220334AB00027ED4 /* shop.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52F4220334AB00027ED4 /* shop.grpc.swift */; };
-		D48D52F9220334AB00027ED4 /* user.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52F5220334AB00027ED4 /* user.grpc.swift */; };
-		D48D52FE220334BD00027ED4 /* user.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52FA220334BD00027ED4 /* user.pb.swift */; };
-		D48D52FF220334BD00027ED4 /* shop.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52FB220334BD00027ED4 /* shop.pb.swift */; };
-		D48D5300220334BD00027ED4 /* vegetable.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52FC220334BD00027ED4 /* vegetable.pb.swift */; };
-		D48D5301220334BD00027ED4 /* entry.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D52FD220334BD00027ED4 /* entry.pb.swift */; };
 		D48D53032203357400027ED4 /* EntryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D53022203357400027ED4 /* EntryClient.swift */; };
+		D48D531022033F2000027ED4 /* vegetable.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D530C22033F2000027ED4 /* vegetable.grpc.swift */; };
+		D48D531122033F2000027ED4 /* entry.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D530D22033F2000027ED4 /* entry.grpc.swift */; };
+		D48D531222033F2000027ED4 /* shop.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D530E22033F2000027ED4 /* shop.grpc.swift */; };
+		D48D531322033F2000027ED4 /* user.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D530F22033F2000027ED4 /* user.grpc.swift */; };
+		D48D531822033F4B00027ED4 /* user.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D531422033F4A00027ED4 /* user.pb.swift */; };
+		D48D531922033F4B00027ED4 /* shop.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D531522033F4B00027ED4 /* shop.pb.swift */; };
+		D48D531A22033F4B00027ED4 /* vegetable.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D531622033F4B00027ED4 /* vegetable.pb.swift */; };
+		D48D531B22033F4B00027ED4 /* entry.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D531722033F4B00027ED4 /* entry.pb.swift */; };
 		D492582E21A6A4DD00C29A61 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582D21A6A4DD00C29A61 /* AuthenticationService.swift */; };
 		D492583021A6AAC400C29A61 /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582F21A6AAC400C29A61 /* RequestLogin.swift */; };
 		D492583221A6AD6500C29A61 /* ResponseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492583121A6AD6500C29A61 /* ResponseAuth.swift */; };
@@ -151,15 +151,15 @@
 		D2883272BC05D315F0035F38 /* Pods-Rakusale-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rakusale-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rakusale-iOS/Pods-Rakusale-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D4313946219F00C200757192 /* ResponseVegetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseVegetable.swift; sourceTree = "<group>"; };
 		D4313949219F015B00757192 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
-		D48D52F2220334AB00027ED4 /* vegetable.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vegetable.grpc.swift; path = "../../../../Rakusale-Proto/iOS/vegetable.grpc.swift"; sourceTree = "<group>"; };
-		D48D52F3220334AB00027ED4 /* entry.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = entry.grpc.swift; path = "../../../../Rakusale-Proto/iOS/entry.grpc.swift"; sourceTree = "<group>"; };
-		D48D52F4220334AB00027ED4 /* shop.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = shop.grpc.swift; path = "../../../../Rakusale-Proto/iOS/shop.grpc.swift"; sourceTree = "<group>"; };
-		D48D52F5220334AB00027ED4 /* user.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = user.grpc.swift; path = "../../../../Rakusale-Proto/iOS/user.grpc.swift"; sourceTree = "<group>"; };
-		D48D52FA220334BD00027ED4 /* user.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = user.pb.swift; path = "../../../../Rakusale-Proto/iOS/user.pb.swift"; sourceTree = "<group>"; };
-		D48D52FB220334BD00027ED4 /* shop.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = shop.pb.swift; path = "../../../../Rakusale-Proto/iOS/shop.pb.swift"; sourceTree = "<group>"; };
-		D48D52FC220334BD00027ED4 /* vegetable.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vegetable.pb.swift; path = "../../../../Rakusale-Proto/iOS/vegetable.pb.swift"; sourceTree = "<group>"; };
-		D48D52FD220334BD00027ED4 /* entry.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = entry.pb.swift; path = "../../../../Rakusale-Proto/iOS/entry.pb.swift"; sourceTree = "<group>"; };
 		D48D53022203357400027ED4 /* EntryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryClient.swift; sourceTree = "<group>"; };
+		D48D530C22033F2000027ED4 /* vegetable.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.grpc.swift; sourceTree = "<group>"; };
+		D48D530D22033F2000027ED4 /* entry.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = entry.grpc.swift; sourceTree = "<group>"; };
+		D48D530E22033F2000027ED4 /* shop.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shop.grpc.swift; sourceTree = "<group>"; };
+		D48D530F22033F2000027ED4 /* user.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.grpc.swift; sourceTree = "<group>"; };
+		D48D531422033F4A00027ED4 /* user.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.pb.swift; sourceTree = "<group>"; };
+		D48D531522033F4B00027ED4 /* shop.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shop.pb.swift; sourceTree = "<group>"; };
+		D48D531622033F4B00027ED4 /* vegetable.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.pb.swift; sourceTree = "<group>"; };
+		D48D531722033F4B00027ED4 /* entry.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = entry.pb.swift; sourceTree = "<group>"; };
 		D492582D21A6A4DD00C29A61 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		D492582F21A6AAC400C29A61 /* RequestLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLogin.swift; sourceTree = "<group>"; };
 		D492583121A6AD6500C29A61 /* ResponseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseAuth.swift; sourceTree = "<group>"; };
@@ -522,10 +522,10 @@
 		D48D52EE2203300700027ED4 /* gRPC */ = {
 			isa = PBXGroup;
 			children = (
-				D48D52F3220334AB00027ED4 /* entry.grpc.swift */,
-				D48D52F4220334AB00027ED4 /* shop.grpc.swift */,
-				D48D52F5220334AB00027ED4 /* user.grpc.swift */,
-				D48D52F2220334AB00027ED4 /* vegetable.grpc.swift */,
+				D48D530D22033F2000027ED4 /* entry.grpc.swift */,
+				D48D530E22033F2000027ED4 /* shop.grpc.swift */,
+				D48D530F22033F2000027ED4 /* user.grpc.swift */,
+				D48D530C22033F2000027ED4 /* vegetable.grpc.swift */,
 			);
 			path = gRPC;
 			sourceTree = "<group>";
@@ -543,10 +543,10 @@
 		D48D52F1220331E100027ED4 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				D48D52FD220334BD00027ED4 /* entry.pb.swift */,
-				D48D52FB220334BD00027ED4 /* shop.pb.swift */,
-				D48D52FA220334BD00027ED4 /* user.pb.swift */,
-				D48D52FC220334BD00027ED4 /* vegetable.pb.swift */,
+				D48D531722033F4B00027ED4 /* entry.pb.swift */,
+				D48D531522033F4B00027ED4 /* shop.pb.swift */,
+				D48D531422033F4A00027ED4 /* user.pb.swift */,
+				D48D531622033F4B00027ED4 /* vegetable.pb.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -821,7 +821,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -833,43 +834,44 @@
 				D4B1D98521B2E05A001A25EB /* APIService.swift in Sources */,
 				A21BF98C219EE608009A7D3C /* RequestVegetable.swift in Sources */,
 				A2BCEE1921A57AE10041B8B1 /* HomeShopViewController.swift in Sources */,
+				D48D531322033F2000027ED4 /* user.grpc.swift in Sources */,
 				A21BF98E219EE627009A7D3C /* RequestShop.swift in Sources */,
 				A273925321772CCB0063DFE4 /* HomeSellViewController.swift in Sources */,
 				A273925521772D7F0063DFE4 /* RegistrationViewController.swift in Sources */,
+				D48D531022033F2000027ED4 /* vegetable.grpc.swift in Sources */,
 				A273924C217723C20063DFE4 /* SignUpViewController.swift in Sources */,
 				C17BB55820EDCDD8002ACD56 /* AppDelegate.swift in Sources */,
+				D48D531A22033F4B00027ED4 /* vegetable.pb.swift in Sources */,
+				D48D531B22033F4B00027ED4 /* entry.pb.swift in Sources */,
 				A2BCEE0B21A57AB90041B8B1 /* SellSettingsViewController.swift in Sources */,
 				D4B1D98721B2E6B6001A25EB /* RealmService.swift in Sources */,
 				A21BF990219F06D6009A7D3C /* RequestUser.swift in Sources */,
 				D492582E21A6A4DD00C29A61 /* AuthenticationService.swift in Sources */,
 				A201C0D721B3B6A800493919 /* AdressMapViewController.swift in Sources */,
 				D48D53032203357400027ED4 /* EntryClient.swift in Sources */,
+				D48D531122033F2000027ED4 /* entry.grpc.swift in Sources */,
 				A273926E21797F590063DFE4 /* ProfileRegistrationViewController.swift in Sources */,
+				D48D531922033F4B00027ED4 /* shop.pb.swift in Sources */,
 				A273926A21797F2C0063DFE4 /* SellPaymentViewController.swift in Sources */,
 				A21BF992219F07C3009A7D3C /* ResponseShop.swift in Sources */,
-				D48D52F6220334AB00027ED4 /* vegetable.grpc.swift in Sources */,
 				D431394A219F015B00757192 /* Endpoints.swift in Sources */,
 				A2BCEE1021A57AB90041B8B1 /* BuySettingsViewController.swift in Sources */,
-				D48D52F7220334AB00027ED4 /* entry.grpc.swift in Sources */,
-				D48D5300220334BD00027ED4 /* vegetable.pb.swift in Sources */,
+				D48D531222033F2000027ED4 /* shop.grpc.swift in Sources */,
 				D492583021A6AAC400C29A61 /* RequestLogin.swift in Sources */,
 				A272241021B932C600636FB7 /* ResponseUser.swift in Sources */,
 				D4B1D98D21B4B8FE001A25EB /* LocalNotificationService.swift in Sources */,
-				D48D52FF220334BD00027ED4 /* shop.pb.swift in Sources */,
 				A273928421798B490063DFE4 /* BuyPaymentViewController.swift in Sources */,
 				A2739251217728BE0063DFE4 /* UserSelectViewController.swift in Sources */,
 				D4B1D98A21B2ED41001A25EB /* RealmShop.swift in Sources */,
-				D48D52F9220334AB00027ED4 /* user.grpc.swift in Sources */,
 				A2BCEDF621A57AA70041B8B1 /* SignInViewController.swift in Sources */,
 				D492583221A6AD6500C29A61 /* ResponseAuth.swift in Sources */,
 				A273928221798B310063DFE4 /* CommodityListViewController.swift in Sources */,
-				D48D5301220334BD00027ED4 /* entry.pb.swift in Sources */,
 				A293A36F21B27AB3001396EA /* MapViewController.swift in Sources */,
+				D48D531822033F4B00027ED4 /* user.pb.swift in Sources */,
 				A2BCEE0D21A57AB90041B8B1 /* SettingsAcountViewController.swift in Sources */,
 				A273927C21798B000063DFE4 /* HomeFavViewController.swift in Sources */,
 				A2BCEE1321A57AB90041B8B1 /* SettingsSalesViewController.swift in Sources */,
 				A2BCEE0E21A57AB90041B8B1 /* SettingsAdressViewController.swift in Sources */,
-				D48D52F8220334AB00027ED4 /* shop.grpc.swift in Sources */,
 				A273928021798B200063DFE4 /* HomeSearchViewController.swift in Sources */,
 				A273926C21797F3E0063DFE4 /* ProfileViewController.swift in Sources */,
 				D4B1D98121B22093001A25EB /* LocationService.swift in Sources */,
@@ -877,7 +879,6 @@
 				A2BCEE1E21A791CB0041B8B1 /* IntroductionViewController.swift in Sources */,
 				A2BCEE1421A57AB90041B8B1 /* SettingsProfileViewController.swift in Sources */,
 				A273924F217725270063DFE4 /* UIViewController.swift in Sources */,
-				D48D52FE220334BD00027ED4 /* user.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
