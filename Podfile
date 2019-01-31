@@ -15,4 +15,5 @@ target 'Rakusale' do
   pod 'RxCocoa',    '~> 4.0'
   pod 'RealmSwift'
   pod 'VegaScrollFlowLayout'
+  pod 'SwiftGRPC'
 end
