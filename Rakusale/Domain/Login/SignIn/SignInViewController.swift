@@ -98,10 +98,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         firstly {
             EntryClient.shared.signIn(email: email, password: password)
         }.done { token in
-            print("[Set Token]")
+            print("[Your Token]")
             print(token)
             S.setKeychain(Keychain_Keys.Token, token)
-            S.login()
+            S.login() //ログイン状態 Change to True
             print(S.loadLoginState())
             DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
                 self.stopLoading()

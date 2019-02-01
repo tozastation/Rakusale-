@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Lottie
+import PromiseKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userName: UITextField!
@@ -85,7 +86,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             let alert: UIAlertController = UIAlertController(title: "登録確認", message: "この情報で登録します。よろしいですか？", preferredStyle: .alert)
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style:.default, handler:{
                 (action: UIAlertAction!) -> Void in
-                self.regist(name: name!, email: email!, pass: password!)
+                self.regist(name: name!, email: email!, password: password!)
             })
             let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel)
             alert.addAction(cancelAction)
@@ -99,36 +100,33 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func regist(name: String, email: String, pass: String){
+    func regist(name: String, email: String, password: String){
         self.startLoading()
-        var request = URLRequest(url: URL(string: REGIST_PATH)!)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        // Set sending data on Header
-        request.setValue(name, forHTTPHeaderField: "Name")
-        request.setValue(email, forHTTPHeaderField: "Email")
-        request.setValue(pass, forHTTPHeaderField: "Password")
-        request.timeoutInterval = 5.0
-        Alamofire.request(request).responseJSON {
-            response in
-            if response.result.isSuccess {
-                if let data = response.data {
-                    let auth = try? JSONDecoder().decode(ResponseAuth.self, from: data)
-                    S.setKeychain(Keychain_Keys.Token, auth?.accessToken)
-                    S.login()
-                    print(S.loadLoginState())
-                    DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
-                        self.stopLoading()
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
-            } else {
+        // Start Loading Animation
+        self.startLoading()
+        // Call RPC
+        print("Activate Login")
+        firstly {
+            EntryClient.shared.signUp(name: name, email: email, password: password)
+        }.done { token in
+            print("[Your Token]")
+            print(token)
+            S.setKeychain(Keychain_Keys.Token, token)
+            //ログイン状態 Change to True
+            S.login()
+            print("[Your Account State]")
+            print(S.loadLoginState())
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
                 self.stopLoading()
-                let alert: UIAlertController = UIAlertController (title: "送信に失敗しました。", message: "再度入力して下さい", preferredStyle: .alert)
-                let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: .default)
-                alert.addAction(defaultAction)
-                self.present(alert, animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
+        }.catch {e in
+            print(e)
+            self.stopLoading()
+            let alert: UIAlertController = UIAlertController (title: "送信に失敗しました。", message: "再度入力して下さい", preferredStyle: .alert)
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(defaultAction)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

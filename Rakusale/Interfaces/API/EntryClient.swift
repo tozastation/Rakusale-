@@ -35,17 +35,11 @@ class EntryClient {
     func signUp(
         name: String,
         email: String,
-        birthday: String,
-        isSaler: Bool,
-        isBuyer: Bool,
         password: String
     ) -> Promise<String> {
         var req = Entry_SignUpRequest()
         req.name = name
         req.email = email
-        req.birthday = birthday
-        req.isSaler = isSaler
-        req.isBuyer = isBuyer
         req.password = password
         
         return Promise { seal in
