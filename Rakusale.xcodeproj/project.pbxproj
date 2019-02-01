@@ -77,6 +77,7 @@
 		C14EA4432204668E0011671D /* Pods_Rakusale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B486C1EFC22C2520EE1476 /* Pods_Rakusale.framework */; };
 		C17BB55820EDCDD8002ACD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17BB55720EDCDD8002ACD56 /* AppDelegate.swift */; };
 		C17BB55F20EDCDD9002ACD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C17BB55E20EDCDD9002ACD56 /* Assets.xcassets */; };
+		C195130322047B69006E52F4 /* ShopClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C195130222047B69006E52F4 /* ShopClient.swift */; };
 		D4313947219F00C200757192 /* ResponseVegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313946219F00C200757192 /* ResponseVegetable.swift */; };
 		D431394A219F015B00757192 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313949219F015B00757192 /* Endpoints.swift */; };
 		D48D53032203357400027ED4 /* EntryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D53022203357400027ED4 /* EntryClient.swift */; };
@@ -180,6 +181,7 @@
 		C18590A320F43A0000A9A88F /* MotionAnimator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MotionAnimator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18590A520F43A0000A9A88F /* MotionInterchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MotionInterchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18590A720F43A0000A9A88F /* MotionTransitioning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MotionTransitioning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C195130222047B69006E52F4 /* ShopClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopClient.swift; sourceTree = "<group>"; };
 		D2883272BC05D315F0035F38 /* Pods-Rakusale-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rakusale-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rakusale-iOS/Pods-Rakusale-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D4313946219F00C200757192 /* ResponseVegetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseVegetable.swift; sourceTree = "<group>"; };
 		D4313949219F015B00757192 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 			children = (
 				D4B1D98421B2E05A001A25EB /* APIService.swift */,
 				D48D53022203357400027ED4 /* EntryClient.swift */,
+				C195130222047B69006E52F4 /* ShopClient.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -952,6 +955,7 @@
 				A2BCEE1E21A791CB0041B8B1 /* IntroductionViewController.swift in Sources */,
 				A2BCEE1421A57AB90041B8B1 /* SettingsProfileViewController.swift in Sources */,
 				C14EA421220460ED0011671D /* Error.swift in Sources */,
+				C195130322047B69006E52F4 /* ShopClient.swift in Sources */,
 				A273924F217725270063DFE4 /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
