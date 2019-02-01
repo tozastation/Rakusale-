@@ -23,6 +23,15 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - PromiseKit (6.8.2):
+    - PromiseKit/CorePromise (= 6.8.2)
+    - PromiseKit/Foundation (= 6.8.2)
+    - PromiseKit/UIKit (= 6.8.2)
+  - PromiseKit/CorePromise (6.8.2)
+  - PromiseKit/Foundation (6.8.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.8.2):
+    - PromiseKit/CorePromise
   - Realm (3.13.1):
     - Realm/Headers (= 3.13.1)
   - Realm/Headers (3.13.1)
@@ -45,6 +54,7 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.4)
   - KeychainAccess
   - lottie-ios
+  - PromiseKit
   - RealmSwift
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
@@ -60,6 +70,7 @@ SPEC REPOS:
     - KeychainAccess
     - lottie-ios
     - nanopb
+    - PromiseKit
     - Realm
     - RealmSwift
     - RxAtomic
@@ -77,6 +88,7 @@ SPEC CHECKSUMS:
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  PromiseKit: 8200c4555a5b433ac26f5143093cb792ee2c3426
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
@@ -86,6 +98,6 @@ SPEC CHECKSUMS:
   SwiftProtobuf: 7147b8ec19c8c0694a45155d989ea9e6dedaf51f
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
 
-PODFILE CHECKSUM: 9ef024b67e920861232c9fa15582b1f916dea71d
+PODFILE CHECKSUM: 22c527f957f15945e98d38d4dbb3ec4599d6e921
 
 COCOAPODS: 1.5.3

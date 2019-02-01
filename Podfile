@@ -16,4 +16,5 @@ target 'Rakusale' do
   pod 'RealmSwift'
   pod 'VegaScrollFlowLayout'
   pod 'SwiftGRPC'
+  pod 'PromiseKit'
 end

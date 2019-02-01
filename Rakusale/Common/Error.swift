@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+enum gRPCError: LocalizedError {
+    case RequestError(Int64)
+}

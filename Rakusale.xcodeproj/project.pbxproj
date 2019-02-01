@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8528336EA28CC99EE4033A75 /* Pods_Rakusale_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E186008EF3C2642555324F /* Pods_Rakusale_iOS.framework */; };
 		A201C0D721B3B6A800493919 /* AdressMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201C0D621B3B6A800493919 /* AdressMapViewController.swift */; };
 		A21BF98C219EE608009A7D3C /* RequestVegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21BF98B219EE608009A7D3C /* RequestVegetable.swift */; };
 		A21BF98E219EE627009A7D3C /* RequestShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21BF98D219EE627009A7D3C /* RequestShop.swift */; };
@@ -58,9 +57,26 @@
 		A2CC30C121649ED0004F487A /* SellPaymentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC30C021649ED0004F487A /* SellPaymentViewController.storyboard */; };
 		A2CC30C32164A1F2004F487A /* ProfileRegistrationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC30C22164A1F2004F487A /* ProfileRegistrationViewController.storyboard */; };
 		A2CC30C72164AAE6004F487A /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC30C62164AAE6004F487A /* ProfileViewController.storyboard */; };
+		C14EA421220460ED0011671D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14EA420220460ED0011671D /* Error.swift */; };
+		C14EA4242204668E0011671D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4232204668E0011671D /* Alamofire.framework */; };
+		C14EA4262204668E0011671D /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4252204668E0011671D /* AlamofireImage.framework */; };
+		C14EA4282204668E0011671D /* grpc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4272204668E0011671D /* grpc.framework */; };
+		C14EA42A2204668E0011671D /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4292204668E0011671D /* KeychainAccess.framework */; };
+		C14EA42C2204668E0011671D /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA42B2204668E0011671D /* Lottie.framework */; };
+		C14EA42E2204668E0011671D /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA42D2204668E0011671D /* nanopb.framework */; };
+		C14EA4302204668E0011671D /* openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA42F2204668E0011671D /* openssl.framework */; };
+		C14EA4322204668E0011671D /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4312204668E0011671D /* PromiseKit.framework */; };
+		C14EA4342204668E0011671D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4332204668E0011671D /* Realm.framework */; };
+		C14EA4362204668E0011671D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4352204668E0011671D /* RealmSwift.framework */; };
+		C14EA4382204668E0011671D /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4372204668E0011671D /* RxAtomic.framework */; };
+		C14EA43A2204668E0011671D /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4392204668E0011671D /* RxCocoa.framework */; };
+		C14EA43C2204668E0011671D /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA43B2204668E0011671D /* RxSwift.framework */; };
+		C14EA43E2204668E0011671D /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA43D2204668E0011671D /* SwiftGRPC.framework */; };
+		C14EA4402204668E0011671D /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA43F2204668E0011671D /* SwiftProtobuf.framework */; };
+		C14EA4422204668E0011671D /* VegaScrollFlowLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4412204668E0011671D /* VegaScrollFlowLayout.framework */; };
+		C14EA4432204668E0011671D /* Pods_Rakusale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B486C1EFC22C2520EE1476 /* Pods_Rakusale.framework */; };
 		C17BB55820EDCDD8002ACD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17BB55720EDCDD8002ACD56 /* AppDelegate.swift */; };
 		C17BB55F20EDCDD9002ACD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C17BB55E20EDCDD9002ACD56 /* Assets.xcassets */; };
-		D1AC3759CB9764552FC712DB /* Pods_Rakusale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B486C1EFC22C2520EE1476 /* Pods_Rakusale.framework */; };
 		D4313947219F00C200757192 /* ResponseVegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313946219F00C200757192 /* ResponseVegetable.swift */; };
 		D431394A219F015B00757192 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313949219F015B00757192 /* Endpoints.swift */; };
 		D48D53032203357400027ED4 /* EntryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D53022203357400027ED4 /* EntryClient.swift */; };
@@ -75,8 +91,6 @@
 		D492582E21A6A4DD00C29A61 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582D21A6A4DD00C29A61 /* AuthenticationService.swift */; };
 		D492583021A6AAC400C29A61 /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582F21A6AAC400C29A61 /* RequestLogin.swift */; };
 		D492583221A6AD6500C29A61 /* ResponseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492583121A6AD6500C29A61 /* ResponseAuth.swift */; };
-		D492583421A98EC900C29A61 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D492583321A98EC900C29A61 /* Alamofire.framework */; };
-		D492583621A98ECD00C29A61 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D492583521A98ECD00C29A61 /* AlamofireImage.framework */; };
 		D4B1D98121B22093001A25EB /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1D98021B22093001A25EB /* LocationService.swift */; };
 		D4B1D98521B2E05A001A25EB /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1D98421B2E05A001A25EB /* APIService.swift */; };
 		D4B1D98721B2E6B6001A25EB /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1D98621B2E6B6001A25EB /* RealmService.swift */; };
@@ -138,6 +152,24 @@
 		A2CC30C021649ED0004F487A /* SellPaymentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SellPaymentViewController.storyboard; sourceTree = "<group>"; };
 		A2CC30C22164A1F2004F487A /* ProfileRegistrationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileRegistrationViewController.storyboard; sourceTree = "<group>"; };
 		A2CC30C62164AAE6004F487A /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
+		C14EA420220460ED0011671D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		C14EA4222204645B0011671D /* Lottie-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lottie-Bridging-Header.h"; sourceTree = "<group>"; };
+		C14EA4232204668E0011671D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA4252204668E0011671D /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA4272204668E0011671D /* grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA4292204668E0011671D /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA42B2204668E0011671D /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA42D2204668E0011671D /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA42F2204668E0011671D /* openssl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA4312204668E0011671D /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA4332204668E0011671D /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA4352204668E0011671D /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA4372204668E0011671D /* RxAtomic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxAtomic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA4392204668E0011671D /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA43B2204668E0011671D /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA43D2204668E0011671D /* SwiftGRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftGRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA43F2204668E0011671D /* SwiftProtobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftProtobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14EA4412204668E0011671D /* VegaScrollFlowLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VegaScrollFlowLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C17BB55420EDCDD8002ACD56 /* Rakusale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rakusale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C17BB55720EDCDD8002ACD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C17BB55E20EDCDD9002ACD56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,10 +223,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D492583621A98ECD00C29A61 /* AlamofireImage.framework in Frameworks */,
-				D492583421A98EC900C29A61 /* Alamofire.framework in Frameworks */,
-				8528336EA28CC99EE4033A75 /* Pods_Rakusale_iOS.framework in Frameworks */,
-				D1AC3759CB9764552FC712DB /* Pods_Rakusale.framework in Frameworks */,
+				C14EA4242204668E0011671D /* Alamofire.framework in Frameworks */,
+				C14EA4262204668E0011671D /* AlamofireImage.framework in Frameworks */,
+				C14EA4282204668E0011671D /* grpc.framework in Frameworks */,
+				C14EA42A2204668E0011671D /* KeychainAccess.framework in Frameworks */,
+				C14EA42C2204668E0011671D /* Lottie.framework in Frameworks */,
+				C14EA42E2204668E0011671D /* nanopb.framework in Frameworks */,
+				C14EA4302204668E0011671D /* openssl.framework in Frameworks */,
+				C14EA4432204668E0011671D /* Pods_Rakusale.framework in Frameworks */,
+				C14EA4322204668E0011671D /* PromiseKit.framework in Frameworks */,
+				C14EA4342204668E0011671D /* Realm.framework in Frameworks */,
+				C14EA4362204668E0011671D /* RealmSwift.framework in Frameworks */,
+				C14EA4382204668E0011671D /* RxAtomic.framework in Frameworks */,
+				C14EA43A2204668E0011671D /* RxCocoa.framework in Frameworks */,
+				C14EA43C2204668E0011671D /* RxSwift.framework in Frameworks */,
+				C14EA43E2204668E0011671D /* SwiftGRPC.framework in Frameworks */,
+				C14EA4402204668E0011671D /* SwiftProtobuf.framework in Frameworks */,
+				C14EA4422204668E0011671D /* VegaScrollFlowLayout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +487,17 @@
 			path = HomeShop;
 			sourceTree = "<group>";
 		};
+		C14EA41F220460A80011671D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D49AD799217CB851002507F1 /* Data */,
+				D4313948219F014D00757192 /* Constants */,
+				C14EA420220460ED0011671D /* Error.swift */,
+				C14EA4222204645B0011671D /* Lottie-Bridging-Header.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		C17BB54B20EDCDD8002ACD56 = {
 			isa = PBXGroup;
 			children = (
@@ -463,11 +519,10 @@
 		C17BB55620EDCDD8002ACD56 /* Rakusale */ = {
 			isa = PBXGroup;
 			children = (
+				C14EA41F220460A80011671D /* Common */,
 				D48D52F02203318F00027ED4 /* Domain */,
 				D48D52ED22032FE800027ED4 /* Interfaces */,
 				D4B1D97621AD26FD001A25EB /* Animation */,
-				D49AD799217CB851002507F1 /* Data */,
-				D4313948219F014D00757192 /* Constants */,
 				A273924D217724FF0063DFE4 /* Extensions */,
 				C17BB55720EDCDD8002ACD56 /* AppDelegate.swift */,
 				C17BB55E20EDCDD9002ACD56 /* Assets.xcassets */,
@@ -624,6 +679,22 @@
 		F93750914CEFE2FACB62568D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C14EA4232204668E0011671D /* Alamofire.framework */,
+				C14EA4252204668E0011671D /* AlamofireImage.framework */,
+				C14EA4272204668E0011671D /* grpc.framework */,
+				C14EA4292204668E0011671D /* KeychainAccess.framework */,
+				C14EA42B2204668E0011671D /* Lottie.framework */,
+				C14EA42D2204668E0011671D /* nanopb.framework */,
+				C14EA42F2204668E0011671D /* openssl.framework */,
+				C14EA4312204668E0011671D /* PromiseKit.framework */,
+				C14EA4332204668E0011671D /* Realm.framework */,
+				C14EA4352204668E0011671D /* RealmSwift.framework */,
+				C14EA4372204668E0011671D /* RxAtomic.framework */,
+				C14EA4392204668E0011671D /* RxCocoa.framework */,
+				C14EA43B2204668E0011671D /* RxSwift.framework */,
+				C14EA43D2204668E0011671D /* SwiftGRPC.framework */,
+				C14EA43F2204668E0011671D /* SwiftProtobuf.framework */,
+				C14EA4412204668E0011671D /* VegaScrollFlowLayout.framework */,
 				D492583521A98ECD00C29A61 /* AlamofireImage.framework */,
 				D492583321A98EC900C29A61 /* Alamofire.framework */,
 				D49AD7B4217EA7B6002507F1 /* Alamofire.framework */,
@@ -757,6 +828,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -775,6 +847,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -878,6 +951,7 @@
 				D4313947219F00C200757192 /* ResponseVegetable.swift in Sources */,
 				A2BCEE1E21A791CB0041B8B1 /* IntroductionViewController.swift in Sources */,
 				A2BCEE1421A57AB90041B8B1 /* SettingsProfileViewController.swift in Sources */,
+				C14EA421220460ED0011671D /* Error.swift in Sources */,
 				A273924F217725270063DFE4 /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1006,15 +1080,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 64LEQXTB98;
-				INFOPLIST_FILE = "Rakusale-iOS/Info.plist";
+				DEVELOPMENT_TEAM = 82XFL8284S;
+				INFOPLIST_FILE = "$(SRCROOT)/Rakusale/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Rakusale-iOS/Rakusale-iOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)Rakusale/Common/Lottie-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1028,15 +1103,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 64LEQXTB98;
-				INFOPLIST_FILE = "Rakusale-iOS/Info.plist";
+				DEVELOPMENT_TEAM = 82XFL8284S;
+				INFOPLIST_FILE = "$(SRCROOT)/Rakusale/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Rakusale-iOS/Rakusale-iOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)Rakusale/Common/Lottie-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

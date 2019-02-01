@@ -9,5 +9,6 @@
 #ifndef Lottie_Bridging_Header_h
 #define Lottie_Bridging_Header_h
 
+#import <Lottie/Lottie.h>
 
 #endif /* Lottie_Bridging_Header_h */

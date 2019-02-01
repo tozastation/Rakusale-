@@ -7,25 +7,39 @@
 //
 
 import Foundation
+import PromiseKit
 
 class EntryClient {
-    let client = Entry_EntrysServiceClient.init(address: RAKUSALE_API)
+    static var shared = EntryClient()
     
-    private func signIn(email: String, password: String) {
+    let client = Entry_EntrysServiceClient.init(address: RAKUSALE_API, secure: false)
+    
+    func signIn(email: String, password: String) -> Promise<String> {
         var req = Entry_SignInRequest()
         req.email = email
         req.password = password
         
-        let _ = try? self.client.signIn(req, completion: { (response, result) in
-            if result.success {
-                
-            } else {
-                
-            }
-        })
+        return Promise { seal in
+            let _ = try? self.client.signIn(req, completion: {(response, result) in
+                if result.success {
+                    guard let token = response?.token else {return}
+                    seal.fulfill(token)
+                } else {
+                    guard let statusCode = response?.status else {return}
+                    seal.reject(gRPCError.RequestError(statusCode))
+                }
+            })
+        }
     }
     
-    private func signUp(name: String, email: String, birthday: String, isSaler: Bool, isBuyer: Bool, password: String) {
+    func signUp(
+        name: String,
+        email: String,
+        birthday: String,
+        isSaler: Bool,
+        isBuyer: Bool,
+        password: String
+    ) -> Promise<String> {
         var req = Entry_SignUpRequest()
         req.name = name
         req.email = email
@@ -34,12 +48,16 @@ class EntryClient {
         req.isBuyer = isBuyer
         req.password = password
         
-        let _ = try? self.client.signUp(req, completion: { (response, result) in
-            if result.success {
-                
-            } else {
-                
-            }
-        })
+        return Promise { seal in
+            let _ = try? self.client.signUp(req, completion: { (response, result) in
+                if result.success {
+                    guard let token = response?.token else {return}
+                    seal.fulfill(token)
+                } else {
+                    guard let statusCode = response?.status else {return}
+                    seal.reject(gRPCError.RequestError(statusCode))
+                }
+            })
+        }
     }
 }

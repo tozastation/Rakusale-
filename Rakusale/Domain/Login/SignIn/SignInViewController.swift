@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import Alamofire
 import Lottie
 import RxSwift
 import RxCocoa
+import PromiseKit
+import Alamofire
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
@@ -36,9 +37,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Initialize
         id.delegate = self
         password.delegate = self
         password.isSecureTextEntry = true
+        // 利用許諾
         self.alert.addAction(self.actionChoise)
         LocationService.sharedManager.checkLocationAuthentication() //位置情報の確認ダイアログを出す
         LocalNotificationService.sharedManager.checkPushAuthorization()
@@ -69,8 +72,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didTapLogInButton(_ sender: Any) {
         let idText: String? = id.text
         let passText: String? = password.text
+        // [ログイン] 入力した値に何もなかったら、遷移しない
         if(idText != "" && passText != "") {
-            self.login(email: idText!, pass: passText!)
+            self.login(email: idText!, password: passText!)
         }else{
             self.present(self.alert, animated: true, completion: nil)
         }
@@ -85,36 +89,29 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func login(email: String, pass: String) {
+    /*ロジック部分*/
+    func login(email: String, password: String) {
+        // Start Loading Animation
         self.startLoading()
-        var request = URLRequest(url: URL(string: LOGIN_PATH)!)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        // Headerに認証に必要なデータを掲載
-        request.setValue(email, forHTTPHeaderField: "Email")
-        request.setValue(pass, forHTTPHeaderField: "Password")
-        request.timeoutInterval = 5.0
-        Alamofire.request(request).responseJSON {
-            response in
-            if response.result.isSuccess {
-                if let data = response.data {
-                    print(response)
-                    let auth = try? JSONDecoder().decode(ResponseAuth.self, from: data)
-                    // KeyChainにTokenを保存
-                    S.setKeychain(Keychain_Keys.Token, auth?.accessToken)
-                    // UserDefaultにログイン状態を保持
-                    S.login()
-                    print(S.loadLoginState())
-                    DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
-                        self.stopLoading()
-                        self.userSelect?.isHidden = false
-                    }
-                }
-            }else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
-                    self.stopLoading()
-                    self.present(self.alert, animated: true, completion: nil)
-                }
+        // Call RPC
+        print("Activate Login")
+        firstly {
+            EntryClient.shared.signIn(email: email, password: password)
+        }.done { token in
+            print("[Set Token]")
+            print(token)
+            S.setKeychain(Keychain_Keys.Token, token)
+            S.login()
+            print(S.loadLoginState())
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                self.stopLoading()
+                self.userSelect?.isHidden = false
+            }
+        }.catch {e in
+            print(e)
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                self.stopLoading()
+                self.present(self.alert, animated: true, completion: nil)
             }
         }
     }
