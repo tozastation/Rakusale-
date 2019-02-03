@@ -207,7 +207,6 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
         firstly {
             VegetableClient.shared.postMyVegetable(token: token, name: name, fee: fee, isChemical: isChemical, productionDate: productionDate, image: imageData!)
         }.done { () in
-            print("[Your Token]")
             DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
                 self.stopLoading()
                 self.navigationController?.popToRootViewController(animated: true)

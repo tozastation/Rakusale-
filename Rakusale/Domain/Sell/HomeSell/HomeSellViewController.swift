@@ -9,14 +9,29 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import PromiseKit
 
 class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var uiCollectionView: UICollectionView!
-    var vegetables : [ResponseVegetable] = []
+    var vegetables : [Vegetable_Vegetable] = []
     fileprivate let refreshCtl = UIRefreshControl()
     let imageCache = AutoPurgingImageCache()
     let imageNotFound = UIImage(named: "404")
+    
+    let waitTime: Double = 2.0
+    let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
+    
+    lazy var loadingView: LOTAnimationView = {
+        let animationView = LOTAnimationView(name: "glow_loading")
+        animationView.frame = CGRect(x: 0, y: 0, width: (self.view.bounds.width)/2, height: (self.view.bounds.height)/2)
+        animationView.center = self.view.center
+        animationView.loopAnimation = true
+        animationView.contentMode = .scaleAspectFit
+        animationView.animationSpeed = 1
+        
+        return animationView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +56,7 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         // 野菜インスタンス生成
-        let vegetable: ResponseVegetable = self.vegetables[indexPath.row]
+        let vegetable: Vegetable_Vegetable = self.vegetables[indexPath.row]
         // Identifer振ってるやつのインスタンス生成
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "Cell",
@@ -88,18 +103,24 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     
     // 野菜データをGETで取得後，collectionViewをリロードsurusyori
     func loadVegetables() {
-        var request = URLRequest(url: URL(string:VEGETABLE_MINE)!)
-        request.httpMethod = HTTPMethod.get.rawValue
-        request.addValue(S.getKeychain(Keychain_Keys.Token)!, forHTTPHeaderField: "Authorization")
-        Alamofire.request(request).responseJSON {
-            response in
-            if response.result.isSuccess {
-                if let data = response.data {
-                    self.vegetables = try! JSONDecoder().decode([ResponseVegetable].self, from: data)
-                    //print(response)
-                    self.uiCollectionView.reloadData()
-                }
-            }else{
+        // Start Loading Animation
+        self.startLoading()
+        // Call RPC
+        print("Activate Login")
+         let token = S.getKeychain(Keychain_Keys.Token)!
+        firstly {
+            VegetableClient.shared.getMySoldVegetables(token: token)
+        }.done { vegetables in
+            self.vegetables = vegetables
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                self.stopLoading()
+                self.uiCollectionView.reloadData()
+            }
+        }.catch { e in
+            print(e)
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                self.stopLoading()
+                self.present(self.alert, animated: true, completion: nil)
             }
         }
     }
@@ -108,6 +129,17 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // くるくる開始
+    func startLoading() {
+        view.addSubview(loadingView)
+        self.loadingView.play()
+    }
+    
+    // くるくるteisi
+    func stopLoading() {
+        self.loadingView.removeFromSuperview()
     }
 }
 

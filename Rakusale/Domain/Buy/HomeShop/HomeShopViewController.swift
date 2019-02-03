@@ -83,13 +83,13 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
         let redPin = UIImage(named: "Redpin")
         pinImage.image = redPin
         let locationLabel = cell.contentView.viewWithTag(4) as! UILabel
-        let location = CLLocation(latitude: Double(shop.latitude), longitude: Double(shop.longitude))
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location, completionHandler: {(placeMark:[CLPlacemark]?, error:Error?) -> Void in
-            if let placeMark = placeMark?[0]{
-                locationLabel.text = String(placeMark.administrativeArea!) + String(placeMark.locality!) + String(placeMark.thoroughfare!) + String(placeMark.subThoroughfare!)
-            }
-        })
+//        let location = CLLocation(latitude: Double(shop.latitude), longitude: Double(shop.longitude))
+//        let geocoder = CLGeocoder()
+//        geocoder.reverseGeocodeLocation(location, completionHandler: {(placeMark:[CLPlacemark]?, error:Error?) -> Void in
+//            if let placeMark = placeMark?[0]{
+//                locationLabel.text = String(placeMark.administrativeArea!) + String(placeMark.locality!) + String(placeMark.thoroughfare!) + String(placeMark.subThoroughfare!)
+//            }
+//        })
         nameLabel.sizeToFit()
         locationLabel.sizeToFit()
         cell.layer.shadowColor = UIColor.gray.cgColor
