@@ -19,10 +19,108 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Vegetable_Vegetable {
+enum Vegetable_VegetableType: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case squash // = 0
+  case cabbage // = 1
+  case cucumber // = 2
+  case sweetpotato // = 3
+  case potato // = 4
+  case radish // = 5
+  case onion // = 6
+  case carrot // = 7
+  case bellpepper // = 8
+  case spinach // = 9
+  case lettuce // = 10
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .squash
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .squash
+    case 1: self = .cabbage
+    case 2: self = .cucumber
+    case 3: self = .sweetpotato
+    case 4: self = .potato
+    case 5: self = .radish
+    case 6: self = .onion
+    case 7: self = .carrot
+    case 8: self = .bellpepper
+    case 9: self = .spinach
+    case 10: self = .lettuce
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .squash: return 0
+    case .cabbage: return 1
+    case .cucumber: return 2
+    case .sweetpotato: return 3
+    case .potato: return 4
+    case .radish: return 5
+    case .onion: return 6
+    case .carrot: return 7
+    case .bellpepper: return 8
+    case .spinach: return 9
+    case .lettuce: return 10
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension Vegetable_VegetableType: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [Vegetable_VegetableType] = [
+    .squash,
+    .cabbage,
+    .cucumber,
+    .sweetpotato,
+    .potato,
+    .radish,
+    .onion,
+    .carrot,
+    .bellpepper,
+    .spinach,
+    .lettuce,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+struct Vegetable_RequestVegetable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
+
+  var fee: Int64 = 0
+
+  var isChemical: Bool = false
+
+  var productionDate: String = String()
+
+  var introduction: String = String()
+
+  var category: Vegetable_VegetableType = .squash
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct Vegetable_ResponseVegetable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var id: Int64 = 0
 
   var name: String = String()
 
@@ -33,6 +131,8 @@ struct Vegetable_Vegetable {
   var imagePath: String = String()
 
   var productionDate: String = String()
+
+  var category: Vegetable_VegetableType = .squash
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -59,7 +159,7 @@ struct Vegetable_GetMyVegetablesResponse {
 
   var status: Int64 = 0
 
-  var vegetables: [Vegetable_Vegetable] = []
+  var vegetables: [Vegetable_ResponseVegetable] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -81,9 +181,35 @@ struct Vegetable_GetAllVegetablesResponse {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var vegetables: [Vegetable_Vegetable] = []
+  var vegetables: [Vegetable_ResponseVegetable] = []
 
   var status: Int64 = 0
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct Vegetable_GetSingleShopAllVegetablesRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var shopID: Int64 = 0
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+struct Vegetable_GetSingleShopAllVegetablesResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var status: Int64 = 0
+
+  var vegetables: [Vegetable_ResponseVegetable] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -113,8 +239,8 @@ struct Vegetable_PostMyVegetableRequest {
     set {_uniqueStorage()._token = newValue}
   }
 
-  var vegetable: Vegetable_Vegetable {
-    get {return _storage._vegetable ?? Vegetable_Vegetable()}
+  var vegetable: Vegetable_RequestVegetable {
+    get {return _storage._vegetable ?? Vegetable_RequestVegetable()}
     set {_uniqueStorage()._vegetable = newValue}
   }
   /// Returns true if `vegetable` has been explicitly set.
@@ -166,8 +292,8 @@ struct Vegetable_PutMyVegetableRequest {
     set {_uniqueStorage()._vID = newValue}
   }
 
-  var vegetable: Vegetable_Vegetable {
-    get {return _storage._vegetable ?? Vegetable_Vegetable()}
+  var vegetable: Vegetable_RequestVegetable {
+    get {return _storage._vegetable ?? Vegetable_RequestVegetable()}
     set {_uniqueStorage()._vegetable = newValue}
   }
   /// Returns true if `vegetable` has been explicitly set.
@@ -225,54 +351,135 @@ struct Vegetable_DeleteMyVegetableResponse {
 
 fileprivate let _protobuf_package = "vegetable"
 
-extension Vegetable_Vegetable: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".Vegetable"
+extension Vegetable_VegetableType: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "name"),
-    2: .same(proto: "fee"),
-    3: .standard(proto: "is_chemical"),
-    4: .standard(proto: "image_path"),
-    5: .standard(proto: "production_date"),
+    0: .same(proto: "SQUASH"),
+    1: .same(proto: "CABBAGE"),
+    2: .same(proto: "CUCUMBER"),
+    3: .same(proto: "SWEETPOTATO"),
+    4: .same(proto: "POTATO"),
+    5: .same(proto: "RADISH"),
+    6: .same(proto: "ONION"),
+    7: .same(proto: "CARROT"),
+    8: .same(proto: "BELLPEPPER"),
+    9: .same(proto: "SPINACH"),
+    10: .same(proto: "LETTUCE"),
+  ]
+}
+
+extension Vegetable_RequestVegetable: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".RequestVegetable"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "fee"),
+    2: .same(proto: "isChemical"),
+    3: .same(proto: "productionDate"),
+    4: .same(proto: "introduction"),
+    5: .same(proto: "category"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
-      case 1: try decoder.decodeSingularStringField(value: &self.name)
-      case 2: try decoder.decodeSingularInt64Field(value: &self.fee)
-      case 3: try decoder.decodeSingularBoolField(value: &self.isChemical)
-      case 4: try decoder.decodeSingularStringField(value: &self.imagePath)
-      case 5: try decoder.decodeSingularStringField(value: &self.productionDate)
+      case 1: try decoder.decodeSingularInt64Field(value: &self.fee)
+      case 2: try decoder.decodeSingularBoolField(value: &self.isChemical)
+      case 3: try decoder.decodeSingularStringField(value: &self.productionDate)
+      case 4: try decoder.decodeSingularStringField(value: &self.introduction)
+      case 5: try decoder.decodeSingularEnumField(value: &self.category)
       default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.name.isEmpty {
-      try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
-    }
     if self.fee != 0 {
-      try visitor.visitSingularInt64Field(value: self.fee, fieldNumber: 2)
+      try visitor.visitSingularInt64Field(value: self.fee, fieldNumber: 1)
     }
     if self.isChemical != false {
-      try visitor.visitSingularBoolField(value: self.isChemical, fieldNumber: 3)
-    }
-    if !self.imagePath.isEmpty {
-      try visitor.visitSingularStringField(value: self.imagePath, fieldNumber: 4)
+      try visitor.visitSingularBoolField(value: self.isChemical, fieldNumber: 2)
     }
     if !self.productionDate.isEmpty {
-      try visitor.visitSingularStringField(value: self.productionDate, fieldNumber: 5)
+      try visitor.visitSingularStringField(value: self.productionDate, fieldNumber: 3)
+    }
+    if !self.introduction.isEmpty {
+      try visitor.visitSingularStringField(value: self.introduction, fieldNumber: 4)
+    }
+    if self.category != .squash {
+      try visitor.visitSingularEnumField(value: self.category, fieldNumber: 5)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Vegetable_Vegetable, rhs: Vegetable_Vegetable) -> Bool {
+  static func ==(lhs: Vegetable_RequestVegetable, rhs: Vegetable_RequestVegetable) -> Bool {
+    if lhs.fee != rhs.fee {return false}
+    if lhs.isChemical != rhs.isChemical {return false}
+    if lhs.productionDate != rhs.productionDate {return false}
+    if lhs.introduction != rhs.introduction {return false}
+    if lhs.category != rhs.category {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Vegetable_ResponseVegetable: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ResponseVegetable"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "id"),
+    2: .same(proto: "name"),
+    3: .same(proto: "fee"),
+    4: .same(proto: "isChemical"),
+    5: .same(proto: "imagePath"),
+    6: .same(proto: "productionDate"),
+    7: .same(proto: "category"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularInt64Field(value: &self.id)
+      case 2: try decoder.decodeSingularStringField(value: &self.name)
+      case 3: try decoder.decodeSingularInt64Field(value: &self.fee)
+      case 4: try decoder.decodeSingularBoolField(value: &self.isChemical)
+      case 5: try decoder.decodeSingularStringField(value: &self.imagePath)
+      case 6: try decoder.decodeSingularStringField(value: &self.productionDate)
+      case 7: try decoder.decodeSingularEnumField(value: &self.category)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.id != 0 {
+      try visitor.visitSingularInt64Field(value: self.id, fieldNumber: 1)
+    }
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 2)
+    }
+    if self.fee != 0 {
+      try visitor.visitSingularInt64Field(value: self.fee, fieldNumber: 3)
+    }
+    if self.isChemical != false {
+      try visitor.visitSingularBoolField(value: self.isChemical, fieldNumber: 4)
+    }
+    if !self.imagePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.imagePath, fieldNumber: 5)
+    }
+    if !self.productionDate.isEmpty {
+      try visitor.visitSingularStringField(value: self.productionDate, fieldNumber: 6)
+    }
+    if self.category != .squash {
+      try visitor.visitSingularEnumField(value: self.category, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Vegetable_ResponseVegetable, rhs: Vegetable_ResponseVegetable) -> Bool {
+    if lhs.id != rhs.id {return false}
     if lhs.name != rhs.name {return false}
     if lhs.fee != rhs.fee {return false}
     if lhs.isChemical != rhs.isChemical {return false}
     if lhs.imagePath != rhs.imagePath {return false}
     if lhs.productionDate != rhs.productionDate {return false}
+    if lhs.category != rhs.category {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -396,6 +603,70 @@ extension Vegetable_GetAllVegetablesResponse: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
+extension Vegetable_GetSingleShopAllVegetablesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".GetSingleShopAllVegetablesRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "shopId"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularInt64Field(value: &self.shopID)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.shopID != 0 {
+      try visitor.visitSingularInt64Field(value: self.shopID, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Vegetable_GetSingleShopAllVegetablesRequest, rhs: Vegetable_GetSingleShopAllVegetablesRequest) -> Bool {
+    if lhs.shopID != rhs.shopID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Vegetable_GetSingleShopAllVegetablesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".GetSingleShopAllVegetablesResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "status"),
+    2: .same(proto: "vegetables"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularInt64Field(value: &self.status)
+      case 2: try decoder.decodeRepeatedMessageField(value: &self.vegetables)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.status != 0 {
+      try visitor.visitSingularInt64Field(value: self.status, fieldNumber: 1)
+    }
+    if !self.vegetables.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.vegetables, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Vegetable_GetSingleShopAllVegetablesResponse, rhs: Vegetable_GetSingleShopAllVegetablesResponse) -> Bool {
+    if lhs.status != rhs.status {return false}
+    if lhs.vegetables != rhs.vegetables {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Vegetable_VegetableImage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".VegetableImage"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -435,7 +706,7 @@ extension Vegetable_PostMyVegetableRequest: SwiftProtobuf.Message, SwiftProtobuf
 
   fileprivate class _StorageClass {
     var _token: String = String()
-    var _vegetable: Vegetable_Vegetable? = nil
+    var _vegetable: Vegetable_RequestVegetable? = nil
     var _image: Vegetable_VegetableImage? = nil
 
     static let defaultInstance = _StorageClass()
@@ -542,7 +813,7 @@ extension Vegetable_PutMyVegetableRequest: SwiftProtobuf.Message, SwiftProtobuf.
   fileprivate class _StorageClass {
     var _token: String = String()
     var _vID: Int64 = 0
-    var _vegetable: Vegetable_Vegetable? = nil
+    var _vegetable: Vegetable_RequestVegetable? = nil
 
     static let defaultInstance = _StorageClass()
 

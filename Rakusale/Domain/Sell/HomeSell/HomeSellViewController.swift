@@ -14,7 +14,7 @@ import PromiseKit
 class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var uiCollectionView: UICollectionView!
-    var vegetables : [Vegetable_Vegetable] = []
+    var vegetables : [Vegetable_ResponseVegetable] = []
     fileprivate let refreshCtl = UIRefreshControl()
     let imageCache = AutoPurgingImageCache()
     let imageNotFound = UIImage(named: "404")
@@ -56,7 +56,7 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         // 野菜インスタンス生成
-        let vegetable: Vegetable_Vegetable = self.vegetables[indexPath.row]
+        let vegetable: Vegetable_ResponseVegetable = self.vegetables[indexPath.row]
         // Identifer振ってるやつのインスタンス生成
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "Cell",

@@ -14,7 +14,7 @@ class VegetableClient {
     let client = Vegetable_VegetablesServiceClient.init(address: RAKUSALE_API, secure: false)
 
     // rpc GetMyBoughtVegetables (GetMyVegetablesRequest) returns (GetMyVegetablesResponse) {}
-    func getMyBoughtVegetables(token: String) -> Promise<[Vegetable_Vegetable]> {
+    func getMyBoughtVegetables(token: String) -> Promise<[Vegetable_ResponseVegetable]> {
         var req = Vegetable_GetMyVegetablesRequest()
         req.token = token
     
@@ -32,7 +32,7 @@ class VegetableClient {
     }
     
     // rpc GetMySoldVegetables (GetMyVegetablesRequest) returns (GetMyVegetablesResponse) {}
-    func getMySoldVegetables(token: String) -> Promise<[Vegetable_Vegetable]> {
+    func getMySoldVegetables(token: String) -> Promise<[Vegetable_ResponseVegetable]> {
         var req = Vegetable_GetMyVegetablesRequest()
         req.token = token
         
@@ -50,7 +50,7 @@ class VegetableClient {
     }
 
     // rpc GetAllVegetables (VegetablesEmpty) returns (GetAllVegetablesResponse) {}
-    func getAllVegetables() -> Promise<[Vegetable_Vegetable]> {
+    func getAllVegetables() -> Promise<[Vegetable_ResponseVegetable]> {
         let req = Vegetable_VegetablesEmpty()
     
         return Promise { seal in
@@ -73,12 +73,13 @@ class VegetableClient {
         fee: Int64,
         isChemical: Bool,
         productionDate: String,
-        image: Data
+        image: Data,
+        category: Vegetable_VegetableType
     ) -> Promise<Void> {
         var req = Vegetable_PostMyVegetableRequest()
-        var v = Vegetable_Vegetable()
+        var v = Vegetable_RequestVegetable()
         var i = Vegetable_VegetableImage()
-        v.name = name
+        v.category = category
         v.fee = fee
         v.isChemical = isChemical
         v.productionDate = productionDate

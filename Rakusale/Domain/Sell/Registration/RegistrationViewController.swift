@@ -10,8 +10,8 @@ import UIKit
 import Alamofire
 import PromiseKit
 
-class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+   
     @IBOutlet weak var vegetableImage: UIImageView!
     @IBOutlet weak var vegetableName: UITextField!
     @IBOutlet weak var vegetableValue: UITextField!
@@ -33,7 +33,7 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
     let valueToolbar: UIToolbar = UIToolbar()
     let numberToolbar: UIToolbar = UIToolbar()
     var image: UIImage?
-    
+    var pickerView: UIPickerView = UIPickerView()
     let alert: UIAlertController = UIAlertController(title: "Invaild Regist", message: "Please Retype", preferredStyle:  .alert)
     lazy var loadingView: LOTAnimationView = {
         let animationView = LOTAnimationView(name: "glow_loading")
@@ -80,6 +80,17 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
         ActivityIndicator.hidesWhenStopped = true
         ActivityIndicator.style = UIActivityIndicatorView.Style.gray
         self.view.addSubview(ActivityIndicator)
+        
+        // 決定バーの生成
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        toolbar.setItems([spacelItem, doneItem], animated: true)
+        
+        pickerView.delegate = self
+        vegetableName.inputView = pickerView
+        vegetableName.inputAccessoryView = toolbar
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -174,6 +185,22 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
         return true
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return EnumService.shared.vegetableOption.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return EnumService.shared.vegetableOption[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        vegetableName.text = EnumService.shared.vegetableOption[row]
+    }
+    
     @objc func doneActionValue () {
         let comm = Double(vegetableValue.text ?? "") ?? 0
         let price = Int(vegetableValue.text ?? "") ?? 0
@@ -196,6 +223,10 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
         vegetableNumber.resignFirstResponder()
     }
     
+    @objc func done() {
+        vegetableName.endEditing(true)
+    }
+    
     // 入力されたデータを送信する処理
     func postVegetable(name: String, fee: Int64, isChemical: Bool, productionDate: String) {
         // くるくる開始
@@ -204,8 +235,9 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
         let imageData = self.image?.jpegData(compressionQuality: 0.0)
         // Token取得
         let token = S.getKeychain(Keychain_Keys.Token)!
+        let category = EnumService.shared.convertEnum(v: self.name)
         firstly {
-            VegetableClient.shared.postMyVegetable(token: token, name: name, fee: fee, isChemical: isChemical, productionDate: productionDate, image: imageData!)
+            VegetableClient.shared.postMyVegetable(token: token, name: name, fee: fee, isChemical: isChemical, productionDate: productionDate, image: imageData!, category: category!)
         }.done { () in
             DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
                 self.stopLoading()

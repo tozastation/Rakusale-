@@ -79,16 +79,17 @@
 		C17BB55F20EDCDD9002ACD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C17BB55E20EDCDD9002ACD56 /* Assets.xcassets */; };
 		C195130322047B69006E52F4 /* ShopClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C195130222047B69006E52F4 /* ShopClient.swift */; };
 		C19513052206A878006E52F4 /* VegetableClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19513042206A878006E52F4 /* VegetableClient.swift */; };
+		C195130E2206FABC006E52F4 /* EnumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C195130D2206FABC006E52F4 /* EnumService.swift */; };
+		C19513122206FD79006E52F4 /* vegetable.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19513112206FD79006E52F4 /* vegetable.pb.swift */; };
+		C19513142206FDB4006E52F4 /* vegetable.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19513132206FDB4006E52F4 /* vegetable.grpc.swift */; };
 		D4313947219F00C200757192 /* ResponseVegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313946219F00C200757192 /* ResponseVegetable.swift */; };
 		D431394A219F015B00757192 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313949219F015B00757192 /* Endpoints.swift */; };
 		D48D53032203357400027ED4 /* EntryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D53022203357400027ED4 /* EntryClient.swift */; };
-		D48D531022033F2000027ED4 /* vegetable.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D530C22033F2000027ED4 /* vegetable.grpc.swift */; };
 		D48D531122033F2000027ED4 /* entry.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D530D22033F2000027ED4 /* entry.grpc.swift */; };
 		D48D531222033F2000027ED4 /* shop.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D530E22033F2000027ED4 /* shop.grpc.swift */; };
 		D48D531322033F2000027ED4 /* user.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D530F22033F2000027ED4 /* user.grpc.swift */; };
 		D48D531822033F4B00027ED4 /* user.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D531422033F4A00027ED4 /* user.pb.swift */; };
 		D48D531922033F4B00027ED4 /* shop.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D531522033F4B00027ED4 /* shop.pb.swift */; };
-		D48D531A22033F4B00027ED4 /* vegetable.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D531622033F4B00027ED4 /* vegetable.pb.swift */; };
 		D48D531B22033F4B00027ED4 /* entry.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D531722033F4B00027ED4 /* entry.pb.swift */; };
 		D492582E21A6A4DD00C29A61 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582D21A6A4DD00C29A61 /* AuthenticationService.swift */; };
 		D492583021A6AAC400C29A61 /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582F21A6AAC400C29A61 /* RequestLogin.swift */; };
@@ -184,17 +185,18 @@
 		C18590A720F43A0000A9A88F /* MotionTransitioning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MotionTransitioning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C195130222047B69006E52F4 /* ShopClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopClient.swift; sourceTree = "<group>"; };
 		C19513042206A878006E52F4 /* VegetableClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegetableClient.swift; sourceTree = "<group>"; };
+		C195130D2206FABC006E52F4 /* EnumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumService.swift; sourceTree = "<group>"; };
+		C19513112206FD79006E52F4 /* vegetable.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.pb.swift; sourceTree = "<group>"; };
+		C19513132206FDB4006E52F4 /* vegetable.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.grpc.swift; sourceTree = "<group>"; };
 		D2883272BC05D315F0035F38 /* Pods-Rakusale-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rakusale-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rakusale-iOS/Pods-Rakusale-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D4313946219F00C200757192 /* ResponseVegetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseVegetable.swift; sourceTree = "<group>"; };
 		D4313949219F015B00757192 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		D48D53022203357400027ED4 /* EntryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryClient.swift; sourceTree = "<group>"; };
-		D48D530C22033F2000027ED4 /* vegetable.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.grpc.swift; sourceTree = "<group>"; };
 		D48D530D22033F2000027ED4 /* entry.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = entry.grpc.swift; sourceTree = "<group>"; };
 		D48D530E22033F2000027ED4 /* shop.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shop.grpc.swift; sourceTree = "<group>"; };
 		D48D530F22033F2000027ED4 /* user.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.grpc.swift; sourceTree = "<group>"; };
 		D48D531422033F4A00027ED4 /* user.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.pb.swift; sourceTree = "<group>"; };
 		D48D531522033F4B00027ED4 /* shop.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shop.pb.swift; sourceTree = "<group>"; };
-		D48D531622033F4B00027ED4 /* vegetable.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.pb.swift; sourceTree = "<group>"; };
 		D48D531722033F4B00027ED4 /* entry.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = entry.pb.swift; sourceTree = "<group>"; };
 		D492582D21A6A4DD00C29A61 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		D492582F21A6AAC400C29A61 /* RequestLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLogin.swift; sourceTree = "<group>"; };
@@ -534,6 +536,14 @@
 			path = Rakusale;
 			sourceTree = "<group>";
 		};
+		C195130C2206FAA8006E52F4 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				C195130D2206FABC006E52F4 /* EnumService.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		D4313944219F007100757192 /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +577,7 @@
 		D48D52ED22032FE800027ED4 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				C195130C2206FAA8006E52F4 /* Enum */,
 				D4B1D97F21B22072001A25EB /* Geolocation */,
 				D4B1D98B21B4B8D8001A25EB /* Notification */,
 				D492582A21A68C0B00C29A61 /* Authentication */,
@@ -580,10 +591,10 @@
 		D48D52EE2203300700027ED4 /* gRPC */ = {
 			isa = PBXGroup;
 			children = (
+				C19513132206FDB4006E52F4 /* vegetable.grpc.swift */,
 				D48D530D22033F2000027ED4 /* entry.grpc.swift */,
 				D48D530E22033F2000027ED4 /* shop.grpc.swift */,
 				D48D530F22033F2000027ED4 /* user.grpc.swift */,
-				D48D530C22033F2000027ED4 /* vegetable.grpc.swift */,
 			);
 			path = gRPC;
 			sourceTree = "<group>";
@@ -602,10 +613,10 @@
 		D48D52F1220331E100027ED4 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				C19513112206FD79006E52F4 /* vegetable.pb.swift */,
 				D48D531722033F4B00027ED4 /* entry.pb.swift */,
 				D48D531522033F4B00027ED4 /* shop.pb.swift */,
 				D48D531422033F4A00027ED4 /* user.pb.swift */,
-				D48D531622033F4B00027ED4 /* vegetable.pb.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -914,18 +925,18 @@
 				A21BF98C219EE608009A7D3C /* RequestVegetable.swift in Sources */,
 				A2BCEE1921A57AE10041B8B1 /* HomeShopViewController.swift in Sources */,
 				D48D531322033F2000027ED4 /* user.grpc.swift in Sources */,
+				C19513122206FD79006E52F4 /* vegetable.pb.swift in Sources */,
 				A21BF98E219EE627009A7D3C /* RequestShop.swift in Sources */,
 				A273925321772CCB0063DFE4 /* HomeSellViewController.swift in Sources */,
 				A273925521772D7F0063DFE4 /* RegistrationViewController.swift in Sources */,
-				D48D531022033F2000027ED4 /* vegetable.grpc.swift in Sources */,
 				A273924C217723C20063DFE4 /* SignUpViewController.swift in Sources */,
 				C17BB55820EDCDD8002ACD56 /* AppDelegate.swift in Sources */,
-				D48D531A22033F4B00027ED4 /* vegetable.pb.swift in Sources */,
 				D48D531B22033F4B00027ED4 /* entry.pb.swift in Sources */,
 				A2BCEE0B21A57AB90041B8B1 /* SellSettingsViewController.swift in Sources */,
 				D4B1D98721B2E6B6001A25EB /* RealmService.swift in Sources */,
 				A21BF990219F06D6009A7D3C /* RequestUser.swift in Sources */,
 				D492582E21A6A4DD00C29A61 /* AuthenticationService.swift in Sources */,
+				C195130E2206FABC006E52F4 /* EnumService.swift in Sources */,
 				A201C0D721B3B6A800493919 /* AdressMapViewController.swift in Sources */,
 				D48D53032203357400027ED4 /* EntryClient.swift in Sources */,
 				D48D531122033F2000027ED4 /* entry.grpc.swift in Sources */,
@@ -958,6 +969,7 @@
 				A2BCEE1E21A791CB0041B8B1 /* IntroductionViewController.swift in Sources */,
 				A2BCEE1421A57AB90041B8B1 /* SettingsProfileViewController.swift in Sources */,
 				C14EA421220460ED0011671D /* Error.swift in Sources */,
+				C19513142206FDB4006E52F4 /* vegetable.grpc.swift in Sources */,
 				C19513052206A878006E52F4 /* VegetableClient.swift in Sources */,
 				C195130322047B69006E52F4 /* ShopClient.swift in Sources */,
 				A273924F217725270063DFE4 /* UIViewController.swift in Sources */,

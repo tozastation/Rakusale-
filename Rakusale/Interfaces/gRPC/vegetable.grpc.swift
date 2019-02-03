@@ -43,6 +43,12 @@ fileprivate final class Vegetable_VegetablesGetAllVegetablesCallBase: ClientCall
   override class var method: String { return "/vegetable.Vegetables/GetAllVegetables" }
 }
 
+internal protocol Vegetable_VegetablesGetSingleShopAllVegetablesCall: ClientCallUnary {}
+
+fileprivate final class Vegetable_VegetablesGetSingleShopAllVegetablesCallBase: ClientCallUnaryBase<Vegetable_GetSingleShopAllVegetablesRequest, Vegetable_GetSingleShopAllVegetablesResponse>, Vegetable_VegetablesGetSingleShopAllVegetablesCall {
+  override class var method: String { return "/vegetable.Vegetables/GetSingleShopAllVegetables" }
+}
+
 internal protocol Vegetable_VegetablesPostMyVegetableCall: ClientCallUnary {}
 
 fileprivate final class Vegetable_VegetablesPostMyVegetableCallBase: ClientCallUnaryBase<Vegetable_PostMyVegetableRequest, Vegetable_PostMyVegetableResponse>, Vegetable_VegetablesPostMyVegetableCall {
@@ -78,6 +84,11 @@ internal protocol Vegetable_VegetablesService: ServiceClient {
   func getAllVegetables(_ request: Vegetable_VegetablesEmpty) throws -> Vegetable_GetAllVegetablesResponse
   /// Asynchronous. Unary.
   func getAllVegetables(_ request: Vegetable_VegetablesEmpty, completion: @escaping (Vegetable_GetAllVegetablesResponse?, CallResult) -> Void) throws -> Vegetable_VegetablesGetAllVegetablesCall
+
+  /// Synchronous. Unary.
+  func getSingleShopAllVegetables(_ request: Vegetable_GetSingleShopAllVegetablesRequest) throws -> Vegetable_GetSingleShopAllVegetablesResponse
+  /// Asynchronous. Unary.
+  func getSingleShopAllVegetables(_ request: Vegetable_GetSingleShopAllVegetablesRequest, completion: @escaping (Vegetable_GetSingleShopAllVegetablesResponse?, CallResult) -> Void) throws -> Vegetable_VegetablesGetSingleShopAllVegetablesCall
 
   /// Synchronous. Unary.
   func postMyVegetable(_ request: Vegetable_PostMyVegetableRequest) throws -> Vegetable_PostMyVegetableResponse
@@ -131,6 +142,17 @@ internal final class Vegetable_VegetablesServiceClient: ServiceClientBase, Veget
   }
 
   /// Synchronous. Unary.
+  internal func getSingleShopAllVegetables(_ request: Vegetable_GetSingleShopAllVegetablesRequest) throws -> Vegetable_GetSingleShopAllVegetablesResponse {
+    return try Vegetable_VegetablesGetSingleShopAllVegetablesCallBase(channel)
+      .run(request: request, metadata: metadata)
+  }
+  /// Asynchronous. Unary.
+  internal func getSingleShopAllVegetables(_ request: Vegetable_GetSingleShopAllVegetablesRequest, completion: @escaping (Vegetable_GetSingleShopAllVegetablesResponse?, CallResult) -> Void) throws -> Vegetable_VegetablesGetSingleShopAllVegetablesCall {
+    return try Vegetable_VegetablesGetSingleShopAllVegetablesCallBase(channel)
+      .start(request: request, metadata: metadata, completion: completion)
+  }
+
+  /// Synchronous. Unary.
   internal func postMyVegetable(_ request: Vegetable_PostMyVegetableRequest) throws -> Vegetable_PostMyVegetableResponse {
     return try Vegetable_VegetablesPostMyVegetableCallBase(channel)
       .run(request: request, metadata: metadata)
@@ -172,6 +194,7 @@ internal protocol Vegetable_VegetablesProvider: ServiceProvider {
   func getMyBoughtVegetables(request: Vegetable_GetMyVegetablesRequest, session: Vegetable_VegetablesGetMyBoughtVegetablesSession) throws -> Vegetable_GetMyVegetablesResponse
   func getMySoldVegetables(request: Vegetable_GetMyVegetablesRequest, session: Vegetable_VegetablesGetMySoldVegetablesSession) throws -> Vegetable_GetMyVegetablesResponse
   func getAllVegetables(request: Vegetable_VegetablesEmpty, session: Vegetable_VegetablesGetAllVegetablesSession) throws -> Vegetable_GetAllVegetablesResponse
+  func getSingleShopAllVegetables(request: Vegetable_GetSingleShopAllVegetablesRequest, session: Vegetable_VegetablesGetSingleShopAllVegetablesSession) throws -> Vegetable_GetSingleShopAllVegetablesResponse
   func postMyVegetable(request: Vegetable_PostMyVegetableRequest, session: Vegetable_VegetablesPostMyVegetableSession) throws -> Vegetable_PostMyVegetableResponse
   func putMyVegetable(request: Vegetable_PutMyVegetableRequest, session: Vegetable_VegetablesPutMyVegetableSession) throws -> Vegetable_PutMyVegetableResponse
   func deleteMyVegetable(request: Vegetable_DeleteMyVegetableRequest, session: Vegetable_VegetablesDeleteMyVegetableSession) throws -> Vegetable_DeleteMyVegetableResponse
@@ -198,6 +221,11 @@ extension Vegetable_VegetablesProvider {
       return try Vegetable_VegetablesGetAllVegetablesSessionBase(
         handler: handler,
         providerBlock: { try self.getAllVegetables(request: $0, session: $1 as! Vegetable_VegetablesGetAllVegetablesSessionBase) })
+          .run()
+    case "/vegetable.Vegetables/GetSingleShopAllVegetables":
+      return try Vegetable_VegetablesGetSingleShopAllVegetablesSessionBase(
+        handler: handler,
+        providerBlock: { try self.getSingleShopAllVegetables(request: $0, session: $1 as! Vegetable_VegetablesGetSingleShopAllVegetablesSessionBase) })
           .run()
     case "/vegetable.Vegetables/PostMyVegetable":
       return try Vegetable_VegetablesPostMyVegetableSessionBase(
@@ -231,6 +259,10 @@ fileprivate final class Vegetable_VegetablesGetMySoldVegetablesSessionBase: Serv
 internal protocol Vegetable_VegetablesGetAllVegetablesSession: ServerSessionUnary {}
 
 fileprivate final class Vegetable_VegetablesGetAllVegetablesSessionBase: ServerSessionUnaryBase<Vegetable_VegetablesEmpty, Vegetable_GetAllVegetablesResponse>, Vegetable_VegetablesGetAllVegetablesSession {}
+
+internal protocol Vegetable_VegetablesGetSingleShopAllVegetablesSession: ServerSessionUnary {}
+
+fileprivate final class Vegetable_VegetablesGetSingleShopAllVegetablesSessionBase: ServerSessionUnaryBase<Vegetable_GetSingleShopAllVegetablesRequest, Vegetable_GetSingleShopAllVegetablesResponse>, Vegetable_VegetablesGetSingleShopAllVegetablesSession {}
 
 internal protocol Vegetable_VegetablesPostMyVegetableSession: ServerSessionUnary {}
 
