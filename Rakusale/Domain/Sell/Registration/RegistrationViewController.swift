@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import PromiseKit
 
 class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -21,6 +22,7 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
     
     var ActivityIndicator: UIActivityIndicatorView!
     
+    let waitTime: Double = 2.0
     var shopID = 0
     var name = ""
     var fee : Int64 = 0
@@ -30,8 +32,19 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
     
     let valueToolbar: UIToolbar = UIToolbar()
     let numberToolbar: UIToolbar = UIToolbar()
-
     var image: UIImage?
+    
+    let alert: UIAlertController = UIAlertController(title: "Invaild Regist", message: "Please Retype", preferredStyle:  .alert)
+    lazy var loadingView: LOTAnimationView = {
+        let animationView = LOTAnimationView(name: "glow_loading")
+        animationView.frame = CGRect(x: 0, y: 0, width: (self.view.bounds.width)/2, height: (self.view.bounds.height)/2)
+        animationView.center = self.view.center
+        animationView.loopAnimation = true
+        animationView.contentMode = .scaleAspectFit
+        animationView.animationSpeed = 1
+        
+        return animationView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,18 +96,9 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
         //OKボタン
         let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler:{
             (action: UIAlertAction!) -> Void in
-            // リクエスト用のモデルを生成
-            let inputVagetable = RequestVegetable (
-                shopId: self.shopID,
-                name: self.name,
-                fee: self.fee,
-                isChemical: self.isChemical,
-                imagePath: self.imagePath,
-                productonDate: self.productionDate
-            )
             
-            if inputVagetable.name != "" {
-                self.postVegetable(data: inputVagetable)
+            if self.name != "" {
+                self.postVegetable(name: self.name, fee: self.fee, isChemical: self.isChemical, productionDate: self.productionDate)
             } else {
                 let alertEmptyMust: UIAlertController = UIAlertController(title: "Empty Data", message: "Not Enough Word", preferredStyle:  .alert)
                 let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: .default)
@@ -193,67 +197,38 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
     }
     
     // 入力されたデータを送信する処理
-    func postVegetable(data: RequestVegetable) {
+    func postVegetable(name: String, fee: Int64, isChemical: Bool, productionDate: String) {
         // くるくる開始
         self.ActivityIndicator.startAnimating()
         // 画像データ圧縮
         let imageData = self.image?.jpegData(compressionQuality: 0.0)
-        // responseのインスタンス生成
-        var result:ResponseVegetable?
-        // JSON Encode用のインスタンス生成
-        let encoder = JSONEncoder()
-        // RequestVegetableオブジェクトをJSONにパース
-        let jsonData = try? encoder.encode(data)
-        // Requestインスタンスを生成
-        var request = URLRequest(url: URL(string: VEGETABLE_REST)!)
-        // HTTP Methodはポスト
-        request.httpMethod = HTTPMethod.post.rawValue
-        // ぶち込む
-        request.setValue(S.getKeychain(Keychain_Keys.Token)!, forHTTPHeaderField: "Authorization")
-        // Bodyにパースした野菜のデータを設置
-        request.httpBody = jsonData
-        // 送信
-        
-        Alamofire.request(request).responseJSON {
-            response in
-            if let data = response.data {
-                print(response)
-                // 受け取ったJSONデータをResponseVegetableにマッピング
-                result = try? JSONDecoder().decode(ResponseVegetable.self, from: data)
-                if(result != nil && imageData != nil){
-                    // ResponseのIDをファイル名とする
-                    let fileName = String(result!.id) + ".jpg"
-                    // Imageをアップロードするためのパスを設定
-                    let url = VEGETABLE_IMAGE
-                    // Upload処理 Status Code 200が返ってきたらページ遷移
-                    Alamofire.upload(multipartFormData: { (multipartFormData) in
-                        multipartFormData.append(imageData!, withName: "image", fileName: fileName, mimeType: "image/png")
-                    }, to: url ) { (encodingResult) in
-                        switch encodingResult {
-                        case .success(let upload, _, _):
-                            upload.responseJSON { response in
-                                if !response.result.isSuccess {
-                                    print("# ERROR")
-                                } else {
-                                    print("# SUCCESS")
-                                    self.ActivityIndicator.stopAnimating()
-                                    self.navigationController?.popToRootViewController(animated: true)
-                                }
-                            }
-                        case .failure(let encodingError):
-                            print(encodingError)
-                        }
-                    }
-                } else {
-                    let alertEmpty: UIAlertController = UIAlertController(title: "Empty Data", message: "Not Enough Word", preferredStyle:  .alert)
-                    let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: .default)
-                    alertEmpty.addAction(defaultAction)
-                    self.ActivityIndicator.stopAnimating()
-                    self.present(alertEmpty, animated: true, completion: nil)
-                }
-            } else {
-                print("Can't Send to Server")
+        // Token取得
+        let token = S.getKeychain(Keychain_Keys.Token)!
+        firstly {
+            VegetableClient.shared.postMyVegetable(token: token, name: name, fee: fee, isChemical: isChemical, productionDate: productionDate, image: imageData!)
+        }.done { () in
+            print("[Your Token]")
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                self.stopLoading()
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }.catch { e in
+            print(e)
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                self.stopLoading()
+                self.present(self.alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    // くるくる開始
+    func startLoading() {
+        view.addSubview(loadingView)
+        loadingView.play()
+    }
+    
+    // くるくる停止
+    func stopLoading() {
+        self.loadingView.removeFromSuperview()
     }
 }
