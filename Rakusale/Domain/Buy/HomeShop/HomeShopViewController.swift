@@ -11,16 +11,30 @@ import CoreLocation
 import Alamofire
 import AlamofireImage
 import VegaScrollFlowLayout
+import PromiseKit
 
 class HomeShopViewController: UIViewController, UICollectionViewDataSource
 {
 
     @IBOutlet weak var uiCollectionView: UICollectionView!
-    var shops: [ResponseShop] = []
+    var shops: [Shop_ResponseShop] = []
+    let waitTime: Double = 2.0
     fileprivate let refreshCtrl = UIRefreshControl()
     let imageCache = AutoPurgingImageCache()
     let imageNotFound = UIImage(named: "404")
     let layout = VegaScrollFlowLayout()
+    let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
+    
+    lazy var loadingView: LOTAnimationView = {
+        let animationView = LOTAnimationView(name: "glow_loading")
+        animationView.frame = CGRect(x: 0, y: 0, width: (self.view.bounds.width)/2, height: (self.view.bounds.height)/2)
+        animationView.center = self.view.center
+        animationView.loopAnimation = true
+        animationView.contentMode = .scaleAspectFit
+        animationView.animationSpeed = 1
+        
+        return animationView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,29 +60,30 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
     }
     
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        let shop: ResponseShop = self.shops[indexPath.row]
+        let shop: Shop_ResponseShop = self.shops[indexPath.row]
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         let url: String = shop.imagePath
         if let image = imageCache.image(withIdentifier: url){
             imageView.image = image
-        }else{
+        } else {
             Alamofire.request(url).responseImage { response in
                 if let image = response.result.value {
                     imageView.image = image
                     self.imageCache.add(image, withIdentifier: url)
-                }else{
+                } else {
                     imageView.image = self.imageNotFound
                 }
             }
         }
+        // Label更新
         let nameLabel = cell.contentView.viewWithTag(2) as! UILabel
         nameLabel.text = shop.name
         let pinImage = cell.contentView.viewWithTag(3) as! UIImageView
         let redPin = UIImage(named: "Redpin")
         pinImage.image = redPin
         let locationLabel = cell.contentView.viewWithTag(4) as! UILabel
-        let location = CLLocation(latitude: shop.latitude, longitude: shop.longitude)
+        let location = CLLocation(latitude: Double(shop.latitude), longitude: Double(shop.longitude))
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location, completionHandler: {(placeMark:[CLPlacemark]?, error:Error?) -> Void in
             if let placeMark = placeMark?[0]{
@@ -93,20 +108,40 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
     }
     
     func loadShops() {
-        var request = URLRequest(url: URL(string: SHOP_REST)!)
-        request.httpMethod = HTTPMethod.get.rawValue
-        Alamofire.request(request).responseJSON {
-            response in
-            if response.result.isSuccess {
-                if let data = response.data {
-                    self.shops = try! JSONDecoder().decode([ResponseShop].self, from: data)
-                    self.uiCollectionView.reloadData()
-                }
+        // Start Loading Animation
+        self.startLoading()
+        // Call RPC
+        print("Activate Login")
+        firstly {
+            ShopClient.shared.getAllShop()
+        }.done { shops in
+            self.shops = shops
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                self.stopLoading()
+                self.uiCollectionView.reloadData()
+            }
+        }.catch { e in
+            print(e)
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                self.stopLoading()
+                self.present(self.alert, animated: true, completion: nil)
             }
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // くるくる開始
+    func startLoading() {
+        view.addSubview(loadingView)
+        loadingView.play()
+    }
+    
+    // くるくるteisi
+    func stopLoading() {
+        self.loadingView.removeFromSuperview()
     }
 }
 

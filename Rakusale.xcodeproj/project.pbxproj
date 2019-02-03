@@ -395,7 +395,6 @@
 		A27392662177627E0063DFE4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				A2739265217762770063DFE4 /* Buy */,
 				A2BCEDF221A57AA70041B8B1 /* SignIn */,
 				A2739261217762380063DFE4 /* SignUp */,
 				A2739262217762440063DFE4 /* UserSelect */,
@@ -592,8 +591,9 @@
 		D48D52F02203318F00027ED4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				A2BCEDF721A57AB80041B8B1 /* Settings */,
 				A27392642177626F0063DFE4 /* Sell */,
+				A2739265217762770063DFE4 /* Buy */,
+				A2BCEDF721A57AB80041B8B1 /* Settings */,
 				A27392662177627E0063DFE4 /* Login */,
 			);
 			path = Domain;
