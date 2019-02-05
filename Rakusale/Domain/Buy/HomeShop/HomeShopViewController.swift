@@ -143,10 +143,20 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
     func stopLoading() {
         self.loadingView.removeFromSuperview()
     }
+    
+    fileprivate func moveNextVC(indexPath: IndexPath) {
+        let shop = self.shops[indexPath.item]
+        let nextVC = ShopVegetablesViewController(shop: shop)
+        present(nextVC, animated: true, completion: nil)
+    }
 }
 
 extension HomeShopViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.bounds.width), height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        moveNextVC(indexPath: indexPath)
     }
 }

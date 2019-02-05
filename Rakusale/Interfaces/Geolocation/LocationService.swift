@@ -91,4 +91,34 @@ class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDele
         }
         return a
     }
+    
+    func ReverseGeocoder(location: CLLocation) -> String {
+        var address: String = ""
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error)-> Void in
+            if error != nil {
+                print("error")
+                return
+            }
+            if placemarks!.count > 0 {
+                let pms = placemarks![0]
+                address = self.makeAddressString(placemark: pms)
+                return address
+            } else {
+                print("error")
+            }
+        })
+    }
+    
+    func makeAddressString(placemark: CLPlacemark) -> String {
+        var address: String = ""
+        //address += placemark.postalCode != nil ? placemark.postalCode! : ""
+        address += placemark.administrativeArea != nil ? placemark.administrativeArea! : ""
+        address += placemark.subAdministrativeArea != nil ? placemark.subAdministrativeArea! : ""
+        address += placemark.locality != nil ? placemark.locality! : ""
+        address += placemark.subLocality != nil ? placemark.subLocality! : ""
+        address += placemark.thoroughfare != nil ? placemark.thoroughfare! : ""
+        address += placemark.subThoroughfare != nil ? placemark.subThoroughfare! : ""
+        
+        return address
+    }
 }

@@ -139,6 +139,30 @@ struct Vegetable_ResponseVegetable {
   init() {}
 }
 
+struct Vegetable_ResponseShopVegetable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var amount: Int64 = 0
+
+  var name: String = String()
+
+  var fee: Int64 = 0
+
+  var isChemical: Bool = false
+
+  var imagePath: String = String()
+
+  var productionDate: String = String()
+
+  var category: Vegetable_VegetableType = .squash
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
 /// Get
 struct Vegetable_GetMyVegetablesRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -209,7 +233,7 @@ struct Vegetable_GetSingleShopAllVegetablesResponse {
 
   var status: Int64 = 0
 
-  var vegetables: [Vegetable_ResponseVegetable] = []
+  var vegetables: [Vegetable_ResponseShopVegetable] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -474,6 +498,71 @@ extension Vegetable_ResponseVegetable: SwiftProtobuf.Message, SwiftProtobuf._Mes
 
   static func ==(lhs: Vegetable_ResponseVegetable, rhs: Vegetable_ResponseVegetable) -> Bool {
     if lhs.id != rhs.id {return false}
+    if lhs.name != rhs.name {return false}
+    if lhs.fee != rhs.fee {return false}
+    if lhs.isChemical != rhs.isChemical {return false}
+    if lhs.imagePath != rhs.imagePath {return false}
+    if lhs.productionDate != rhs.productionDate {return false}
+    if lhs.category != rhs.category {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Vegetable_ResponseShopVegetable: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ResponseShopVegetable"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "amount"),
+    2: .same(proto: "name"),
+    3: .same(proto: "fee"),
+    4: .same(proto: "isChemical"),
+    5: .same(proto: "imagePath"),
+    6: .same(proto: "productionDate"),
+    7: .same(proto: "category"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularInt64Field(value: &self.amount)
+      case 2: try decoder.decodeSingularStringField(value: &self.name)
+      case 3: try decoder.decodeSingularInt64Field(value: &self.fee)
+      case 4: try decoder.decodeSingularBoolField(value: &self.isChemical)
+      case 5: try decoder.decodeSingularStringField(value: &self.imagePath)
+      case 6: try decoder.decodeSingularStringField(value: &self.productionDate)
+      case 7: try decoder.decodeSingularEnumField(value: &self.category)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.amount != 0 {
+      try visitor.visitSingularInt64Field(value: self.amount, fieldNumber: 1)
+    }
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 2)
+    }
+    if self.fee != 0 {
+      try visitor.visitSingularInt64Field(value: self.fee, fieldNumber: 3)
+    }
+    if self.isChemical != false {
+      try visitor.visitSingularBoolField(value: self.isChemical, fieldNumber: 4)
+    }
+    if !self.imagePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.imagePath, fieldNumber: 5)
+    }
+    if !self.productionDate.isEmpty {
+      try visitor.visitSingularStringField(value: self.productionDate, fieldNumber: 6)
+    }
+    if self.category != .squash {
+      try visitor.visitSingularEnumField(value: self.category, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Vegetable_ResponseShopVegetable, rhs: Vegetable_ResponseShopVegetable) -> Bool {
+    if lhs.amount != rhs.amount {return false}
     if lhs.name != rhs.name {return false}
     if lhs.fee != rhs.fee {return false}
     if lhs.isChemical != rhs.isChemical {return false}
