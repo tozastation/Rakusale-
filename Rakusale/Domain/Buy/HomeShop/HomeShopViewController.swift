@@ -17,14 +17,15 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
 {
 
     @IBOutlet weak var uiCollectionView: UICollectionView!
-    var shops: [Shop_ResponseShop] = []
-    let waitTime: Double = 2.0
     fileprivate let refreshCtrl = UIRefreshControl()
     let imageCache = AutoPurgingImageCache()
     let imageNotFound = UIImage(named: "404")
     let layout = VegaScrollFlowLayout()
     let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
     
+    var shops: [Shop_ResponseShop] = []
+    let waitTime: Double = 2.0
+   
     lazy var loadingView: LOTAnimationView = {
         let animationView = LOTAnimationView(name: "glow_loading")
         animationView.frame = CGRect(x: 0, y: 0, width: (self.view.bounds.width)/2, height: (self.view.bounds.height)/2)
@@ -41,7 +42,6 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
         self.uiCollectionView.delegate = self
         self.uiCollectionView.refreshControl = refreshCtrl
         refreshCtrl.addTarget(self, action: #selector(HomeShopViewController.refresh(sender:)), for: .valueChanged)
-        self.loadShops()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -108,25 +108,31 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
     }
     
     func loadShops() {
+        LogService.shared.logger.info("[START] Call loadShops")
         // Start Loading Animation
         self.startLoading()
         // Call RPC
-        print("Activate Login")
         firstly {
             ShopClient.shared.getAllShop()
         }.done { shops in
+            LogService.shared.logger.info("[SUCCESS] getAllShopRPC")
             self.shops = shops
+            LogService.shared.logger.debug("↓[ResponseData]↓")
+            LogService.shared.logger.debug(shops)
             DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
                 self.stopLoading()
                 self.uiCollectionView.reloadData()
             }
         }.catch { e in
-            print(e)
+            LogService.shared.logger.error("[EXECUTE FAILURE!] on Calling getAllShopRPC")
+            LogService.shared.logger.error("[Detail]" + e.localizedDescription)
+            LogService.shared.logger.error("Present Alert Message")
             DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
                 self.stopLoading()
                 self.present(self.alert, animated: true, completion: nil)
             }
         }
+        LogService.shared.logger.info("[END] Call loadShops")
     }
     
     override func didReceiveMemoryWarning() {
@@ -144,10 +150,18 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
         self.loadingView.removeFromSuperview()
     }
     
-    fileprivate func moveNextVC(indexPath: IndexPath) {
-        let shop = self.shops[indexPath.item]
-        let nextVC = ShopVegetablesViewController(shop: shop)
-        present(nextVC, animated: true, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!){
+        LogService.shared.logger.info("[START] prepare next view")
+        LogService.shared.logger.debug("↓[ResponseData]↓")
+        if let shop = sender as? Shop_ResponseShop {
+            LogService.shared.logger.debug(shop)
+            if (segue.identifier == "ShopVegetables"){
+                if let shopVegetableVC: ShopVegetablesViewController = segue.destination as? ShopVegetablesViewController {
+                   shopVegetableVC.recieveShop = shop
+                }
+            }
+        }
+        LogService.shared.logger.info("[END] prepare view")
     }
 }
 
@@ -157,6 +171,9 @@ extension HomeShopViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        moveNextVC(indexPath: indexPath)
+        LogService.shared.logger.info("[START] didSelectItemAt on pushing Cell")
+        let selectedShop = self.shops[indexPath.item]
+        performSegue(withIdentifier: "ShopVegetables", sender: selectedShop)
+        LogService.shared.logger.info("[END] didSelectItemAt on pushing Cell")
     }
 }

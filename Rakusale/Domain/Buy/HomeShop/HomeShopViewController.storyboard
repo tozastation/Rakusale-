@@ -43,22 +43,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Awx-MB-dlz">
-                                                    <rect key="frame" x="20" y="20" width="62" height="60"/>
+                                                    <rect key="frame" x="20" y="20" width="64" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Redpin" translatesAutoresizingMaskIntoConstraints="NO" id="IGS-GJ-0oI">
-                                                    <rect key="frame" x="97" y="62" width="18" height="18"/>
+                                                    <rect key="frame" x="99" y="62" width="18" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="場所" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hr-bS-BQs">
-                                                    <rect key="frame" x="119" y="62" width="221" height="18"/>
+                                                    <rect key="frame" x="119" y="62" width="222" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="直売所の名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ql3-zm-eb0">
-                                                    <rect key="frame" x="119" y="19" width="221" height="35"/>
+                                                    <rect key="frame" x="119" y="18" width="222" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
@@ -99,11 +99,20 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="uiCollectionView" destination="Wne-kk-nre" id="Hkv-eG-zWl"/>
+                        <segue destination="DZ5-pB-ilP" kind="showDetail" identifier="ShopVegetables" id="myY-tw-75t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z48-44-bDL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1352.8" y="455.9113300492611"/>
+        </scene>
+        <!--ShopVegetables-->
+        <scene sceneID="idi-Yh-tM6">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ShopVegetables" storyboardName="ShopVegetables" id="DZ5-pB-ilP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xDU-Tv-MdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2078" y="565"/>
         </scene>
         <!--お店-->
         <scene sceneID="t56-ff-bOq">

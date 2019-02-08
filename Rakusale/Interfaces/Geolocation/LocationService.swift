@@ -102,11 +102,12 @@ class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDele
             if placemarks!.count > 0 {
                 let pms = placemarks![0]
                 address = self.makeAddressString(placemark: pms)
-                return address
+                return
             } else {
                 print("error")
             }
         })
+        return address
     }
     
     func makeAddressString(placemark: CLPlacemark) -> String {

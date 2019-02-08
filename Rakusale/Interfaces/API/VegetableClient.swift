@@ -66,6 +66,27 @@ class VegetableClient {
         }
     }
     
+    func getSingleShopAllVegetables(shopID: Int64) -> Promise<[Vegetable_ResponseShopVegetable]> {
+        LogService.shared.logger.info("[START] Call getSingleShopAllVegetablesRPC")
+        var req = Vegetable_GetSingleShopAllVegetablesRequest()
+        req.shopID = shopID
+        
+        return Promise { seal in
+            let _ = try? self.client.getSingleShopAllVegetables(req, completion: {(response, result) in
+                if result.success {
+                    LogService.shared.logger.info("[SUCCESS] Call getSingleShopAllVegetablesRPC")
+                    guard let vegetables = response?.vegetables else {return}
+                    seal.fulfill(vegetables)
+                } else {
+                    LogService.shared.logger.error("[EXECUTE FAILURE!] on Calling getSingleShopAllVegetablesRPC")
+                    guard let statusCode = response?.status else {return}
+                    seal.reject(gRPCError.RequestError(statusCode))
+                }
+            })
+            LogService.shared.logger.info("[END] Call getSingleShopAllVegetablesRPC")
+        }
+    }
+    
     // rpc PostMyVegetable (PostMyVegetableRequest) returns (PostMyVegetableResponse) {}
     func postMyVegetable(
         token: String,

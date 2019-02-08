@@ -9,23 +9,28 @@
 import Foundation
 import AlamofireImage
 import Alamofire
+import CoreLocation
+import PromiseKit
+import VegaScrollFlowLayout
 
-class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
+class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
 {
-    
+   
+    @IBOutlet weak var uiView: UIView!
+    @IBOutlet weak var uiCollectionView: UICollectionView!
     @IBOutlet weak var shopImage: UIImageView!
     @IBOutlet weak var shopNameLabel: UILabel!
     @IBOutlet weak var shopAddressLabel: UILabel!
     @IBOutlet weak var shopIntroText: UITextView!
     @IBOutlet weak var shopFavButton: UIButton!
-    @IBOutlet weak var vegetableNameLabel: UILabel!
-    @IBOutlet weak var vegetableIntroText: UITextView!
-    @IBOutlet weak var vegetableAmountLabel: UILabel!
-    @IBOutlet weak var vegetableValueLabel: UILabel!
-    @IBOutlet weak var vegetableImage: UIImageView!
     
-    var vegetables: [ResponseVegetable] = []
+    let layout = VegaScrollFlowLayout()
     let imageCache = AutoPurgingImageCache()
+    let imageNotFound = UIImage(named: "404")
+    var recieveShop: Shop_ResponseShop!
+    var recieveVegetables: [Vegetable_ResponseShopVegetable] = []
+    let waitTime: Double = 2.0
+    let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
     
     lazy var loadingView: LOTAnimationView = {
         let animationView = LOTAnimationView(name: "glow_loading")
@@ -38,47 +43,65 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
         return animationView
     }()
     
-    init(shop: ResponseShop) {
-        shopNameLabel.text = shop.name
-        let location: CLLocation = CLLocation(latitude: shop.latitude, longitude: shop.longitude)
-        shopAddressLabel.text = LocationService.sharedManager.ReverseGeocoder(location: location)
-        shopIntroText.text = shop.introduction
-        super.init(nibName: nil, bundle: nil)
-    }
-    
     override func viewDidLoad() {
-        <#code#>
+        super.viewDidLoad()
+        self.shopNameLabel.text = self.recieveShop.name
+        self.shopIntroText.text = self.recieveShop.introduction
+        let location: CLLocation = CLLocation(latitude: Double(self.recieveShop.latitude), longitude: Double(self.recieveShop.longitude))
+        self.shopAddressLabel.text = LocationService.sharedManager.ReverseGeocoder(location: location)
+        self.uiCollectionView.dataSource = self
+        self.uiCollectionView.delegate = self
+        self.uiCollectionView.collectionViewLayout = layout
+        layout.minimumLineSpacing = 20
+        layout.itemSize = CGSize(width: uiCollectionView.frame.width, height: 80)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        uiView.layer.borderColor = UIColor.black.cgColor
+        uiView.layer.borderWidth = 1
+        uiView.layer.cornerRadius = 30
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadShopVegetables(shopID: recieveShop.id)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let vegetable: ResponseVegetable = self.vegetables[indexPath.row]
-        let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let vegetable: Vegetable_ResponseShopVegetable = self.recieveVegetables[indexPath.row]
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) //as! MDCCardCollectionCell
+        cell.backgroundColor = UIColor.clear
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8 // optional
         let imageView = cell.contentView.viewWithTag(5) as! UIImageView
         let url: String = vegetable.imagePath
         if let image = imageCache.image(withIdentifier: url){
-            vegetableImage.image = image
+            imageView.image = image
         } else {
             Alamofire.request(url).responseImage { response in
                 if let image = response.result.value {
-                    vegetableImage.image = image
+                    imageView.image = image
                     self.imageCache.add(image, withIdentifier: url)
                 } else {
-                    vegetableImage.image = self.imageNotFound
+                    imageView.image = self.imageNotFound
                 }
             }
         }
+        imageView.layer.cornerRadius = 30
+        imageView.clipsToBounds = true
         let nameLabel = cell.contentView.viewWithTag(1) as! UILabel
-        nameLabel.text = shop.name
+        nameLabel.text = vegetable.name
         nameLabel.sizeToFit()
-        let intro = cell.contentView.viewWithTag(2) as! UIImageView
+        let intro = cell.contentView.viewWithTag(2) as! UITextView
+        intro.text = "サーバ側の実装忘れた"
         intro.sizeToFit()
+
         let amountLabel = cell.contentView.viewWithTag(3) as! UILabel
+        amountLabel.text = String(vegetable.amount) + "個"
         amountLabel.sizeToFit()
+
         let valueLabel = cell.contentView.viewWithTag(4) as! UILabel
+        valueLabel.text = String(vegetable.fee) + "円"
         valueLabel.sizeToFit()
         return cell
     }
@@ -88,7 +111,7 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.vegetables.count
+        return self.recieveVegetables.count
     }
     
     // くるくる開始
@@ -102,4 +125,43 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
         self.loadingView.removeFromSuperview()
     }
     
+    func loadShopVegetables(shopID: Int64) {
+        LogService.shared.logger.info("[START] Call loadShops")
+        // Start Loading Animation
+        self.startLoading()
+        // Call RPC
+        firstly {
+            VegetableClient.shared.getSingleShopAllVegetables(shopID: shopID)
+            }.done { vegetables in
+                self.recieveVegetables = vegetables
+                LogService.shared.logger.debug("↓[ResponseData]↓")
+                LogService.shared.logger.debug(vegetables)
+                DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                    self.stopLoading()
+                    self.uiCollectionView.reloadData()
+                }
+            }.catch { e in
+                LogService.shared.logger.error("[EXECUTE FAILURE!] on Calling getAllShopRPC")
+                LogService.shared.logger.error("[Detail]" + e.localizedDescription)
+                LogService.shared.logger.error("Present Alert Message")
+                DispatchQueue.main.asyncAfter(deadline: .now() + self.waitTime) {
+                    self.stopLoading()
+                    self.present(self.alert, animated: true, completion: nil)
+                }
+        }
+        LogService.shared.logger.info("[END] Call loadShops")
+    }
+}
+
+extension ShopVegetablesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.bounds.width), height: (collectionView.bounds.height) / 2.5)
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        LogService.shared.logger.info("[START] didSelectItemAt on pushing Cell")
+//        let selectedShop = self.shops[indexPath.item]
+//        performSegue(withIdentifier: "ShopVegetables", sender: selectedShop)
+//        LogService.shared.logger.info("[END] didSelectItemAt on pushing Cell")
+//    }
 }

@@ -84,6 +84,8 @@
 		C19513172209688E006E52F4 /* ShopVegetablesViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19513162209688E006E52F4 /* ShopVegetablesViewContoller.swift */; };
 		C1951319220968B2006E52F4 /* ShopVegetables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1951318220968B2006E52F4 /* ShopVegetables.storyboard */; };
 		C195131B22099787006E52F4 /* vegetable.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C195131A22099787006E52F4 /* vegetable.grpc.swift */; };
+		C1E0DF2C220DA3750053F19A /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0DF2B220DA3750053F19A /* LogService.swift */; };
+		C1E0DF2F220DD2D90053F19A /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0DF2E220DD2D90053F19A /* ProductCell.swift */; };
 		D4313947219F00C200757192 /* ResponseVegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313946219F00C200757192 /* ResponseVegetable.swift */; };
 		D431394A219F015B00757192 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313949219F015B00757192 /* Endpoints.swift */; };
 		D48D53032203357400027ED4 /* EntryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D53022203357400027ED4 /* EntryClient.swift */; };
@@ -192,6 +194,8 @@
 		C19513162209688E006E52F4 /* ShopVegetablesViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopVegetablesViewContoller.swift; sourceTree = "<group>"; };
 		C1951318220968B2006E52F4 /* ShopVegetables.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopVegetables.storyboard; sourceTree = "<group>"; };
 		C195131A22099787006E52F4 /* vegetable.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.grpc.swift; sourceTree = "<group>"; };
+		C1E0DF2B220DA3750053F19A /* LogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogService.swift; sourceTree = "<group>"; };
+		C1E0DF2E220DD2D90053F19A /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		D2883272BC05D315F0035F38 /* Pods-Rakusale-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rakusale-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rakusale-iOS/Pods-Rakusale-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D4313946219F00C200757192 /* ResponseVegetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseVegetable.swift; sourceTree = "<group>"; };
 		D4313949219F015B00757192 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
@@ -500,6 +504,7 @@
 		C14EA41F220460A80011671D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C1E0DF2D220DD2C40053F19A /* Cell */,
 				D49AD799217CB851002507F1 /* Data */,
 				D4313948219F014D00757192 /* Constants */,
 				C14EA420220460ED0011671D /* Error.swift */,
@@ -558,6 +563,22 @@
 			path = ShopVegetables;
 			sourceTree = "<group>";
 		};
+		C1E0DF2A220DA35F0053F19A /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				C1E0DF2B220DA3750053F19A /* LogService.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		C1E0DF2D220DD2C40053F19A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C1E0DF2E220DD2D90053F19A /* ProductCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		D4313944219F007100757192 /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,6 +612,7 @@
 		D48D52ED22032FE800027ED4 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				C1E0DF2A220DA35F0053F19A /* Log */,
 				C195130C2206FAA8006E52F4 /* Enum */,
 				D4B1D97F21B22072001A25EB /* Geolocation */,
 				D4B1D98B21B4B8D8001A25EB /* Notification */,
@@ -860,6 +882,12 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -868,6 +896,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/VegaScrollFlowLayout/VegaScrollFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
@@ -879,6 +908,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -887,6 +922,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VegaScrollFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
@@ -940,6 +976,7 @@
 				A21BF98C219EE608009A7D3C /* RequestVegetable.swift in Sources */,
 				A2BCEE1921A57AE10041B8B1 /* HomeShopViewController.swift in Sources */,
 				D48D531322033F2000027ED4 /* user.grpc.swift in Sources */,
+				C1E0DF2C220DA3750053F19A /* LogService.swift in Sources */,
 				C19513122206FD79006E52F4 /* vegetable.pb.swift in Sources */,
 				A21BF98E219EE627009A7D3C /* RequestShop.swift in Sources */,
 				C195131B22099787006E52F4 /* vegetable.grpc.swift in Sources */,
@@ -947,6 +984,7 @@
 				A273925521772D7F0063DFE4 /* RegistrationViewController.swift in Sources */,
 				A273924C217723C20063DFE4 /* SignUpViewController.swift in Sources */,
 				C19513172209688E006E52F4 /* ShopVegetablesViewContoller.swift in Sources */,
+				C1E0DF2F220DD2D90053F19A /* ProductCell.swift in Sources */,
 				C17BB55820EDCDD8002ACD56 /* AppDelegate.swift in Sources */,
 				D48D531B22033F4B00027ED4 /* entry.pb.swift in Sources */,
 				A2BCEE0B21A57AB90041B8B1 /* SellSettingsViewController.swift in Sources */,

@@ -11,6 +11,7 @@ import Alamofire
 import AlamofireImage
 import PromiseKit
 import VegaScrollFlowLayout
+import MaterialComponents
 
 class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     
@@ -47,6 +48,7 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
         self.uiCollectionView.refreshControl = refreshCtl
         refreshCtl.addTarget(self, action: #selector(HomeSellViewController.refresh(sender:)), for: .valueChanged)
         self.loadVegetables()
+        //self.uiCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,10 +65,11 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
         // 野菜インスタンス生成
         let vegetable: Vegetable_ResponseVegetable = self.vegetables[indexPath.row]
         // Identifer振ってるやつのインスタンス生成
-        let cell:UICollectionViewCell = collectionView.dequeueReusableCell(
+        let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "Cell",
             for: indexPath
         )
+//        ) as! ProductCell
 //        cell.layer.borderColor = UIColor.black.cgColor
 //        cell.layer.cornerRadius = 30
 //        cell.layer.masksToBounds = true
@@ -76,12 +79,15 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
         // イメージパスをキーとして、画像をキャッシュ
         if let image = imageCache.image(withIdentifier: url) {
              imageView.image = image
+            //cell.imageView.image = image
         }else{
             Alamofire.request(url).responseImage { response in
                 if let image = response.result.value {
                     imageView.image = image
+                    //cell.imageView.image = image
                     self.imageCache.add(image, withIdentifier: url)
                 }else{
+                    //cell.imageView.image = self.imageNotFound
                     imageView.image = self.imageNotFound
                 }
             }
@@ -95,6 +101,8 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
         name.sizeToFit()
         fee.sizeToFit()
         cell.alpha = 0
+//        cell.nameLabel.text = vegetable.name
+//        cell.priceLabel.text = String(vegetable.fee) + "円"
         UIView.animate(withDuration: 1.8) {
             cell.alpha = 1
         }
