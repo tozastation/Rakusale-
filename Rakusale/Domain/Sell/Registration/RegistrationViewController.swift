@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import PromiseKit
 
 class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {

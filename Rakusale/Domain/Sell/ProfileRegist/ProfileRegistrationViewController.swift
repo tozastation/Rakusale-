@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class ProfileRegistrationViewController: UITableViewController,UITextFieldDelegate,UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     

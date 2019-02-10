@@ -11,7 +11,6 @@ import Lottie
 import RxSwift
 import RxCocoa
 import PromiseKit
-import Alamofire
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 

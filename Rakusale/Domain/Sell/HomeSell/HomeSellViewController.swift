@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireImage
 import PromiseKit
 import VegaScrollFlowLayout
-import MaterialComponents
 import Kingfisher
 
 class HomeSellViewController: UIViewController, UICollectionViewDataSource {
@@ -19,7 +16,6 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var uiCollectionView: UICollectionView!
     var vegetables : [Vegetable_ResponseVegetable] = []
     fileprivate let refreshCtl = UIRefreshControl()
-    //let imageCache = AutoPurgingImageCache()
     let imageNotFound = UIImage(named: "404")
     let layout = VegaScrollFlowLayout()
     let waitTime: Double = 2.0
@@ -79,7 +75,11 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
         let url: String = vegetable.imagePath
         LogService.shared.logger.debug("[Vegetable Image URL]")
         LogService.shared.logger.debug(url)
-        imageView.kf.setImage(with: ImageResource(downloadURL: URL(string: url)!))
+        if url != "" {
+            imageView.kf.setImage(with: ImageResource(downloadURL: URL(string: url)!))
+        } else {
+            imageView.image = self.imageNotFound
+        }
         imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
         // 名前のラベル設定

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="faa-bv-NoG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gdg-or-QMa">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -103,48 +103,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bq4-Js-GUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3209" y="-399"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="zcU-wU-Phn">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="faa-bv-NoG" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="syO-oU-fXU">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.21960784310000001" green="0.70588235290000001" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="gdg-or-QMa" kind="relationship" relationship="viewControllers" id="uEG-fr-zcE"/>
-                        <segue destination="D7v-ME-aUj" kind="relationship" relationship="viewControllers" id="5wq-sq-x27"/>
-                        <segue destination="co7-RU-NLp" kind="relationship" relationship="viewControllers" id="cLy-lb-aaQ"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gc6-x2-qFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="572" y="-398.05097451274366"/>
-        </scene>
-        <!--HomeShopViewController-->
-        <scene sceneID="zGt-K8-tp8">
-            <objects>
-                <viewControllerPlaceholder storyboardName="HomeShopViewController" id="D7v-ME-aUj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="AaI-7h-J02"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4KH-bz-vPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="404" y="130"/>
-        </scene>
-        <!--HomeSearchViewController-->
-        <scene sceneID="tre-TG-Oi4">
-            <objects>
-                <viewControllerPlaceholder storyboardName="HomeSearchViewController" id="co7-RU-NLp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="aCA-EI-3ag"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7jQ-EX-IDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="740" y="130"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="DY5-Gv-chQ">

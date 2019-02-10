@@ -58,8 +58,6 @@
 		A2CC30C32164A1F2004F487A /* ProfileRegistrationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC30C22164A1F2004F487A /* ProfileRegistrationViewController.storyboard */; };
 		A2CC30C72164AAE6004F487A /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC30C62164AAE6004F487A /* ProfileViewController.storyboard */; };
 		C14EA421220460ED0011671D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14EA420220460ED0011671D /* Error.swift */; };
-		C14EA4242204668E0011671D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4232204668E0011671D /* Alamofire.framework */; };
-		C14EA4262204668E0011671D /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4252204668E0011671D /* AlamofireImage.framework */; };
 		C14EA4282204668E0011671D /* grpc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4272204668E0011671D /* grpc.framework */; };
 		C14EA42A2204668E0011671D /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4292204668E0011671D /* KeychainAccess.framework */; };
 		C14EA42C2204668E0011671D /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA42B2204668E0011671D /* Lottie.framework */; };
@@ -99,7 +97,6 @@
 		D492583021A6AAC400C29A61 /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492582F21A6AAC400C29A61 /* RequestLogin.swift */; };
 		D492583221A6AD6500C29A61 /* ResponseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D492583121A6AD6500C29A61 /* ResponseAuth.swift */; };
 		D4B1D98121B22093001A25EB /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1D98021B22093001A25EB /* LocationService.swift */; };
-		D4B1D98521B2E05A001A25EB /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1D98421B2E05A001A25EB /* APIService.swift */; };
 		D4B1D98721B2E6B6001A25EB /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1D98621B2E6B6001A25EB /* RealmService.swift */; };
 		D4B1D98A21B2ED41001A25EB /* RealmShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1D98921B2ED41001A25EB /* RealmShop.swift */; };
 		D4B1D98D21B4B8FE001A25EB /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1D98C21B4B8FE001A25EB /* LocalNotificationService.swift */; };
@@ -224,7 +221,6 @@
 		D49AD7B2217EA666002507F1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49AD7B4217EA7B6002507F1 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B1D98021B22093001A25EB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		D4B1D98421B2E05A001A25EB /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		D4B1D98621B2E6B6001A25EB /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		D4B1D98921B2ED41001A25EB /* RealmShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmShop.swift; sourceTree = "<group>"; };
 		D4B1D98C21B4B8FE001A25EB /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
@@ -237,8 +233,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C14EA4242204668E0011671D /* Alamofire.framework in Frameworks */,
-				C14EA4262204668E0011671D /* AlamofireImage.framework in Frameworks */,
 				C14EA4282204668E0011671D /* grpc.framework in Frameworks */,
 				C14EA42A2204668E0011671D /* KeychainAccess.framework in Frameworks */,
 				C14EA42C2204668E0011671D /* Lottie.framework in Frameworks */,
@@ -705,7 +699,6 @@
 		D4B1D98321B2E046001A25EB /* API */ = {
 			isa = PBXGroup;
 			children = (
-				D4B1D98421B2E05A001A25EB /* APIService.swift */,
 				D48D53022203357400027ED4 /* EntryClient.swift */,
 				C195130222047B69006E52F4 /* ShopClient.swift */,
 				C19513042206A878006E52F4 /* VegetableClient.swift */,
@@ -878,8 +871,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Rakusale/Pods-Rakusale-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -905,8 +896,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
@@ -964,7 +953,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -973,7 +963,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4B1D98521B2E05A001A25EB /* APIService.swift in Sources */,
 				A21BF98C219EE608009A7D3C /* RequestVegetable.swift in Sources */,
 				A2BCEE1921A57AE10041B8B1 /* HomeShopViewController.swift in Sources */,
 				D48D531322033F2000027ED4 /* user.grpc.swift in Sources */,
@@ -1158,7 +1147,10 @@
 				DEVELOPMENT_TEAM = 82XFL8284S;
 				INFOPLIST_FILE = "$(SRCROOT)/Rakusale/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)Rakusale/Common/Lottie-Bridging-Header.h";
@@ -1178,7 +1170,10 @@
 				DEVELOPMENT_TEAM = 82XFL8284S;
 				INFOPLIST_FILE = "$(SRCROOT)/Rakusale/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)Rakusale/Common/Lottie-Bridging-Header.h";

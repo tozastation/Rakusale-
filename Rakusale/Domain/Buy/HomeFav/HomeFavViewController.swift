@@ -7,16 +7,27 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireImage
+import Kingfisher
+import PromiseKit
 
 class HomeFavViewController: UIViewController {
 
     @IBOutlet weak var uiCollectionView: UICollectionView!
-    var shops : [ResponseShop] = []
+    var shops : [Shop_ResponseShop] = []
     fileprivate let refreshCtl = UIRefreshControl()
-    let imageCache = AutoPurgingImageCache()
     let imageNotFound = UIImage(named: "404")
+    let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
+    
+    lazy var loadingView: LOTAnimationView = {
+        let animationView = LOTAnimationView(name: "glow_loading")
+        animationView.frame = CGRect(x: 0, y: 0, width: (self.view.bounds.width)/2, height: (self.view.bounds.height)/2)
+        animationView.center = self.view.center
+        animationView.loopAnimation = true
+        animationView.contentMode = .scaleAspectFit
+        animationView.animationSpeed = 1
+        
+        return animationView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,28 +52,26 @@ class HomeFavViewController: UIViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         // お店インスタンス生成
-        let shop: ResponseShop = self.shops[indexPath.row]
+        let shop: Shop_ResponseShop = self.shops[indexPath.row]
         // Identifer振ってるやつのインスタンス生成
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "Cell",
             for: indexPath
         )
+        cell.backgroundColor = UIColor.clear
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8 // optional
         // 画像データ取得
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         let url: String = shop.imagePath
-        // イメージパスをキーとして、画像をキャッシュ
-        if let image = imageCache.image(withIdentifier: url) {
-            imageView.image = image
-        }else{
-            Alamofire.request(url).responseImage { response in
-                if let image = response.result.value {
-                    imageView.image = image
-                    self.imageCache.add(image, withIdentifier: url)
-                }else{
-                    imageView.image = self.imageNotFound
-                }
-            }
+        if url != "" {
+            imageView.kf.setImage(with: ImageResource(downloadURL: URL(string: url)!))
+        } else {
+            imageView.image = self.imageNotFound
         }
+        imageView.layer.cornerRadius = 30
+        imageView.clipsToBounds = true
         // 名前のラベル設定
         let name = cell.contentView.viewWithTag(2) as! UILabel
         name.text = shop.name
@@ -81,25 +90,48 @@ class HomeFavViewController: UIViewController {
     
     // ユーザーデータをGETで取得後，collectionViewをリロードsurusyori
     func loadShops() {
-        var request = URLRequest(url: URL(string:SHOPS_PROFILE_REST)!)
-        request.httpMethod = HTTPMethod.get.rawValue
-        Alamofire.request(request).responseJSON {
-            response in
-            if response.result.isSuccess {
-                if let data = response.data {
-                    self.shops = try! JSONDecoder().decode([ResponseShop].self, from: data)
-                    //print(response)
+        LogService.shared.logger.info("[START] Call loadShops")
+        // Start Loading Animation
+        self.startLoading()
+        // Call RPC
+        firstly {
+            ShopClient.shared.getAllShop()
+            }.done { shops in
+                LogService.shared.logger.info("[SUCCESS] getAllShopRPC")
+                self.shops = shops
+                LogService.shared.logger.debug("↓[ResponseData]↓")
+                LogService.shared.logger.debug(shops)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.stopLoading()
                     self.uiCollectionView.reloadData()
                 }
-            }else{
-            }
+            }.catch { e in
+                LogService.shared.logger.error("[EXECUTE FAILURE!] on Calling getAllShopRPC")
+                LogService.shared.logger.error("[Detail]" + e.localizedDescription)
+                LogService.shared.logger.error("Present Alert Message")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.stopLoading()
+                    self.present(self.alert, animated: true, completion: nil)
+                }
         }
+        LogService.shared.logger.info("[END] Call loadShops")
     }
     
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // くるくる開始
+    func startLoading() {
+        view.addSubview(loadingView)
+        loadingView.play()
+    }
+    
+    // くるくるteisi
+    func stopLoading() {
+        self.loadingView.removeFromSuperview()
     }
 }
 

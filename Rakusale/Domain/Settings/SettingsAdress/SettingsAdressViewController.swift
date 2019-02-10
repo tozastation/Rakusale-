@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class SettingsAdressViewController: UIViewController {
     @IBOutlet weak var userAdress: UILabel!
@@ -58,52 +57,52 @@ class SettingsAdressViewController: UIViewController {
     }
     
     func postShopAddress(latitude: String, longitude: String) {
-        // くるくる開始
-        self.ActivityIndicator.startAnimating()
-        // Requestインスタンスを生成
-        var request = URLRequest(url: URL(string: SHOPS_ADDRESS_REST)!)
-        // HTTP Methodはポスト
-        request.httpMethod = HTTPMethod.post.rawValue
-        // ぶち込む
-        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        // 送信
-        request.setValue(S.getKeychain(Keychain_Keys.Token), forHTTPHeaderField: "Authorization")
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(latitude.data(using: .utf8)!, withName: "Latitude")
-            multipartFormData.append(longitude.data(using: .utf8)!, withName: "Longitude")
-        }, with: request) { (encodingResult) in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in // ← JSON形式で受け取る
-                    if response.result.isSuccess {
-                       let alert: UIAlertController = UIAlertController(title: "保存完了", message: "保存が完了しました。", preferredStyle:  UIAlertController.Style.alert)
-                        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
-                            // ボタンが押された時の処理を書く（クロージャ実装）
-                            (action: UIAlertAction!) -> Void in
-                            self.navigationController?.popViewController(animated: true)
-                        })
-                        alert.addAction(defaultAction)
-                        self.present(alert, animated: true, completion: nil)
-                    } else {
-                        let alert: UIAlertController = UIAlertController(title: "保存失敗", message: "保存に失敗しました。", preferredStyle:  UIAlertController.Style.alert)
-                        let failedAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
-                            (action: UIAlertAction!) -> Void in
-                        })
-                        alert.addAction(failedAction)
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                }
-            case .failure(let encodingError):
-                print(encodingError)
-                let alert: UIAlertController = UIAlertController(title: "保存失敗", message: "保存に失敗しました。", preferredStyle:  UIAlertController.Style.alert)
-                let failedAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
-                    (action: UIAlertAction!) -> Void in
-                })
-                alert.addAction(failedAction)
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-        
+//        // くるくる開始
+//        self.ActivityIndicator.startAnimating()
+//        // Requestインスタンスを生成
+//        var request = URLRequest(url: URL(string: SHOPS_ADDRESS_REST)!)
+//        // HTTP Methodはポスト
+//        request.httpMethod = HTTPMethod.post.rawValue
+//        // ぶち込む
+//        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+//        // 送信
+//        request.setValue(S.getKeychain(Keychain_Keys.Token), forHTTPHeaderField: "Authorization")
+//        Alamofire.upload(multipartFormData: { (multipartFormData) in
+//            multipartFormData.append(latitude.data(using: .utf8)!, withName: "Latitude")
+//            multipartFormData.append(longitude.data(using: .utf8)!, withName: "Longitude")
+//        }, with: request) { (encodingResult) in
+//            switch encodingResult {
+//            case .success(let upload, _, _):
+//                upload.responseJSON { response in // ← JSON形式で受け取る
+//                    if response.result.isSuccess {
+//                       let alert: UIAlertController = UIAlertController(title: "保存完了", message: "保存が完了しました。", preferredStyle:  UIAlertController.Style.alert)
+//                        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+//                            // ボタンが押された時の処理を書く（クロージャ実装）
+//                            (action: UIAlertAction!) -> Void in
+//                            self.navigationController?.popViewController(animated: true)
+//                        })
+//                        alert.addAction(defaultAction)
+//                        self.present(alert, animated: true, completion: nil)
+//                    } else {
+//                        let alert: UIAlertController = UIAlertController(title: "保存失敗", message: "保存に失敗しました。", preferredStyle:  UIAlertController.Style.alert)
+//                        let failedAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+//                            (action: UIAlertAction!) -> Void in
+//                        })
+//                        alert.addAction(failedAction)
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
+//                }
+//            case .failure(let encodingError):
+//                print(encodingError)
+//                let alert: UIAlertController = UIAlertController(title: "保存失敗", message: "保存に失敗しました。", preferredStyle:  UIAlertController.Style.alert)
+//                let failedAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+//                    (action: UIAlertAction!) -> Void in
+//                })
+//                alert.addAction(failedAction)
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//        }
+//        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

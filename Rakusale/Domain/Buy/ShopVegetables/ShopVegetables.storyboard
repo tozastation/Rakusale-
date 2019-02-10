@@ -10,12 +10,12 @@
     </dependencies>
     <scenes>
         <!--HomeShopViewController-->
-        <scene sceneID="3cN-5A-pqZ">
+        <scene sceneID="UHf-9J-gpr">
             <objects>
-                <viewControllerPlaceholder storyboardName="HomeShopViewController" id="qya-8P-qQK" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K6e-Fm-PLg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="HomeShopViewController" id="QDt-Bb-MDQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4XT-MA-R22" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1367" y="-321"/>
+            <point key="canvasLocation" x="419" y="-79"/>
         </scene>
         <!--Shop Vegetables View Controller-->
         <scene sceneID="JhI-4t-b4T">
@@ -28,11 +28,16 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="glF-Lt-yB5">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.21960784310000001" green="0.70588235290000001" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="野菜リスト" id="B3Z-sf-1u4">
                                         <barButtonItem key="leftBarButtonItem" title="戻る" id="5lo-Qa-msU">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
-                                                <segue destination="qya-8P-qQK" kind="show" id="3Py-sT-kxy"/>
+                                                <action selector="didTapReturnButton:" destination="TTF-Nh-2eC" id="vSv-Zd-2Wv"/>
+                                                <segue destination="QDt-Bb-MDQ" kind="popover" popoverAnchorBarButtonItem="5lo-Qa-msU" id="oYz-fh-Ufz">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -49,7 +54,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHy-4C-MNh">
                                         <rect key="frame" x="249" y="14" width="61" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.21960784310000001" green="0.70588235290000001" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <state key="normal" title="FOLLOW">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -146,6 +151,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Vpz-eB-w9v"/>
                     </view>
                     <connections>
@@ -160,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bv-vM-VB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-834.39999999999998" y="-75.369458128078819"/>
+            <point key="canvasLocation" x="-436" y="-79"/>
         </scene>
     </scenes>
 </document>

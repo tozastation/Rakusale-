@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import AlamofireImage
-import Alamofire
 import CoreLocation
 import PromiseKit
 import VegaScrollFlowLayout
+import Kingfisher
 
 class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
 {
@@ -25,11 +24,10 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
     @IBOutlet weak var shopFavButton: UIButton!
     
     let layout = VegaScrollFlowLayout()
-    let imageCache = AutoPurgingImageCache()
     let imageNotFound = UIImage(named: "404")
     var recieveShop: Shop_ResponseShop!
     var recieveVegetables: [Vegetable_ResponseShopVegetable] = []
-    let waitTime: Double = 2.0
+    let waitTime: Double = 0.5
     let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
     
     lazy var loadingView: LOTAnimationView = {
@@ -48,21 +46,27 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
         self.shopNameLabel.text = self.recieveShop.name
         self.shopIntroText.text = self.recieveShop.introduction
         let location: CLLocation = CLLocation(latitude: Double(self.recieveShop.latitude), longitude: Double(self.recieveShop.longitude))
+        
         self.shopAddressLabel.text = LocationService.sharedManager.ReverseGeocoder(location: location)
         self.uiCollectionView.dataSource = self
         self.uiCollectionView.delegate = self
         self.uiCollectionView.collectionViewLayout = layout
+        
         layout.minimumLineSpacing = 20
         layout.itemSize = CGSize(width: uiCollectionView.frame.width, height: 80)
         layout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        
         uiView.layer.borderColor = UIColor.black.cgColor
         uiView.layer.borderWidth = 1
-        uiView.layer.cornerRadius = 30
+        uiView.layer.cornerRadius = 20
+       
+        shopFavButton.layer.cornerRadius = 5.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadShopVegetables(shopID: recieveShop.id)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,22 +77,17 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 8 // optional
+        
         let imageView = cell.contentView.viewWithTag(5) as! UIImageView
         let url: String = vegetable.imagePath
-        if let image = imageCache.image(withIdentifier: url){
-            imageView.image = image
+        if url != "" {
+            imageView.kf.setImage(with: ImageResource(downloadURL: URL(string: url)!))
         } else {
-            Alamofire.request(url).responseImage { response in
-                if let image = response.result.value {
-                    imageView.image = image
-                    self.imageCache.add(image, withIdentifier: url)
-                } else {
-                    imageView.image = self.imageNotFound
-                }
-            }
+            imageView.image = self.imageNotFound
         }
         imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
+        
         let nameLabel = cell.contentView.viewWithTag(1) as! UILabel
         nameLabel.text = vegetable.name
         nameLabel.sizeToFit()
@@ -150,6 +149,12 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
                 }
         }
         LogService.shared.logger.info("[END] Call loadShops")
+    }
+    
+    @IBAction func didTapReturnButton(_ sender: Any) {
+        self.tabBarController?.tabBar.isHidden = false
+        //self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.pushViewController(HomeShopViewController.create(), animated: true)
     }
 }
 

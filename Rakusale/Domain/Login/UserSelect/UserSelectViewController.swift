@@ -26,7 +26,7 @@ class UserSelectViewController: UIViewController {
     }
     
     @IBAction func didTapBuyButton(_ sender: Any) {
-        self.navigationController?.pushViewController(HomeFavViewController.create(), animated: true)
+        self.navigationController?.pushViewController(HomeShopViewController.create(), animated: true)
     }
     
     @IBAction func didTapSellButton(_ sender: Any) {

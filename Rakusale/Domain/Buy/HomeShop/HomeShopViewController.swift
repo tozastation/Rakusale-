@@ -8,23 +8,21 @@
 
 import UIKit
 import CoreLocation
-import Alamofire
-import AlamofireImage
 import VegaScrollFlowLayout
 import PromiseKit
+import Kingfisher
 
 class HomeShopViewController: UIViewController, UICollectionViewDataSource
 {
 
     @IBOutlet weak var uiCollectionView: UICollectionView!
     fileprivate let refreshCtrl = UIRefreshControl()
-    let imageCache = AutoPurgingImageCache()
     let imageNotFound = UIImage(named: "404")
     let layout = VegaScrollFlowLayout()
     let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
     
     var shops: [Shop_ResponseShop] = []
-    let waitTime: Double = 2.0
+    let waitTime: Double = 0.5
    
     lazy var loadingView: LOTAnimationView = {
         let animationView = LOTAnimationView(name: "glow_loading")
@@ -62,20 +60,21 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let shop: Shop_ResponseShop = self.shops[indexPath.row]
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        cell.backgroundColor = UIColor.clear
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8 // optional
+        
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         let url: String = shop.imagePath
-        if let image = imageCache.image(withIdentifier: url){
-            imageView.image = image
+        if url != "" {
+            imageView.kf.setImage(with: ImageResource(downloadURL: URL(string: url)!))
         } else {
-            Alamofire.request(url).responseImage { response in
-                if let image = response.result.value {
-                    imageView.image = image
-                    self.imageCache.add(image, withIdentifier: url)
-                } else {
-                    imageView.image = self.imageNotFound
-                }
-            }
+            imageView.image = self.imageNotFound
         }
+        imageView.layer.cornerRadius = 30
+        imageView.clipsToBounds = true
+        
         // Label更新
         let nameLabel = cell.contentView.viewWithTag(2) as! UILabel
         nameLabel.text = shop.name

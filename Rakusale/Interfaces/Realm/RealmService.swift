@@ -9,10 +9,8 @@
 import Foundation
 import RxSwift
 import RealmSwift
-import Alamofire
 
 class RealmService {
-    let apiService = APIService()
     let realm = try! Realm()
     
     // シングルトン
@@ -41,20 +39,20 @@ class RealmService {
 //            }).disposed(by: DisposeBag())
 //    }
     func insertShops(){
-        var request = URLRequest(url: URL(string: SHOP_REST)!)
-        request.httpMethod = HTTPMethod.get.rawValue
-        request.timeoutInterval = 5.0
-        Alamofire.request(request).responseJSON {
-            response in
-            if response.result.isSuccess {
-                if let data = response.data {
-                    print(response)
-                    let shops = try! JSONDecoder().decode([ResponseShop].self, from: data)
-                    self.saveArrayShops(object: shops)
-                }
-            }else {
-            }
-        }
+//        var request = URLRequest(url: URL(string: SHOP_REST)!)
+//        request.httpMethod = HTTPMethod.get.rawValue
+//        request.timeoutInterval = 5.0
+//        Alamofire.request(request).responseJSON {
+//            response in
+//            if response.result.isSuccess {
+//                if let data = response.data {
+//                    print(response)
+//                    let shops = try! JSONDecoder().decode([ResponseShop].self, from: data)
+//                    self.saveArrayShops(object: shops)
+//                }
+//            }else {
+//            }
+//        }
     }
         
     func getRealmPath() -> URL {

@@ -1,7 +1,4 @@
 PODS:
-  - Alamofire (4.8.1)
-  - AlamofireImage (3.5.0):
-    - Alamofire (~> 4.8)
   - BoringSSL (10.0.6):
     - BoringSSL/Implementation (= 10.0.6)
     - BoringSSL/Interface (= 10.0.6)
@@ -565,8 +562,6 @@ PODS:
   - VegaScrollFlowLayout (1.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7)
-  - AlamofireImage (~> 3.4)
   - KeychainAccess
   - Kingfisher
   - lottie-ios
@@ -581,8 +576,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - AlamofireImage
     - BoringSSL
     - gRPC-Core
     - KeychainAccess
@@ -607,8 +600,6 @@ SPEC REPOS:
     - VegaScrollFlowLayout
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
-  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
   gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
@@ -632,6 +623,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: ccfcdf85a04d429f1633f668650b0ce8020bda3a
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
 
-PODFILE CHECKSUM: faa70ff0ccceaf0262da9d9f1680c5279c9e4066
+PODFILE CHECKSUM: 380d188f8bc5a784d5ba5985fe559d9b200e5241
 
 COCOAPODS: 1.5.3
