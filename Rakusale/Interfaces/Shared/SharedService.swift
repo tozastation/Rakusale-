@@ -12,4 +12,5 @@ class SharedService {
     static var shared = SharedService()
     var segueVegetable: Vegetable_ResponseShopVegetable!
     var segueShop: Shop_ResponseShop!
+    var buyShopID: Int64!
 }

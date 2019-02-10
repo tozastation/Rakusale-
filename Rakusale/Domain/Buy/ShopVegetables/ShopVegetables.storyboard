@@ -157,7 +157,7 @@
                         <outlet property="shopImage" destination="JFH-eQ-Fsg" id="syc-gA-ZRi"/>
                         <outlet property="shopIntroText" destination="spM-iK-kr6" id="Yo7-tz-xJ4"/>
                         <outlet property="shopNameLabel" destination="L92-6u-2MJ" id="ssa-1q-AYD"/>
-                        <outlet property="uiCollectionView" destination="XNq-PS-ed2" id="fd7-ZW-vwg"/>
+                        <outlet property="uiCollectionView" destination="XNq-PS-ed2" id="hYZ-fG-EnU"/>
                         <outlet property="uiView" destination="fzj-bQ-Ie2" id="9QY-oF-x70"/>
                         <segue destination="8us-dY-oFg" kind="presentation" identifier="BuyVegetablesVC" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="LAa-oW-EnT"/>
                     </connections>

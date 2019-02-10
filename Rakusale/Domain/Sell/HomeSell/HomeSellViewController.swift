@@ -18,7 +18,7 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     fileprivate let refreshCtl = UIRefreshControl()
     let imageNotFound = UIImage(named: "404")
     let layout = VegaScrollFlowLayout()
-    let waitTime: Double = 2.0
+    let waitTime: Double = 0.2
     let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
 
     lazy var loadingView: LOTAnimationView = {

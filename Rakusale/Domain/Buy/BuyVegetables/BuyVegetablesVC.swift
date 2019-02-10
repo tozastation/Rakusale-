@@ -12,6 +12,7 @@ import RxCocoa
 import Kingfisher
 import PromiseKit
 import SCLAlertView
+import LocalAuthentication
 
 class BuyVegetablesVC: UIViewController {
     
@@ -28,6 +29,7 @@ class BuyVegetablesVC: UIViewController {
     private var amount = Variable<String>("0")
     private var counter = 0
     var recieveVegetable: Vegetable_ResponseVegetable!
+    let context = LAContext()
     
     lazy var loadingView: LOTAnimationView = {
         let animationView = LOTAnimationView(name: "glow_loading")
@@ -75,7 +77,28 @@ class BuyVegetablesVC: UIViewController {
     @IBAction func onTapBuy(_ sender: UIButton) {
         let alertView = SCLAlertView()
         alertView.addButton("購入する") {
-            self.dismiss(animated: true, completion: nil)
+            var error : NSError?
+            if self.context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                self.context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "購入処理を確定します", reply: {
+                    success, error in
+                    if (success) {
+                        DispatchQueue.main.async {
+                            self.startLoading()
+                        }
+                        DispatchQueue.global(qos: .default).async {
+                            self.buyVegetables(
+                                sID: SharedService.shared.segueShop.id,
+                                category: SharedService.shared.segueVegetable.category,
+                                amount: Int64(self.counter)
+                            )
+                        }
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+            } else {
+                NSLog("TouchID非対応")
+            }
         }
         alertView.showSuccess("購入確定", subTitle: SharedService.shared.segueVegetable.name + "を" + amount.value + "個")
     }
@@ -84,28 +107,29 @@ class BuyVegetablesVC: UIViewController {
         amount.asObservable().bind(to: vegetableAmountLabel.rx.text).disposed(by: disposeBag)
     }
     
-    func buyVegetables(shopID: Int64) {
-        LogService.shared.logger.info("[START] Call loadShops")
+    func buyVegetables(sID: Int64, category: Vegetable_VegetableType, amount: Int64) {
+        LogService.shared.logger.info("[START] Call buyVegetables")
+        let token = S.getKeychain(Keychain_Keys.Token)!
         // Start Loading Animation
         self.startLoading()
         // Call RPC
         firstly {
-            VegetableClient.shared.getSingleShopAllVegetables(shopID: shopID)
+            VegetableClient.shared.buyVegetables(token: token, sID: sID, category: category, amount: amount)
             }.done { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.stopLoading()
-                    self.dismiss(animated: false, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
             }.catch { e in
-                LogService.shared.logger.error("[EXECUTE FAILURE!] on Calling getAllShopRPC")
+                LogService.shared.logger.error("[EXECUTE FAILURE!] on Calling buyVegetablesRPC")
                 LogService.shared.logger.error("[Detail]" + e.localizedDescription)
                 LogService.shared.logger.error("Present Alert Message")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.stopLoading()
-                    //self.present(self.alert, animated: true, completion: nil)
+                    SCLAlertView().showError("Failed", subTitle: "購入を完了できませんでした") // Error
                 }
         }
-        LogService.shared.logger.info("[END] Call loadShops")
+        LogService.shared.logger.info("[END] Call buyVegetables")
     }
     
     // くるくる開始

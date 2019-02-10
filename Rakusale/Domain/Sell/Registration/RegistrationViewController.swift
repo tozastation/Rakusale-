@@ -21,7 +21,7 @@ class RegistrationViewController: UITableViewController,UITextFieldDelegate,  UI
     
     var ActivityIndicator: UIActivityIndicatorView!
     
-    let waitTime: Double = 2.0
+    let waitTime: Double = 0.2
     var shopID = 0
     var name = ""
     var fee : Int64 = 0

@@ -23,6 +23,7 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
     @IBOutlet weak var shopIntroText: UITextView!
     @IBOutlet weak var shopFavButton: UIButton!
     
+    fileprivate let refreshCtl = UIRefreshControl()
     let layout = VegaScrollFlowLayout()
     let imageNotFound = UIImage(named: "404")
     var recieveShop: Shop_ResponseShop!
@@ -61,6 +62,14 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
         uiView.layer.cornerRadius = 20
        
         shopFavButton.layer.cornerRadius = 5.0
+        
+        self.uiCollectionView.refreshControl = refreshCtl
+        refreshCtl.addTarget(self, action: #selector(ShopVegetablesViewController.refresh(sender:)), for: .valueChanged)
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) {
+        self.loadShopVegetables(shopID: SharedService.shared.segueShop.id)
+        sender.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
