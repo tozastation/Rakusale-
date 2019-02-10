@@ -22,7 +22,7 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
     let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
     
     var shops: [Shop_ResponseShop] = []
-    let waitTime: Double = 0.5
+    let waitTime: Double = 0.2
    
     lazy var loadingView: LOTAnimationView = {
         let animationView = LOTAnimationView(name: "glow_loading")
@@ -148,20 +148,6 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
     func stopLoading() {
         self.loadingView.removeFromSuperview()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any!){
-        LogService.shared.logger.info("[START] prepare next view")
-        LogService.shared.logger.debug("↓[ResponseData]↓")
-        if let shop = sender as? Shop_ResponseShop {
-            LogService.shared.logger.debug(shop)
-            if (segue.identifier == "ShopVegetables"){
-                if let shopVegetableVC: ShopVegetablesViewController = segue.destination as? ShopVegetablesViewController {
-                   shopVegetableVC.recieveShop = shop
-                }
-            }
-        }
-        LogService.shared.logger.info("[END] prepare view")
-    }
 }
 
 extension HomeShopViewController: UICollectionViewDelegateFlowLayout {
@@ -171,8 +157,9 @@ extension HomeShopViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         LogService.shared.logger.info("[START] didSelectItemAt on pushing Cell")
-        let selectedShop = self.shops[indexPath.item]
-        performSegue(withIdentifier: "ShopVegetables", sender: selectedShop)
+        //let selectedShop = self.shops[indexPath.item]
+        SharedService.shared.segueShop = self.shops[indexPath.item]
+        performSegue(withIdentifier: "ShopVegetables", sender: nil)
         LogService.shared.logger.info("[END] didSelectItemAt on pushing Cell")
     }
 }

@@ -57,6 +57,9 @@
 		A2CC30C121649ED0004F487A /* SellPaymentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC30C021649ED0004F487A /* SellPaymentViewController.storyboard */; };
 		A2CC30C32164A1F2004F487A /* ProfileRegistrationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC30C22164A1F2004F487A /* ProfileRegistrationViewController.storyboard */; };
 		A2CC30C72164AAE6004F487A /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC30C62164AAE6004F487A /* ProfileViewController.storyboard */; };
+		C1325AB1221049B9002A330F /* BuyVegetablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1325AB0221049B9002A330F /* BuyVegetablesVC.swift */; };
+		C1325AB3221049DE002A330F /* BuyVegetablesVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1325AB2221049DE002A330F /* BuyVegetablesVC.storyboard */; };
+		C1325AB6221061E9002A330F /* SharedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1325AB5221061E9002A330F /* SharedService.swift */; };
 		C14EA421220460ED0011671D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14EA420220460ED0011671D /* Error.swift */; };
 		C14EA4282204668E0011671D /* grpc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4272204668E0011671D /* grpc.framework */; };
 		C14EA42A2204668E0011671D /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4292204668E0011671D /* KeychainAccess.framework */; };
@@ -156,6 +159,9 @@
 		A2CC30C021649ED0004F487A /* SellPaymentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SellPaymentViewController.storyboard; sourceTree = "<group>"; };
 		A2CC30C22164A1F2004F487A /* ProfileRegistrationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileRegistrationViewController.storyboard; sourceTree = "<group>"; };
 		A2CC30C62164AAE6004F487A /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
+		C1325AB0221049B9002A330F /* BuyVegetablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyVegetablesVC.swift; sourceTree = "<group>"; };
+		C1325AB2221049DE002A330F /* BuyVegetablesVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyVegetablesVC.storyboard; sourceTree = "<group>"; };
+		C1325AB5221061E9002A330F /* SharedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedService.swift; sourceTree = "<group>"; };
 		C14EA420220460ED0011671D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C14EA4222204645B0011671D /* Lottie-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lottie-Bridging-Header.h"; sourceTree = "<group>"; };
 		C14EA4232204668E0011671D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -387,6 +393,7 @@
 		A2739265217762770063DFE4 /* Buy */ = {
 			isa = PBXGroup;
 			children = (
+				C1325AAF22104993002A330F /* BuyVegetables */,
 				C195131522096863006E52F4 /* ShopVegetables */,
 				A2BCEE1621A57AE10041B8B1 /* HomeShop */,
 				A273925B217761E70063DFE4 /* HomeFav */,
@@ -493,6 +500,23 @@
 				A2BCEE1721A57AE10041B8B1 /* HomeShopViewController.swift */,
 			);
 			path = HomeShop;
+			sourceTree = "<group>";
+		};
+		C1325AAF22104993002A330F /* BuyVegetables */ = {
+			isa = PBXGroup;
+			children = (
+				C1325AB0221049B9002A330F /* BuyVegetablesVC.swift */,
+				C1325AB2221049DE002A330F /* BuyVegetablesVC.storyboard */,
+			);
+			path = BuyVegetables;
+			sourceTree = "<group>";
+		};
+		C1325AB4221061CE002A330F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C1325AB5221061E9002A330F /* SharedService.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		C14EA41F220460A80011671D /* Common */ = {
@@ -606,6 +630,7 @@
 		D48D52ED22032FE800027ED4 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				C1325AB4221061CE002A330F /* Shared */,
 				C1E0DF2A220DA35F0053F19A /* Log */,
 				C195130C2206FAA8006E52F4 /* Enum */,
 				D4B1D97F21B22072001A25EB /* Geolocation */,
@@ -852,6 +877,7 @@
 				A2BCEE1221A57AB90041B8B1 /* SettingsSalesViewController.storyboard in Resources */,
 				A27392722179871A0063DFE4 /* HomeFavViewController.storyboard in Resources */,
 				A2CC30C72164AAE6004F487A /* ProfileViewController.storyboard in Resources */,
+				C1325AB3221049DE002A330F /* BuyVegetablesVC.storyboard in Resources */,
 				A27DB8F8215B65A700B3B9BC /* SignUpViewController.storyboard in Resources */,
 				A293A36A21AE71D7001396EA /* loading_.json in Resources */,
 				A2BCEDF521A57AA70041B8B1 /* SignInViewController.storyboard in Resources */,
@@ -968,6 +994,7 @@
 				D48D531322033F2000027ED4 /* user.grpc.swift in Sources */,
 				C1E0DF2C220DA3750053F19A /* LogService.swift in Sources */,
 				A21BF98E219EE627009A7D3C /* RequestShop.swift in Sources */,
+				C1325AB1221049B9002A330F /* BuyVegetablesVC.swift in Sources */,
 				C1FAA8DC22101201005F6131 /* vegetable.pb.swift in Sources */,
 				C1FAA8DA221011F9005F6131 /* vegetable.grpc.swift in Sources */,
 				A273925321772CCB0063DFE4 /* HomeSellViewController.swift in Sources */,
@@ -984,6 +1011,7 @@
 				C195130E2206FABC006E52F4 /* EnumService.swift in Sources */,
 				A201C0D721B3B6A800493919 /* AdressMapViewController.swift in Sources */,
 				D48D53032203357400027ED4 /* EntryClient.swift in Sources */,
+				C1325AB6221061E9002A330F /* SharedService.swift in Sources */,
 				D48D531122033F2000027ED4 /* entry.grpc.swift in Sources */,
 				A273926E21797F590063DFE4 /* ProfileRegistrationViewController.swift in Sources */,
 				D48D531922033F4B00027ED4 /* shop.pb.swift in Sources */,

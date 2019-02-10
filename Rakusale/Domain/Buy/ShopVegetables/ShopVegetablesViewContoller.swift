@@ -27,7 +27,7 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
     let imageNotFound = UIImage(named: "404")
     var recieveShop: Shop_ResponseShop!
     var recieveVegetables: [Vegetable_ResponseShopVegetable] = []
-    let waitTime: Double = 0.5
+    let waitTime: Double = 0.2
     let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
     
     lazy var loadingView: LOTAnimationView = {
@@ -43,9 +43,9 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.shopNameLabel.text = self.recieveShop.name
-        self.shopIntroText.text = self.recieveShop.introduction
-        let location: CLLocation = CLLocation(latitude: Double(self.recieveShop.latitude), longitude: Double(self.recieveShop.longitude))
+        self.shopNameLabel.text = SharedService.shared.segueShop.name
+        self.shopIntroText.text = SharedService.shared.segueShop.introduction
+        let location: CLLocation = CLLocation(latitude: Double(SharedService.shared.segueShop.latitude), longitude: Double(SharedService.shared.segueShop.longitude))
         
         self.shopAddressLabel.text = LocationService.sharedManager.ReverseGeocoder(location: location)
         self.uiCollectionView.dataSource = self
@@ -65,7 +65,7 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.loadShopVegetables(shopID: recieveShop.id)
+        self.loadShopVegetables(shopID: SharedService.shared.segueShop.id)
         self.tabBarController?.tabBar.isHidden = false
     }
     
@@ -151,10 +151,8 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
         LogService.shared.logger.info("[END] Call loadShops")
     }
     
-    @IBAction func didTapReturnButton(_ sender: Any) {
-        self.tabBarController?.tabBar.isHidden = false
-        //self.navigationController?.popViewController(animated: true)
-//        self.navigationController?.pushViewController(HomeShopViewController.create(), animated: true)
+    @IBAction func didTapReturn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -163,10 +161,8 @@ extension ShopVegetablesViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: (collectionView.bounds.width), height: (collectionView.bounds.height) / 2.5)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        LogService.shared.logger.info("[START] didSelectItemAt on pushing Cell")
-//        let selectedShop = self.shops[indexPath.item]
-//        performSegue(withIdentifier: "ShopVegetables", sender: selectedShop)
-//        LogService.shared.logger.info("[END] didSelectItemAt on pushing Cell")
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        SharedService.shared.segueVegetable = self.recieveVegetables[indexPath.item]
+        performSegue(withIdentifier: "BuyVegetablesVC", sender: nil)
+    }
 }
