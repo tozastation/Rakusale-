@@ -67,6 +67,12 @@ fileprivate final class Vegetable_VegetablesDeleteMyVegetableCallBase: ClientCal
   override class var method: String { return "/vegetable.Vegetables/DeleteMyVegetable" }
 }
 
+internal protocol Vegetable_VegetablesBuyVegetablesCall: ClientCallUnary {}
+
+fileprivate final class Vegetable_VegetablesBuyVegetablesCallBase: ClientCallUnaryBase<Vegetable_BuyVegetablesRequest, Vegetable_BuyVegetablesResponse>, Vegetable_VegetablesBuyVegetablesCall {
+  override class var method: String { return "/vegetable.Vegetables/BuyVegetables" }
+}
+
 
 /// Instantiate Vegetable_VegetablesServiceClient, then call methods of this protocol to make API calls.
 internal protocol Vegetable_VegetablesService: ServiceClient {
@@ -104,6 +110,11 @@ internal protocol Vegetable_VegetablesService: ServiceClient {
   func deleteMyVegetable(_ request: Vegetable_DeleteMyVegetableRequest) throws -> Vegetable_DeleteMyVegetableResponse
   /// Asynchronous. Unary.
   func deleteMyVegetable(_ request: Vegetable_DeleteMyVegetableRequest, completion: @escaping (Vegetable_DeleteMyVegetableResponse?, CallResult) -> Void) throws -> Vegetable_VegetablesDeleteMyVegetableCall
+
+  /// Synchronous. Unary.
+  func buyVegetables(_ request: Vegetable_BuyVegetablesRequest) throws -> Vegetable_BuyVegetablesResponse
+  /// Asynchronous. Unary.
+  func buyVegetables(_ request: Vegetable_BuyVegetablesRequest, completion: @escaping (Vegetable_BuyVegetablesResponse?, CallResult) -> Void) throws -> Vegetable_VegetablesBuyVegetablesCall
 
 }
 
@@ -185,6 +196,17 @@ internal final class Vegetable_VegetablesServiceClient: ServiceClientBase, Veget
       .start(request: request, metadata: metadata, completion: completion)
   }
 
+  /// Synchronous. Unary.
+  internal func buyVegetables(_ request: Vegetable_BuyVegetablesRequest) throws -> Vegetable_BuyVegetablesResponse {
+    return try Vegetable_VegetablesBuyVegetablesCallBase(channel)
+      .run(request: request, metadata: metadata)
+  }
+  /// Asynchronous. Unary.
+  internal func buyVegetables(_ request: Vegetable_BuyVegetablesRequest, completion: @escaping (Vegetable_BuyVegetablesResponse?, CallResult) -> Void) throws -> Vegetable_VegetablesBuyVegetablesCall {
+    return try Vegetable_VegetablesBuyVegetablesCallBase(channel)
+      .start(request: request, metadata: metadata, completion: completion)
+  }
+
 }
 
 /// To build a server, implement a class that conforms to this protocol.
@@ -198,6 +220,7 @@ internal protocol Vegetable_VegetablesProvider: ServiceProvider {
   func postMyVegetable(request: Vegetable_PostMyVegetableRequest, session: Vegetable_VegetablesPostMyVegetableSession) throws -> Vegetable_PostMyVegetableResponse
   func putMyVegetable(request: Vegetable_PutMyVegetableRequest, session: Vegetable_VegetablesPutMyVegetableSession) throws -> Vegetable_PutMyVegetableResponse
   func deleteMyVegetable(request: Vegetable_DeleteMyVegetableRequest, session: Vegetable_VegetablesDeleteMyVegetableSession) throws -> Vegetable_DeleteMyVegetableResponse
+  func buyVegetables(request: Vegetable_BuyVegetablesRequest, session: Vegetable_VegetablesBuyVegetablesSession) throws -> Vegetable_BuyVegetablesResponse
 }
 
 extension Vegetable_VegetablesProvider {
@@ -242,6 +265,11 @@ extension Vegetable_VegetablesProvider {
         handler: handler,
         providerBlock: { try self.deleteMyVegetable(request: $0, session: $1 as! Vegetable_VegetablesDeleteMyVegetableSessionBase) })
           .run()
+    case "/vegetable.Vegetables/BuyVegetables":
+      return try Vegetable_VegetablesBuyVegetablesSessionBase(
+        handler: handler,
+        providerBlock: { try self.buyVegetables(request: $0, session: $1 as! Vegetable_VegetablesBuyVegetablesSessionBase) })
+          .run()
     default:
       throw HandleMethodError.unknownMethod
     }
@@ -275,4 +303,8 @@ fileprivate final class Vegetable_VegetablesPutMyVegetableSessionBase: ServerSes
 internal protocol Vegetable_VegetablesDeleteMyVegetableSession: ServerSessionUnary {}
 
 fileprivate final class Vegetable_VegetablesDeleteMyVegetableSessionBase: ServerSessionUnaryBase<Vegetable_DeleteMyVegetableRequest, Vegetable_DeleteMyVegetableResponse>, Vegetable_VegetablesDeleteMyVegetableSession {}
+
+internal protocol Vegetable_VegetablesBuyVegetablesSession: ServerSessionUnary {}
+
+fileprivate final class Vegetable_VegetablesBuyVegetablesSessionBase: ServerSessionUnaryBase<Vegetable_BuyVegetablesRequest, Vegetable_BuyVegetablesResponse>, Vegetable_VegetablesBuyVegetablesSession {}
 

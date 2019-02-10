@@ -16,4 +16,5 @@ target 'Rakusale' do
   pod 'PromiseKit'
   pod 'SwiftyBeaver'
   pod 'MaterialComponents'
+  pod 'Kingfisher'
 end

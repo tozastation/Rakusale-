@@ -12,18 +12,19 @@ import AlamofireImage
 import PromiseKit
 import VegaScrollFlowLayout
 import MaterialComponents
+import Kingfisher
 
 class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var uiCollectionView: UICollectionView!
     var vegetables : [Vegetable_ResponseVegetable] = []
     fileprivate let refreshCtl = UIRefreshControl()
-    let imageCache = AutoPurgingImageCache()
+    //let imageCache = AutoPurgingImageCache()
     let imageNotFound = UIImage(named: "404")
     let layout = VegaScrollFlowLayout()
     let waitTime: Double = 2.0
     let alert: UIAlertController = UIAlertController(title: "Invaild Login", message: "Please Retype", preferredStyle:  .alert)
-    
+
     lazy var loadingView: LOTAnimationView = {
         let animationView = LOTAnimationView(name: "glow_loading")
         animationView.frame = CGRect(x: 0, y: 0, width: (self.view.bounds.width)/2, height: (self.view.bounds.height)/2)
@@ -69,29 +70,18 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
             withReuseIdentifier: "Cell",
             for: indexPath
         )
-//        ) as! ProductCell
-//        cell.layer.borderColor = UIColor.black.cgColor
-//        cell.layer.cornerRadius = 30
-//        cell.layer.masksToBounds = true
+        cell.backgroundColor = UIColor.clear
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8 // optional
         // 画像データ取得
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         let url: String = vegetable.imagePath
-        // イメージパスをキーとして、画像をキャッシュ
-        if let image = imageCache.image(withIdentifier: url) {
-             imageView.image = image
-            //cell.imageView.image = image
-        }else{
-            Alamofire.request(url).responseImage { response in
-                if let image = response.result.value {
-                    imageView.image = image
-                    //cell.imageView.image = image
-                    self.imageCache.add(image, withIdentifier: url)
-                }else{
-                    //cell.imageView.image = self.imageNotFound
-                    imageView.image = self.imageNotFound
-                }
-            }
-        }
+        LogService.shared.logger.debug("[Vegetable Image URL]")
+        LogService.shared.logger.debug(url)
+        imageView.kf.setImage(with: ImageResource(downloadURL: URL(string: url)!))
+        imageView.layer.cornerRadius = 30
+        imageView.clipsToBounds = true
         // 名前のラベル設定
         let name = cell.contentView.viewWithTag(2) as! UILabel
         name.text = vegetable.name
@@ -101,9 +91,8 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
         name.sizeToFit()
         fee.sizeToFit()
         cell.alpha = 0
-//        cell.nameLabel.text = vegetable.name
-//        cell.priceLabel.text = String(vegetable.fee) + "円"
-        UIView.animate(withDuration: 1.8) {
+
+        UIView.animate(withDuration: 0.5) {
             cell.alpha = 1
         }
         return cell
@@ -122,7 +111,7 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
         // Start Loading Animation
         self.startLoading()
         // Call RPC
-        print("Activate Login")
+        LogService.shared.logger.info("[START] loading vegetables")
          let token = S.getKeychain(Keychain_Keys.Token)!
         firstly {
             VegetableClient.shared.getMySoldVegetables(token: token)
@@ -139,6 +128,7 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
                 self.present(self.alert, animated: true, completion: nil)
             }
         }
+        LogService.shared.logger.info("[END] loading vegetables")
     }
     
     
@@ -161,7 +151,7 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
 
 extension HomeSellViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.bounds.width - 13), height: (collectionView.bounds.width) / 2 )
+        return CGSize(width: (collectionView.bounds.width - 13), height: (collectionView.bounds.width) / 2.5 )
     }
 }
 

@@ -15,7 +15,7 @@
                 <viewControllerPlaceholder storyboardName="ProfileViewController" id="nHO-9i-FuE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ef-Mm-4Za" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2292" y="-783"/>
+            <point key="canvasLocation" x="2486" y="-400"/>
         </scene>
         <!--SellSettingsViewController-->
         <scene sceneID="b71-9e-5uk">
@@ -25,7 +25,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25L-R7-jkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2435" y="-591"/>
+            <point key="canvasLocation" x="2487" y="-304"/>
         </scene>
         <!--らくセール-->
         <scene sceneID="431-x6-mvE">
@@ -54,8 +54,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="354" height="146"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="fee" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sly-An-mKL">
-                                                    <rect key="frame" x="298.00000000000006" y="112" width="53" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="fee" lineBreakMode="tailTruncation" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sly-An-mKL">
+                                                    <rect key="frame" x="275" y="112" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -64,7 +64,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0z-WW-98y">
                                                     <rect key="frame" x="151.00000000000009" y="12" width="51" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -136,7 +136,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFt-xA-BtC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2389" y="-46"/>
+            <point key="canvasLocation" x="2514" y="-222"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YET-8a-TWB">

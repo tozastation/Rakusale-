@@ -80,12 +80,12 @@
 		C195130322047B69006E52F4 /* ShopClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C195130222047B69006E52F4 /* ShopClient.swift */; };
 		C19513052206A878006E52F4 /* VegetableClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19513042206A878006E52F4 /* VegetableClient.swift */; };
 		C195130E2206FABC006E52F4 /* EnumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C195130D2206FABC006E52F4 /* EnumService.swift */; };
-		C19513122206FD79006E52F4 /* vegetable.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19513112206FD79006E52F4 /* vegetable.pb.swift */; };
 		C19513172209688E006E52F4 /* ShopVegetablesViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19513162209688E006E52F4 /* ShopVegetablesViewContoller.swift */; };
 		C1951319220968B2006E52F4 /* ShopVegetables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1951318220968B2006E52F4 /* ShopVegetables.storyboard */; };
-		C195131B22099787006E52F4 /* vegetable.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C195131A22099787006E52F4 /* vegetable.grpc.swift */; };
 		C1E0DF2C220DA3750053F19A /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0DF2B220DA3750053F19A /* LogService.swift */; };
 		C1E0DF2F220DD2D90053F19A /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E0DF2E220DD2D90053F19A /* ProductCell.swift */; };
+		C1FAA8DA221011F9005F6131 /* vegetable.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FAA8D9221011F9005F6131 /* vegetable.grpc.swift */; };
+		C1FAA8DC22101201005F6131 /* vegetable.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FAA8DB22101201005F6131 /* vegetable.pb.swift */; };
 		D4313947219F00C200757192 /* ResponseVegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313946219F00C200757192 /* ResponseVegetable.swift */; };
 		D431394A219F015B00757192 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313949219F015B00757192 /* Endpoints.swift */; };
 		D48D53032203357400027ED4 /* EntryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D53022203357400027ED4 /* EntryClient.swift */; };
@@ -190,12 +190,12 @@
 		C195130222047B69006E52F4 /* ShopClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopClient.swift; sourceTree = "<group>"; };
 		C19513042206A878006E52F4 /* VegetableClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegetableClient.swift; sourceTree = "<group>"; };
 		C195130D2206FABC006E52F4 /* EnumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumService.swift; sourceTree = "<group>"; };
-		C19513112206FD79006E52F4 /* vegetable.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.pb.swift; sourceTree = "<group>"; };
 		C19513162209688E006E52F4 /* ShopVegetablesViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopVegetablesViewContoller.swift; sourceTree = "<group>"; };
 		C1951318220968B2006E52F4 /* ShopVegetables.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopVegetables.storyboard; sourceTree = "<group>"; };
-		C195131A22099787006E52F4 /* vegetable.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.grpc.swift; sourceTree = "<group>"; };
 		C1E0DF2B220DA3750053F19A /* LogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogService.swift; sourceTree = "<group>"; };
 		C1E0DF2E220DD2D90053F19A /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		C1FAA8D9221011F9005F6131 /* vegetable.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.grpc.swift; sourceTree = "<group>"; };
+		C1FAA8DB22101201005F6131 /* vegetable.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vegetable.pb.swift; sourceTree = "<group>"; };
 		D2883272BC05D315F0035F38 /* Pods-Rakusale-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rakusale-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rakusale-iOS/Pods-Rakusale-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D4313946219F00C200757192 /* ResponseVegetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseVegetable.swift; sourceTree = "<group>"; };
 		D4313949219F015B00757192 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
@@ -627,7 +627,7 @@
 		D48D52EE2203300700027ED4 /* gRPC */ = {
 			isa = PBXGroup;
 			children = (
-				C195131A22099787006E52F4 /* vegetable.grpc.swift */,
+				C1FAA8D9221011F9005F6131 /* vegetable.grpc.swift */,
 				D48D530D22033F2000027ED4 /* entry.grpc.swift */,
 				D48D530E22033F2000027ED4 /* shop.grpc.swift */,
 				D48D530F22033F2000027ED4 /* user.grpc.swift */,
@@ -649,7 +649,7 @@
 		D48D52F1220331E100027ED4 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				C19513112206FD79006E52F4 /* vegetable.pb.swift */,
+				C1FAA8DB22101201005F6131 /* vegetable.pb.swift */,
 				D48D531722033F4B00027ED4 /* entry.pb.swift */,
 				D48D531522033F4B00027ED4 /* shop.pb.swift */,
 				D48D531422033F4A00027ED4 /* user.pb.swift */,
@@ -882,6 +882,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
@@ -908,6 +909,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
@@ -962,8 +964,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -977,9 +978,9 @@
 				A2BCEE1921A57AE10041B8B1 /* HomeShopViewController.swift in Sources */,
 				D48D531322033F2000027ED4 /* user.grpc.swift in Sources */,
 				C1E0DF2C220DA3750053F19A /* LogService.swift in Sources */,
-				C19513122206FD79006E52F4 /* vegetable.pb.swift in Sources */,
 				A21BF98E219EE627009A7D3C /* RequestShop.swift in Sources */,
-				C195131B22099787006E52F4 /* vegetable.grpc.swift in Sources */,
+				C1FAA8DC22101201005F6131 /* vegetable.pb.swift in Sources */,
+				C1FAA8DA221011F9005F6131 /* vegetable.grpc.swift in Sources */,
 				A273925321772CCB0063DFE4 /* HomeSellViewController.swift in Sources */,
 				A273925521772D7F0063DFE4 /* RegistrationViewController.swift in Sources */,
 				A273924C217723C20063DFE4 /* SignUpViewController.swift in Sources */,
@@ -1157,10 +1158,7 @@
 				DEVELOPMENT_TEAM = 82XFL8284S;
 				INFOPLIST_FILE = "$(SRCROOT)/Rakusale/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)Rakusale/Common/Lottie-Bridging-Header.h";
@@ -1180,10 +1178,7 @@
 				DEVELOPMENT_TEAM = 82XFL8284S;
 				INFOPLIST_FILE = "$(SRCROOT)/Rakusale/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)Rakusale/Common/Lottie-Bridging-Header.h";
