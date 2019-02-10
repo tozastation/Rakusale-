@@ -16,4 +16,5 @@ target 'Rakusale' do
   pod 'SwiftyBeaver'
   pod 'MaterialComponents'
   pod 'Kingfisher'
+  pod 'SCLAlertView'
 end

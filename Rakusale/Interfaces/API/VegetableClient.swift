@@ -128,4 +128,23 @@ class VegetableClient {
     func deleteMyVegetable() {
     
     }
+    
+    func buyVegetables(token: String, sID: Int64, category: Vegetable_VegetableType, amount: Int64) -> Promise<Void> {
+        var req = Vegetable_BuyVegetablesRequest()
+        req.token = token
+        req.sID = sID
+        req.category = category
+        req.amount = amount
+        
+        return Promise { seal in
+            let _ = try? self.client.buyVegetables(req, completion: {(response, result) in
+                if result.success {
+                    seal.fulfill(())
+                } else {
+                    guard let statusCode = response?.status else {return}
+                    seal.reject(gRPCError.RequestError(statusCode))
+                }
+            })
+        }
+    }
 }

@@ -40,6 +40,9 @@
                                         <state key="normal" title="購入する">
                                             <color key="titleShadowColor" red="0.21960784310000001" green="0.70588235290000001" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onTapBuy:" destination="aTt-HK-YgM" eventType="touchUpInside" id="yc5-63-CSD"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="個数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOc-Ee-7gW">
                                         <rect key="frame" x="109" y="230" width="35" height="21"/>
