@@ -109,6 +109,9 @@ class ShopRegistrationVC: UITableViewController, UITextFieldDelegate, UIImagePic
         alertView.addButton("登録する") {
             self.addShop(latitude: Float(LocationService.sharedManager.latitude), longitude: Float(LocationService.sharedManager.longitude))
         }
+        alertView.addButton("Cancel") {
+            self.dismiss(animated: true, completion: nil)
+        }
         alertView.showSuccess("確認画面", subTitle: "緯度: " + String(LocationService.sharedManager.latitude) + "\n" + "経度: " + String(LocationService.sharedManager.longitude))
     }
     
