@@ -15,6 +15,11 @@ import Realm
 class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     private var locationManager : CLLocationManager!
     private var  status = CLLocationManager.authorizationStatus()
+    
+    var location: CLLocation!
+    var longitude: Double!
+    var latitude: Double!
+    
     let radius: Double = 100
     
     // シングルトン
@@ -45,17 +50,22 @@ class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDele
         }
     }
     
+    func updateLocation() {
+        self.locationManager.requestLocation()
+        self.location = self.locationManager.location
+        self.latitude = location.coordinate.latitude
+        self.longitude = location.coordinate.longitude
+    }
+    
     // 位置情報が取得されると呼ばれる
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location : CLLocation = locations.last! // 最新の位置情報を取得 locationsに配列で入っている位置情報の最後が最新となる
+        self.location = locations.last! // 最新の位置情報を取得 locationsに配列で入っている位置情報の最後が最新となる
         print(location.coordinate)
-        let latitude: Double = location.coordinate.latitude
-        let longitude: Double = location.coordinate.longitude
-        let currentPoint = (latitude, longitude) // 現在をタプルに変換
+        self.latitude = location.coordinate.latitude
+        self.longitude = location.coordinate.longitude
+        let currentPoint = (self.latitude, self.longitude) // 現在をタプルに変換
         let shopList = RealmService.sharedManager.getShopModel()// Realmからデータを取ってくる
-        let result = self.calcNearlyShops(shops: shopList, current: currentPoint)// 近隣の直売所を検索
-        print("付近の直売所です")
-        print(result)
+        let result = self.calcNearlyShops(shops: shopList, current: currentPoint as! (la: Double, lo: Double))// 近隣の直売所を検索
         if result.count != 0 {
             let title = "らくセール"
             let subtitle = "近くに直売所があります"

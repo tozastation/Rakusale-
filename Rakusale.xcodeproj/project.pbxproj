@@ -60,6 +60,8 @@
 		C1325AB1221049B9002A330F /* BuyVegetablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1325AB0221049B9002A330F /* BuyVegetablesVC.swift */; };
 		C1325AB3221049DE002A330F /* BuyVegetablesVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1325AB2221049DE002A330F /* BuyVegetablesVC.storyboard */; };
 		C1325AB6221061E9002A330F /* SharedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1325AB5221061E9002A330F /* SharedService.swift */; };
+		C1325AB922113DC7002A330F /* ShopRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1325AB822113DC7002A330F /* ShopRegistrationVC.swift */; };
+		C1325ABB22113DDA002A330F /* ShopRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1325ABA22113DDA002A330F /* ShopRegistration.storyboard */; };
 		C14EA421220460ED0011671D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14EA420220460ED0011671D /* Error.swift */; };
 		C14EA4282204668E0011671D /* grpc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4272204668E0011671D /* grpc.framework */; };
 		C14EA42A2204668E0011671D /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EA4292204668E0011671D /* KeychainAccess.framework */; };
@@ -162,6 +164,8 @@
 		C1325AB0221049B9002A330F /* BuyVegetablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyVegetablesVC.swift; sourceTree = "<group>"; };
 		C1325AB2221049DE002A330F /* BuyVegetablesVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyVegetablesVC.storyboard; sourceTree = "<group>"; };
 		C1325AB5221061E9002A330F /* SharedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedService.swift; sourceTree = "<group>"; };
+		C1325AB822113DC7002A330F /* ShopRegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopRegistrationVC.swift; sourceTree = "<group>"; };
+		C1325ABA22113DDA002A330F /* ShopRegistration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopRegistration.storyboard; sourceTree = "<group>"; };
 		C14EA420220460ED0011671D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C14EA4222204645B0011671D /* Lottie-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lottie-Bridging-Header.h"; sourceTree = "<group>"; };
 		C14EA4232204668E0011671D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -382,6 +386,7 @@
 		A27392642177626F0063DFE4 /* Sell */ = {
 			isa = PBXGroup;
 			children = (
+				C1325AB722113DA7002A330F /* ShopRegistration */,
 				A273925721775E420063DFE4 /* Registration */,
 				A273925621775E350063DFE4 /* HomeSell */,
 				A273925821775E770063DFE4 /* SellPayment */,
@@ -517,6 +522,15 @@
 				C1325AB5221061E9002A330F /* SharedService.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		C1325AB722113DA7002A330F /* ShopRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				C1325AB822113DC7002A330F /* ShopRegistrationVC.swift */,
+				C1325ABA22113DDA002A330F /* ShopRegistration.storyboard */,
+			);
+			path = ShopRegistration;
 			sourceTree = "<group>";
 		};
 		C14EA41F220460A80011671D /* Common */ = {
@@ -866,6 +880,7 @@
 				A2CC30C121649ED0004F487A /* SellPaymentViewController.storyboard in Resources */,
 				A27DB900215DE11D00B3B9BC /* UserSelectViewController.storyboard in Resources */,
 				C17BB55F20EDCDD9002ACD56 /* Assets.xcassets in Resources */,
+				C1325ABB22113DDA002A330F /* ShopRegistration.storyboard in Resources */,
 				A27DB902215DE64F00B3B9BC /* HomeSellViewController.storyboard in Resources */,
 				A2739274217987360063DFE4 /* BuyPaymentViewController.storyboard in Resources */,
 				A2BCEE1521A57AB90041B8B1 /* SettingsProfileViewController.storyboard in Resources */,
@@ -981,7 +996,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1019,6 +1035,7 @@
 				A273926A21797F2C0063DFE4 /* SellPaymentViewController.swift in Sources */,
 				A21BF992219F07C3009A7D3C /* ResponseShop.swift in Sources */,
 				D431394A219F015B00757192 /* Endpoints.swift in Sources */,
+				C1325AB922113DC7002A330F /* ShopRegistrationVC.swift in Sources */,
 				A2BCEE1021A57AB90041B8B1 /* BuySettingsViewController.swift in Sources */,
 				D48D531222033F2000027ED4 /* shop.grpc.swift in Sources */,
 				D492583021A6AAC400C29A61 /* RequestLogin.swift in Sources */,
@@ -1176,7 +1193,10 @@
 				DEVELOPMENT_TEAM = 82XFL8284S;
 				INFOPLIST_FILE = "$(SRCROOT)/Rakusale/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)Rakusale/Common/Lottie-Bridging-Header.h";
@@ -1196,7 +1216,10 @@
 				DEVELOPMENT_TEAM = 82XFL8284S;
 				INFOPLIST_FILE = "$(SRCROOT)/Rakusale/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FUN.Rakusale;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT)Rakusale/Common/Lottie-Bridging-Header.h";
