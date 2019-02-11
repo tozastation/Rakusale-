@@ -7,13 +7,31 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        application.applicationIconBadgeNumber = 0
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+//        // 通知の内容を設定する
+//        let content = UNMutableNotificationContent()
+//        content.title = "Local"
+//        content.body = "aaa"
+//        content.userInfo = ["id": 1]
+//
+//        // 通知の条件を設定する
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+//
+//        // 通知のリクエストを生成する
+//        let request = UNNotificationRequest(identifier: "Rakusale", content: content, trigger: trigger)
+//        // 通知をシステムに登録する
+//        UNUserNotificationCenter.current().add(request)
+        //let _ = LocalNotificationService.sharedManager.sendLocalNotification(title: "らくセール", subtitle: "本日の売り上げ", body: "お疲れ様です。本日の売り上げは、13000円です。")
         return true
     }
     
@@ -39,6 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound])
+    }
 }
 

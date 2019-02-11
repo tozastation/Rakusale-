@@ -51,6 +51,7 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadVegetables()
+        let _ = LocalNotificationService.sharedManager.sendLocalNotification(title: "らくセール", subtitle: "本日の売り上げ", body: "お疲れ様です。本日の売り上げは、13000円です。")
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -131,7 +132,7 @@ class HomeSellViewController: UIViewController, UICollectionViewDataSource {
         LogService.shared.logger.info("[END] loading vegetables")
     }
     
-    
+   
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

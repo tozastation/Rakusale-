@@ -13,4 +13,6 @@ class SharedService {
     var segueVegetable: Vegetable_ResponseShopVegetable!
     var segueShop: Shop_ResponseShop!
     var buyShopID: Int64!
+    var reverseAddress: String!
+    var nextAddress: String!
 }

@@ -11,6 +11,7 @@ import UIKit
 import CoreLocation
 import RealmSwift
 import Realm
+import PromiseKit
 
 class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     private var locationManager : CLLocationManager!
@@ -20,7 +21,7 @@ class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDele
     var longitude: Double!
     var latitude: Double!
     
-    let radius: Double = 100
+    let radius: Double = 1000
     
     // シングルトン
     static let sharedManager = LocationService()
@@ -29,7 +30,7 @@ class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDele
         self.locationManager = CLLocationManager.init()
         self.locationManager.allowsBackgroundLocationUpdates = true // バックグランドモードで使用する場合YESにする必要がある
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest // 位置情報取得の精度
-        self.locationManager.distanceFilter = 15 // 位置情報取得する間隔、1m単位とする
+        self.locationManager.distanceFilter = 100 // 位置情報取得する間隔、1m単位とする
         self.locationManager.delegate = self
     }
     // 位置情報noninnsyoujyoutaiwokakuninn
@@ -64,13 +65,22 @@ class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDele
         self.latitude = location.coordinate.latitude
         self.longitude = location.coordinate.longitude
         let currentPoint = (self.latitude, self.longitude) // 現在をタプルに変換
-        let shopList = RealmService.sharedManager.getShopModel()// Realmからデータを取ってくる
-        let result = self.calcNearlyShops(shops: shopList, current: currentPoint as! (la: Double, lo: Double))// 近隣の直売所を検索
-        if result.count != 0 {
-            let title = "らくセール"
-            let subtitle = "近くに直売所があります"
-            let body = result[0].name
-            let result = LocalNotificationService.sharedManager.sendLocalNotification(title: title, subtitle: subtitle, body: body)
+        firstly {
+            ShopClient.shared.getAllShop()
+        }.done { shops in
+            LogService.shared.logger.debug(shops)
+            let result = self.calcNearlyShops(shops: shops, current: currentPoint as! (la: Double, lo: Double))
+            LogService.shared.logger.debug(result)
+            if result.count != 0 {
+                let title = "らくセール"
+                let subtitle = "近くに直売所があります"
+                let body = result[0].name
+                let _ = LocalNotificationService.sharedManager.sendLocalNotification(title: title, subtitle: subtitle, body: body)
+            }
+        }.catch { e in
+            LogService.shared.logger.error("[EXECUTE FAILURE!] on Calling buyVegetablesRPC")
+            LogService.shared.logger.error("[Detail]" + e.localizedDescription)
+            LogService.shared.logger.error("Present Alert Message")
         }
     }
 
@@ -90,10 +100,10 @@ class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDele
         return distance / 1000
     }
     
-    func calcNearlyShops(shops: Results<RealmShop>, current: (la: Double, lo: Double)) -> [RealmShop] {
-        var a: [RealmShop] = []
+    func calcNearlyShops(shops: [Shop_ResponseShop], current: (la: Double, lo: Double)) -> [Shop_ResponseShop] {
+        var a: [Shop_ResponseShop] = []
         for shop in shops {
-            let targetPoint = (shop.latitude, shop.longitude)
+            let targetPoint = (Double(shop.latitude), Double(shop.longitude))
             let diff = distance(current: current, target: targetPoint)
             if diff <= self.radius {
                 a.append(shop)
@@ -102,22 +112,34 @@ class LocationService: UIResponder, UIApplicationDelegate, CLLocationManagerDele
         return a
     }
     
-    func ReverseGeocoder(location: CLLocation) -> String {
-        var address: String = ""
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error)-> Void in
-            if error != nil {
-                print("error")
-                return
+    func ReverseGeocoder(location: CLLocation) -> Promise<String>{
+        let geocoder = CLGeocoder()
+        var address: String  = ""
+        SharedService.shared.reverseAddress = ""
+        return Promise { seal in
+            let _ = try? geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                if error != nil {
+                    seal.reject(gRPCError.RequestError(400))
+                } else {
+                    if let placemarks = placemarks {
+                        if let pm = placemarks.first {
+                            LogService.shared.logger.debug(pm)
+//                            if pm.locality?.isEmpty != nil {
+//                                SharedService.shared.reverseAddress += pm.locality!
+//                            }
+//                            if pm.subLocality?.isEmpty != nil {
+//                                SharedService.shared.reverseAddress += pm.subLocality!
+//                            }
+                            if pm.thoroughfare?.isEmpty != nil {
+                                SharedService.shared.reverseAddress += pm.thoroughfare!
+                                address = pm.thoroughfare!
+                            }
+                        }
+                        seal.fulfill(address)
+                    }
+                }
             }
-            if placemarks!.count > 0 {
-                let pms = placemarks![0]
-                address = self.makeAddressString(placemark: pms)
-                return
-            } else {
-                print("error")
-            }
-        })
-        return address
+        }
     }
     
     func makeAddressString(placemark: CLPlacemark) -> String {

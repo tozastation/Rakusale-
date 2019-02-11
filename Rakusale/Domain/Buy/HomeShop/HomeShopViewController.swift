@@ -50,6 +50,7 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
         layout.itemSize = CGSize(width: self.uiCollectionView.frame.width, height: 87)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         self.loadShops()
+        let _ = LocalNotificationService.sharedManager.sendLocalNotification(title: "らくセール", subtitle: "入荷", body: "お気に入りの野菜が入荷しています")
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -67,30 +68,46 @@ class HomeShopViewController: UIViewController, UICollectionViewDataSource
         
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         let url: String = shop.imagePath
+        LogService.shared.logger.debug(url)
         if url != "" {
             imageView.kf.setImage(with: ImageResource(downloadURL: URL(string: url)!))
         } else {
             imageView.image = self.imageNotFound
         }
-        imageView.layer.cornerRadius = 30
+        imageView.layer.cornerRadius = 15
         imageView.clipsToBounds = true
         
         // Label更新
         let nameLabel = cell.contentView.viewWithTag(2) as! UILabel
         nameLabel.text = shop.name
+        
         let pinImage = cell.contentView.viewWithTag(3) as! UIImageView
         let redPin = UIImage(named: "Redpin")
         pinImage.image = redPin
+        
         let locationLabel = cell.contentView.viewWithTag(4) as! UILabel
-//        let location = CLLocation(latitude: Double(shop.latitude), longitude: Double(shop.longitude))
-//        let geocoder = CLGeocoder()
-//        geocoder.reverseGeocodeLocation(location, completionHandler: {(placeMark:[CLPlacemark]?, error:Error?) -> Void in
-//            if let placeMark = placeMark?[0]{
-//                locationLabel.text = String(placeMark.administrativeArea!) + String(placeMark.locality!) + String(placeMark.thoroughfare!) + String(placeMark.subThoroughfare!)
-//            }
-//        })
+        let location =  CLLocation(latitude: Double(shop.latitude), longitude: Double(shop.longitude))
+        LogService.shared.logger.debug(location)
+        LogService.shared.logger.debug("↓")
+        LogService.shared.logger.debug(SharedService.shared.reverseAddress)
+        
+        firstly {
+            LocationService.sharedManager.ReverseGeocoder(location: location)
+        }.done { address in
+            if address != "" {
+                locationLabel.text = address
+                locationLabel.sizeToFit()
+            } else {
+                locationLabel.text = "地理情報を取得できませんでした"
+                locationLabel.sizeToFit()
+            }
+        }.catch { e in
+            LogService.shared.logger.error("[EXECUTE FAILURE!] on Calling getAllShopRPC")
+            LogService.shared.logger.error("[Detail]" + e.localizedDescription)
+            LogService.shared.logger.error("Present Alert Message")
+        }
+
         nameLabel.sizeToFit()
-        locationLabel.sizeToFit()
         cell.layer.shadowColor = UIColor.gray.cgColor
         cell.layer.shadowOpacity = 0.3
         cell.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -159,6 +176,8 @@ extension HomeShopViewController: UICollectionViewDelegateFlowLayout {
         LogService.shared.logger.info("[START] didSelectItemAt on pushing Cell")
         //let selectedShop = self.shops[indexPath.item]
         SharedService.shared.segueShop = self.shops[indexPath.item]
+        let location =  CLLocation(latitude: Double(self.shops[indexPath.item].latitude), longitude: Double(self.shops[indexPath.item].longitude))
+        LocationService.sharedManager.ReverseGeocoder(location: location)
         performSegue(withIdentifier: "ShopVegetables", sender: nil)
         LogService.shared.logger.info("[END] didSelectItemAt on pushing Cell")
     }

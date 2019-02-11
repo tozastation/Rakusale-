@@ -45,10 +45,13 @@ class ShopVegetablesViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         self.shopNameLabel.text = SharedService.shared.segueShop.name
+        self.shopNameLabel.sizeToFit()
         self.shopIntroText.text = SharedService.shared.segueShop.introduction
+        self.shopIntroText.sizeToFit()
         let location: CLLocation = CLLocation(latitude: Double(SharedService.shared.segueShop.latitude), longitude: Double(SharedService.shared.segueShop.longitude))
         
-        self.shopAddressLabel.text = LocationService.sharedManager.ReverseGeocoder(location: location)
+        self.shopAddressLabel.text = SharedService.shared.reverseAddress //LocationService.sharedManager.ReverseGeocoder(location: location)
+        self.shopAddressLabel.sizeToFit()
         self.uiCollectionView.dataSource = self
         self.uiCollectionView.delegate = self
         self.uiCollectionView.collectionViewLayout = layout
